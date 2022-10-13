@@ -12,14 +12,43 @@ function init() {
 function createCustomLineChart(id){
     const svg = d3
     .select(id)
-    .attr("width", width + margin.left + margin.right)
+    .attr("width", (width + margin.left + margin.right)/2)
     .attr("height", (height + margin.top + margin.bottom) / 2);
+
+
+    d3.csv("final.csv").then(function(data){
+        const x = d3
+        .scaleLinear()
+        .domain([0, 10])
+        .range([0, width/2]);
+        
+        console.log(data[1])
+
+        svg
+            .append("g")
+            .attr("id", "gXAxis")
+            .attr("transform", `translate(5, ${height/2})`)
+            .call(d3.axisBottom(x));
+
+        const y = d3
+            .scaleBand()
+            .domain([0, 10])
+            .range([0, height/2])
+            .padding(1);
+      
+          svg
+            .append("g")
+            .attr("id", "gYAxis").attr("transform", `translate(8,3)`)
+            .call(d3.axisLeft(y));
+        
+    });
+
 }
 
 function createDualAxisLineChart(id){
     const svg = d3
     .select(id)
-    .attr("width", width + margin.left + margin.right)
+    .attr("width", (width + margin.left + margin.right)/2)
     .attr("height", (height + margin.top + margin.bottom) / 2);
 }
 
@@ -33,6 +62,6 @@ function createHeatmap(id){
 function createSankeyDiagram(id){
     const svg = d3
     .select(id)
-    .attr("width", width + margin.left + margin.right)
+    .attr("width", width/3)
     .attr("height", height + margin.top + margin.bottom);
 }
