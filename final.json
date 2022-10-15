@@ -1,0 +1,3202 @@
+[
+ {
+   "FIELD1": 0,
+   "Year": 1990,
+   "Ranking": 1,
+   "Sales": "30,000,000",
+   "Tracks": 17,
+   "AlbumLength": 73.53,
+   "Genre": "Pop",
+   "AvgSongLength": 4.33
+ },
+ {
+   "FIELD1": 1,
+   "Year": 1990,
+   "Ranking": 2,
+   "Sales": "20,000,000",
+   "Tracks": 12,
+   "AlbumLength": 47.73,
+   "Genre": "Pop",
+   "AvgSongLength": 3.98
+ },
+ {
+   "FIELD1": 2,
+   "Year": 1990,
+   "Ranking": 3,
+   "Sales": "18,770,000",
+   "Tracks": 10,
+   "AlbumLength": 34.57,
+   "Genre": "Country",
+   "AvgSongLength": 3.46
+ },
+ {
+   "FIELD1": 3,
+   "Year": 1990,
+   "Ranking": 4,
+   "Sales": "18,000,000",
+   "Tracks": 13,
+   "AlbumLength": 59.07,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 4.54
+ },
+ {
+   "FIELD1": 4,
+   "Year": 1990,
+   "Ranking": 5,
+   "Sales": "15,000,000",
+   "Tracks": 11,
+   "AlbumLength": 46.77,
+   "Genre": "Pop",
+   "AvgSongLength": 4.25
+ },
+ {
+   "FIELD1": 5,
+   "Year": 1990,
+   "Ranking": 6,
+   "Sales": "15,000,000",
+   "Tracks": 12,
+   "AlbumLength": 58.22,
+   "Genre": "World",
+   "AvgSongLength": 4.85
+ },
+ {
+   "FIELD1": 6,
+   "Year": 1990,
+   "Ranking": 7,
+   "Sales": "10,000,000",
+   "Tracks": 11,
+   "AlbumLength": 53.75,
+   "Genre": "Pop",
+   "AvgSongLength": 4.89
+ },
+ {
+   "FIELD1": 7,
+   "Year": 1990,
+   "Ranking": 8,
+   "Sales": "9,956,520",
+   "Tracks": 15,
+   "AlbumLength": 76.88,
+   "Genre": "Rock",
+   "AvgSongLength": 5.13
+ },
+ {
+   "FIELD1": 8,
+   "Year": 1990,
+   "Ranking": 9,
+   "Sales": "8,838,000",
+   "Tracks": 7,
+   "AlbumLength": 40.27,
+   "Genre": "Pop",
+   "AvgSongLength": 5.75
+ },
+ {
+   "FIELD1": 9,
+   "Year": 1990,
+   "Ranking": 10,
+   "Sales": "8,533,000",
+   "Tracks": 17,
+   "AlbumLength": 67.92,
+   "Genre": "Classical",
+   "AvgSongLength": 4
+ },
+ {
+   "FIELD1": 10,
+   "Year": 1991,
+   "Ranking": 1,
+   "Sales": "33,000,000",
+   "Tracks": 12,
+   "AlbumLength": 62.67,
+   "Genre": "Rock",
+   "AvgSongLength": 5.22
+ },
+ {
+   "FIELD1": 11,
+   "Year": 1991,
+   "Ranking": 2,
+   "Sales": "30,000,000",
+   "Tracks": 13,
+   "AlbumLength": 42.6,
+   "Genre": "Rock",
+   "AvgSongLength": 3.28
+ },
+ {
+   "FIELD1": 12,
+   "Year": 1991,
+   "Ranking": 3,
+   "Sales": "27,000,000",
+   "Tracks": 14,
+   "AlbumLength": 77.05,
+   "Genre": "Pop",
+   "AvgSongLength": 5.5
+ },
+ {
+   "FIELD1": 13,
+   "Year": 1991,
+   "Ranking": 4,
+   "Sales": "19,000,000",
+   "Tracks": 17,
+   "AlbumLength": 76.53,
+   "Genre": "Rock",
+   "AvgSongLength": 4.5
+ },
+ {
+   "FIELD1": 14,
+   "Year": 1991,
+   "Ranking": 5,
+   "Sales": "18,000,000",
+   "Tracks": 12,
+   "AlbumLength": 55.45,
+   "Genre": "Rock",
+   "AvgSongLength": 4.62
+ },
+ {
+   "FIELD1": 15,
+   "Year": 1991,
+   "Ranking": 6,
+   "Sales": "15,710,000",
+   "Tracks": 11,
+   "AlbumLength": 53.33,
+   "Genre": "Rock",
+   "AvgSongLength": 4.85
+ },
+ {
+   "FIELD1": 16,
+   "Year": 1991,
+   "Ranking": 7,
+   "Sales": "15,000,000",
+   "Tracks": 12,
+   "AlbumLength": 71.5,
+   "Genre": "Rock",
+   "AvgSongLength": 5.96
+ },
+ {
+   "FIELD1": 17,
+   "Year": 1991,
+   "Ranking": 8,
+   "Sales": "15,000,000",
+   "Tracks": 16,
+   "AlbumLength": 76.15,
+   "Genre": "Rock",
+   "AvgSongLength": 4.76
+ },
+ {
+   "FIELD1": 18,
+   "Year": 1991,
+   "Ranking": 9,
+   "Sales": "15,000,000",
+   "Tracks": 14,
+   "AlbumLength": 75.92,
+   "Genre": "Rock",
+   "AvgSongLength": 5.42
+ },
+ {
+   "FIELD1": 19,
+   "Year": 1991,
+   "Ranking": 10,
+   "Sales": "14,570,000",
+   "Tracks": 10,
+   "AlbumLength": 36.62,
+   "Genre": "Country",
+   "AvgSongLength": 3.66
+ },
+ {
+   "FIELD1": 20,
+   "Year": 1992,
+   "Ranking": 1,
+   "Sales": "45,000,000",
+   "Tracks": 13,
+   "AlbumLength": 57.73,
+   "Genre": "Pop",
+   "AvgSongLength": 4.44
+ },
+ {
+   "FIELD1": 21,
+   "Year": 1992,
+   "Ranking": 2,
+   "Sales": "32,000,000",
+   "Tracks": 17,
+   "AlbumLength": 77.17,
+   "Genre": "Pop",
+   "AvgSongLength": 4.54
+ },
+ {
+   "FIELD1": 22,
+   "Year": 1992,
+   "Ranking": 3,
+   "Sales": "26,000,000",
+   "Tracks": 14,
+   "AlbumLength": 61.78,
+   "Genre": "Rock",
+   "AvgSongLength": 4.41
+ },
+ {
+   "FIELD1": 23,
+   "Year": 1992,
+   "Ranking": 4,
+   "Sales": "18,000,000",
+   "Tracks": 12,
+   "AlbumLength": 48.52,
+   "Genre": "Rock",
+   "AvgSongLength": 4.04
+ },
+ {
+   "FIELD1": 24,
+   "Year": 1992,
+   "Ranking": 5,
+   "Sales": "13,204,140",
+   "Tracks": 14,
+   "AlbumLength": 69.95,
+   "Genre": "Jazz",
+   "AvgSongLength": 5
+ },
+ {
+   "FIELD1": 25,
+   "Year": 1992,
+   "Ranking": 6,
+   "Sales": "10,535,000",
+   "Tracks": 11,
+   "AlbumLength": 36.98,
+   "Genre": "Country",
+   "AvgSongLength": 3.36
+ },
+ {
+   "FIELD1": 26,
+   "Year": 1992,
+   "Ranking": 7,
+   "Sales": "10,439,676",
+   "Tracks": 10,
+   "AlbumLength": 35.7,
+   "Genre": "Country",
+   "AvgSongLength": 3.57
+ },
+ {
+   "FIELD1": 27,
+   "Year": 1992,
+   "Ranking": 8,
+   "Sales": "8,337,500",
+   "Tracks": 12,
+   "AlbumLength": 53.65,
+   "Genre": "Rock",
+   "AvgSongLength": 4.47
+ },
+ {
+   "FIELD1": 28,
+   "Year": 1992,
+   "Ranking": 9,
+   "Sales": "7,000,000",
+   "Tracks": 7,
+   "AlbumLength": 28.75,
+   "Genre": "Pop",
+   "AvgSongLength": 4.11
+ },
+ {
+   "FIELD1": 29,
+   "Year": 1992,
+   "Ranking": 10,
+   "Sales": "6,337,818",
+   "Tracks": 18,
+   "AlbumLength": 72.72,
+   "Genre": "Rock",
+   "AvgSongLength": 4.04
+ },
+ {
+   "FIELD1": 30,
+   "Year": 1993,
+   "Ranking": 1,
+   "Sales": "30,000,000",
+   "Tracks": 10,
+   "AlbumLength": 42.02,
+   "Genre": "Pop",
+   "AvgSongLength": 4.2
+ },
+ {
+   "FIELD1": 31,
+   "Year": 1993,
+   "Ranking": 2,
+   "Sales": "25,000,000",
+   "Tracks": 13,
+   "AlbumLength": 49.35,
+   "Genre": "Pop",
+   "AvgSongLength": 3.8
+ },
+ {
+   "FIELD1": 32,
+   "Year": 1993,
+   "Ranking": 3,
+   "Sales": "20,000,000",
+   "Tracks": 14,
+   "AlbumLength": 62.1,
+   "Genre": "Rock",
+   "AvgSongLength": 4.44
+ },
+ {
+   "FIELD1": 33,
+   "Year": 1993,
+   "Ranking": 4,
+   "Sales": "20,000,000",
+   "Tracks": 28,
+   "AlbumLength": 75.38,
+   "Genre": "R&B",
+   "AvgSongLength": 2.69
+ },
+ {
+   "FIELD1": 34,
+   "Year": 1993,
+   "Ranking": 5,
+   "Sales": "15,000,000",
+   "Tracks": 11,
+   "AlbumLength": 75.63,
+   "Genre": "Rock",
+   "AvgSongLength": 6.88
+ },
+ {
+   "FIELD1": 35,
+   "Year": 1993,
+   "Ranking": 6,
+   "Sales": "12,972,000",
+   "Tracks": 18,
+   "AlbumLength": 65.28,
+   "Genre": "Rock",
+   "AvgSongLength": 3.63
+ },
+ {
+   "FIELD1": 36,
+   "Year": 1993,
+   "Ranking": 7,
+   "Sales": "12,571,000",
+   "Tracks": 15,
+   "AlbumLength": 65.65,
+   "Genre": "Pop",
+   "AvgSongLength": 4.38
+ },
+ {
+   "FIELD1": 37,
+   "Year": 1993,
+   "Ranking": 8,
+   "Sales": "10,847,500",
+   "Tracks": 10,
+   "AlbumLength": 37.47,
+   "Genre": "Country",
+   "AvgSongLength": 3.75
+ },
+ {
+   "FIELD1": 38,
+   "Year": 1993,
+   "Ranking": 9,
+   "Sales": "10,105,328",
+   "Tracks": 14,
+   "AlbumLength": 62.47,
+   "Genre": "Rock",
+   "AvgSongLength": 4.46
+ },
+ {
+   "FIELD1": 39,
+   "Year": 1993,
+   "Ranking": 10,
+   "Sales": "10,000,000",
+   "Tracks": 12,
+   "AlbumLength": 53.3,
+   "Genre": "R&B",
+   "AvgSongLength": 4.44
+ },
+ {
+   "FIELD1": 40,
+   "Year": 1994,
+   "Ranking": 1,
+   "Sales": "22,265,000",
+   "Tracks": 11,
+   "AlbumLength": 46.6,
+   "Genre": "Rock",
+   "AvgSongLength": 4.24
+ },
+ {
+   "FIELD1": 41,
+   "Year": 1994,
+   "Ranking": 2,
+   "Sales": "20,000,000",
+   "Tracks": 14,
+   "AlbumLength": 39.57,
+   "Genre": "Rock",
+   "AvgSongLength": 2.83
+ },
+ {
+   "FIELD1": 42,
+   "Year": 1994,
+   "Ranking": 3,
+   "Sales": "18,500,000",
+   "Tracks": 14,
+   "AlbumLength": 72.37,
+   "Genre": "Rock",
+   "AvgSongLength": 5.17
+ },
+ {
+   "FIELD1": 43,
+   "Year": 1994,
+   "Ranking": 4,
+   "Sales": "15,000,000",
+   "Tracks": 10,
+   "AlbumLength": 39.52,
+   "Genre": "Pop",
+   "AvgSongLength": 3.95
+ },
+ {
+   "FIELD1": 44,
+   "Year": 1994,
+   "Ranking": 5,
+   "Sales": "14,522,893",
+   "Tracks": 12,
+   "AlbumLength": 46.67,
+   "Genre": "World",
+   "AvgSongLength": 3.89
+ },
+ {
+   "FIELD1": 45,
+   "Year": 1994,
+   "Ranking": 6,
+   "Sales": "14,355,000",
+   "Tracks": 16,
+   "AlbumLength": 56.17,
+   "Genre": "R&B",
+   "AvgSongLength": 3.51
+ },
+ {
+   "FIELD1": 46,
+   "Year": 1994,
+   "Ranking": 7,
+   "Sales": "14,190,000",
+   "Tracks": 13,
+   "AlbumLength": 50.5,
+   "Genre": "Rock",
+   "AvgSongLength": 3.88
+ },
+ {
+   "FIELD1": 47,
+   "Year": 1994,
+   "Ranking": 8,
+   "Sales": "13,999,880",
+   "Tracks": 13,
+   "AlbumLength": 57.63,
+   "Genre": "R&B",
+   "AvgSongLength": 4.43
+ },
+ {
+   "FIELD1": 48,
+   "Year": 1994,
+   "Ranking": 9,
+   "Sales": "12,529,430",
+   "Tracks": 14,
+   "AlbumLength": 53.83,
+   "Genre": "Rock",
+   "AvgSongLength": 3.84
+ },
+ {
+   "FIELD1": 49,
+   "Year": 1994,
+   "Ranking": 10,
+   "Sales": "12,000,000",
+   "Tracks": 11,
+   "AlbumLength": 66.38,
+   "Genre": "Rock",
+   "AvgSongLength": 6.03
+ },
+ {
+   "FIELD1": 50,
+   "Year": 1995,
+   "Ranking": 1,
+   "Sales": "33,000,000",
+   "Tracks": 13,
+   "AlbumLength": 57.38,
+   "Genre": "Rock",
+   "AvgSongLength": 4.41
+ },
+ {
+   "FIELD1": 51,
+   "Year": 1995,
+   "Ranking": 2,
+   "Sales": "25,000,000",
+   "Tracks": 12,
+   "AlbumLength": 46.7,
+   "Genre": "Pop",
+   "AvgSongLength": 3.89
+ },
+ {
+   "FIELD1": 52,
+   "Year": 1995,
+   "Ranking": 3,
+   "Sales": "22,000,000",
+   "Tracks": 12,
+   "AlbumLength": 50,
+   "Genre": "Rock",
+   "AvgSongLength": 4.17
+ },
+ {
+   "FIELD1": 53,
+   "Year": 1995,
+   "Ranking": 4,
+   "Sales": "20,000,000",
+   "Tracks": 30,
+   "AlbumLength": 148.85,
+   "Genre": "Pop",
+   "AvgSongLength": 4.96
+ },
+ {
+   "FIELD1": 54,
+   "Year": 1995,
+   "Ranking": 5,
+   "Sales": "20,000,000",
+   "Tracks": 13,
+   "AlbumLength": 70.35,
+   "Genre": "Rock",
+   "AvgSongLength": 5.41
+ },
+ {
+   "FIELD1": 55,
+   "Year": 1995,
+   "Ranking": 6,
+   "Sales": "20,000,000",
+   "Tracks": 12,
+   "AlbumLength": 48.13,
+   "Genre": "Country",
+   "AvgSongLength": 4.01
+ },
+ {
+   "FIELD1": 56,
+   "Year": 1995,
+   "Ranking": 7,
+   "Sales": "13,585,000",
+   "Tracks": 14,
+   "AlbumLength": 59.5,
+   "Genre": "Rock",
+   "AvgSongLength": 4.25
+ },
+ {
+   "FIELD1": 57,
+   "Year": 1995,
+   "Ranking": 8,
+   "Sales": "13,490,000",
+   "Tracks": 14,
+   "AlbumLength": 58.52,
+   "Genre": "Pop",
+   "AvgSongLength": 4.18
+ },
+ {
+   "FIELD1": 58,
+   "Year": 1995,
+   "Ranking": 9,
+   "Sales": "12,000,000",
+   "Tracks": 16,
+   "AlbumLength": 72.85,
+   "Genre": "R&B",
+   "AvgSongLength": 4.55
+ },
+ {
+   "FIELD1": 59,
+   "Year": 1995,
+   "Ranking": 10,
+   "Sales": "10,593,328",
+   "Tracks": 18,
+   "AlbumLength": 76.58,
+   "Genre": "Rock",
+   "AvgSongLength": 4.25
+ },
+ {
+   "FIELD1": 60,
+   "Year": 1996,
+   "Ranking": 1,
+   "Sales": "32,000,000",
+   "Tracks": 14,
+   "AlbumLength": 67,
+   "Genre": "Pop",
+   "AvgSongLength": 4.79
+ },
+ {
+   "FIELD1": 61,
+   "Year": 1996,
+   "Ranking": 2,
+   "Sales": "23,000,000",
+   "Tracks": 10,
+   "AlbumLength": 39.93,
+   "Genre": "Pop",
+   "AvgSongLength": 3.99
+ },
+ {
+   "FIELD1": 62,
+   "Year": 1996,
+   "Ranking": 3,
+   "Sales": "15,000,000",
+   "Tracks": 12,
+   "AlbumLength": 46.72,
+   "Genre": "Rock",
+   "AvgSongLength": 3.89
+ },
+ {
+   "FIELD1": 63,
+   "Year": 1996,
+   "Ranking": 4,
+   "Sales": "15,000,000",
+   "Tracks": 12,
+   "AlbumLength": 54.93,
+   "Genre": "R&B",
+   "AvgSongLength": 4.58
+ },
+ {
+   "FIELD1": 64,
+   "Year": 1996,
+   "Ranking": 5,
+   "Sales": "14,000,000",
+   "Tracks": 13,
+   "AlbumLength": 54.47,
+   "Genre": "Pop",
+   "AvgSongLength": 4.19
+ },
+ {
+   "FIELD1": 65,
+   "Year": 1996,
+   "Ranking": 6,
+   "Sales": "13,860,000",
+   "Tracks": 13,
+   "AlbumLength": 60.87,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 4.68
+ },
+ {
+   "FIELD1": 66,
+   "Year": 1996,
+   "Ranking": 7,
+   "Sales": "11,000,000",
+   "Tracks": 8,
+   "AlbumLength": 51.37,
+   "Genre": "World",
+   "AvgSongLength": 6.42
+ },
+ {
+   "FIELD1": 67,
+   "Year": 1996,
+   "Ranking": 8,
+   "Sales": "8,061,530",
+   "Tracks": 14,
+   "AlbumLength": 79.05,
+   "Genre": "Rock",
+   "AvgSongLength": 5.65
+ },
+ {
+   "FIELD1": 68,
+   "Year": 1996,
+   "Ranking": 9,
+   "Sales": "7,100,000",
+   "Tracks": 12,
+   "AlbumLength": 68.85,
+   "Genre": "Rock",
+   "AvgSongLength": 5.74
+ },
+ {
+   "FIELD1": 69,
+   "Year": 1996,
+   "Ranking": 10,
+   "Sales": "7,051,970",
+   "Tracks": 11,
+   "AlbumLength": 58.93,
+   "Genre": "Pop",
+   "AvgSongLength": 5.36
+ },
+ {
+   "FIELD1": 70,
+   "Year": 1997,
+   "Ranking": 1,
+   "Sales": "40,000,000",
+   "Tracks": 16,
+   "AlbumLength": 60.1,
+   "Genre": "Country",
+   "AvgSongLength": 3.76
+ },
+ {
+   "FIELD1": 71,
+   "Year": 1997,
+   "Ranking": 2,
+   "Sales": "30,000,000",
+   "Tracks": 16,
+   "AlbumLength": 74.47,
+   "Genre": "Pop",
+   "AvgSongLength": 4.65
+ },
+ {
+   "FIELD1": 72,
+   "Year": 1997,
+   "Ranking": 3,
+   "Sales": "30,000,000",
+   "Tracks": 15,
+   "AlbumLength": 72.52,
+   "Genre": "Classical",
+   "AvgSongLength": 4.83
+ },
+ {
+   "FIELD1": 73,
+   "Year": 1997,
+   "Ranking": 4,
+   "Sales": "20,000,000",
+   "Tracks": 15,
+   "AlbumLength": 70.22,
+   "Genre": "Classical",
+   "AvgSongLength": 4.68
+ },
+ {
+   "FIELD1": 74,
+   "Year": 1997,
+   "Ranking": 5,
+   "Sales": "14,000,000",
+   "Tracks": 11,
+   "AlbumLength": 40.73,
+   "Genre": "Pop",
+   "AvgSongLength": 3.7
+ },
+ {
+   "FIELD1": 75,
+   "Year": 1997,
+   "Ranking": 6,
+   "Sales": "14,000,000",
+   "Tracks": 10,
+   "AlbumLength": 38.62,
+   "Genre": "Pop",
+   "AvgSongLength": 3.86
+ },
+ {
+   "FIELD1": 76,
+   "Year": 1997,
+   "Ranking": 7,
+   "Sales": "13,000,000",
+   "Tracks": 11,
+   "AlbumLength": 46.3,
+   "Genre": "Pop",
+   "AvgSongLength": 4.21
+ },
+ {
+   "FIELD1": 77,
+   "Year": 1997,
+   "Ranking": 8,
+   "Sales": "12,500,000",
+   "Tracks": 11,
+   "AlbumLength": 54.57,
+   "Genre": "World",
+   "AvgSongLength": 4.96
+ },
+ {
+   "FIELD1": 78,
+   "Year": 1997,
+   "Ranking": 9,
+   "Sales": "12,000,000",
+   "Tracks": 14,
+   "AlbumLength": 60,
+   "Genre": "World",
+   "AvgSongLength": 4.29
+ },
+ {
+   "FIELD1": 79,
+   "Year": 1997,
+   "Ranking": 10,
+   "Sales": "12,000,000",
+   "Tracks": 12,
+   "AlbumLength": 49.73,
+   "Genre": "Rock",
+   "AvgSongLength": 4.14
+ },
+ {
+   "FIELD1": 80,
+   "Year": 1998,
+   "Ranking": 1,
+   "Sales": "20,000,000",
+   "Tracks": 10,
+   "AlbumLength": 44,
+   "Genre": "Pop",
+   "AvgSongLength": 4.4
+ },
+ {
+   "FIELD1": 81,
+   "Year": 1998,
+   "Ranking": 2,
+   "Sales": "20,000,000",
+   "Tracks": 14,
+   "AlbumLength": 69.33,
+   "Genre": "R&B",
+   "AvgSongLength": 4.95
+ },
+ {
+   "FIELD1": 82,
+   "Year": 1998,
+   "Ranking": 3,
+   "Sales": "15,000,000",
+   "Tracks": 16,
+   "AlbumLength": 66.6,
+   "Genre": "R&B",
+   "AvgSongLength": 4.16
+ },
+ {
+   "FIELD1": 83,
+   "Year": 1998,
+   "Ranking": 4,
+   "Sales": "14,000,000",
+   "Tracks": 13,
+   "AlbumLength": 66.7,
+   "Genre": "Pop",
+   "AvgSongLength": 5.13
+ },
+ {
+   "FIELD1": 84,
+   "Year": 1998,
+   "Ranking": 5,
+   "Sales": "13,715,000",
+   "Tracks": 12,
+   "AlbumLength": 43.65,
+   "Genre": "Country",
+   "AvgSongLength": 3.64
+ },
+ {
+   "FIELD1": 85,
+   "Year": 1998,
+   "Ranking": 6,
+   "Sales": "12,418,000",
+   "Tracks": 14,
+   "AlbumLength": 65.58,
+   "Genre": "Rock",
+   "AvgSongLength": 4.68
+ },
+ {
+   "FIELD1": 86,
+   "Year": 1998,
+   "Ranking": 7,
+   "Sales": "11,467,500",
+   "Tracks": 14,
+   "AlbumLength": 71.2,
+   "Genre": "Rock",
+   "AvgSongLength": 5.09
+ },
+ {
+   "FIELD1": 87,
+   "Year": 1998,
+   "Ranking": 8,
+   "Sales": "11,000,000",
+   "Tracks": 13,
+   "AlbumLength": 43.62,
+   "Genre": "Rock",
+   "AvgSongLength": 3.36
+ },
+ {
+   "FIELD1": 88,
+   "Year": 1998,
+   "Ranking": 9,
+   "Sales": "10,920,000",
+   "Tracks": 26,
+   "AlbumLength": 100.18,
+   "Genre": "Country",
+   "AvgSongLength": 3.85
+ },
+ {
+   "FIELD1": 89,
+   "Year": 1998,
+   "Ranking": 10,
+   "Sales": "10,738,067",
+   "Tracks": 17,
+   "AlbumLength": 73.22,
+   "Genre": "Pop",
+   "AvgSongLength": 4.31
+ },
+ {
+   "FIELD1": 90,
+   "Year": 1999,
+   "Ranking": 1,
+   "Sales": "40,000,000",
+   "Tracks": 12,
+   "AlbumLength": 48.18,
+   "Genre": "Pop",
+   "AvgSongLength": 4.01
+ },
+ {
+   "FIELD1": 91,
+   "Year": 1999,
+   "Ranking": 2,
+   "Sales": "27,000,000",
+   "Tracks": 11,
+   "AlbumLength": 42.33,
+   "Genre": "Pop",
+   "AvgSongLength": 3.85
+ },
+ {
+   "FIELD1": 92,
+   "Year": 1999,
+   "Ranking": 3,
+   "Sales": "25,000,000",
+   "Tracks": 13,
+   "AlbumLength": 74.98,
+   "Genre": "Rock",
+   "AvgSongLength": 5.77
+ },
+ {
+   "FIELD1": 93,
+   "Year": 1999,
+   "Ranking": 4,
+   "Sales": "18,513,351",
+   "Tracks": 16,
+   "AlbumLength": 71.97,
+   "Genre": "Pop",
+   "AvgSongLength": 4.5
+ },
+ {
+   "FIELD1": 94,
+   "Year": 1999,
+   "Ranking": 5,
+   "Sales": "17,000,000",
+   "Tracks": 14,
+   "AlbumLength": 59.27,
+   "Genre": "Pop",
+   "AvgSongLength": 4.23
+ },
+ {
+   "FIELD1": 95,
+   "Year": 1999,
+   "Ranking": 6,
+   "Sales": "16,000,000",
+   "Tracks": 12,
+   "AlbumLength": 35.28,
+   "Genre": "Rock",
+   "AvgSongLength": 2.94
+ },
+ {
+   "FIELD1": 96,
+   "Year": 1999,
+   "Ranking": 7,
+   "Sales": "16,000,000",
+   "Tracks": 15,
+   "AlbumLength": 56.4,
+   "Genre": "Rock",
+   "AvgSongLength": 3.76
+ },
+ {
+   "FIELD1": 97,
+   "Year": 1999,
+   "Ranking": 8,
+   "Sales": "14,000,000",
+   "Tracks": 12,
+   "AlbumLength": 46.45,
+   "Genre": "Pop",
+   "AvgSongLength": 3.87
+ },
+ {
+   "FIELD1": 98,
+   "Year": 1999,
+   "Ranking": 9,
+   "Sales": "13,195,000",
+   "Tracks": 11,
+   "AlbumLength": 56.47,
+   "Genre": "Rock",
+   "AvgSongLength": 5.13
+ },
+ {
+   "FIELD1": 99,
+   "Year": 1999,
+   "Ranking": 10,
+   "Sales": "12,000,000",
+   "Tracks": 12,
+   "AlbumLength": 51.85,
+   "Genre": "Pop",
+   "AvgSongLength": 4.32
+ },
+ {
+   "FIELD1": 100,
+   "Year": 2000,
+   "Ranking": 1,
+   "Sales": "32,000,000",
+   "Tracks": 18,
+   "AlbumLength": 72.07,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 4
+ },
+ {
+   "FIELD1": 101,
+   "Year": 2000,
+   "Ranking": 2,
+   "Sales": "32,000,000",
+   "Tracks": 27,
+   "AlbumLength": 78.65,
+   "Genre": "Rock",
+   "AvgSongLength": 2.91
+ },
+ {
+   "FIELD1": 102,
+   "Year": 2000,
+   "Ranking": 3,
+   "Sales": "27,000,000",
+   "Tracks": 12,
+   "AlbumLength": 37.75,
+   "Genre": "Rock",
+   "AvgSongLength": 3.15
+ },
+ {
+   "FIELD1": 103,
+   "Year": 2000,
+   "Ranking": 4,
+   "Sales": "24,000,000",
+   "Tracks": 13,
+   "AlbumLength": 47.88,
+   "Genre": "Pop",
+   "AvgSongLength": 3.68
+ },
+ {
+   "FIELD1": 104,
+   "Year": 2000,
+   "Ranking": 5,
+   "Sales": "20,000,000",
+   "Tracks": 12,
+   "AlbumLength": 44.62,
+   "Genre": "Pop",
+   "AvgSongLength": 3.72
+ },
+ {
+   "FIELD1": 105,
+   "Year": 2000,
+   "Ranking": 6,
+   "Sales": "14,215,547",
+   "Tracks": 12,
+   "AlbumLength": 47.25,
+   "Genre": "Pop",
+   "AvgSongLength": 3.94
+ },
+ {
+   "FIELD1": 106,
+   "Year": 2000,
+   "Ranking": 7,
+   "Sales": "13,000,000",
+   "Tracks": 10,
+   "AlbumLength": 41.48,
+   "Genre": "Rock",
+   "AvgSongLength": 4.15
+ },
+ {
+   "FIELD1": 107,
+   "Year": 2000,
+   "Ranking": 8,
+   "Sales": "12,097,445",
+   "Tracks": 12,
+   "AlbumLength": 37.5,
+   "Genre": "World",
+   "AvgSongLength": 3.12
+ },
+ {
+   "FIELD1": 108,
+   "Year": 2000,
+   "Ranking": 9,
+   "Sales": "12,000,000",
+   "Tracks": 11,
+   "AlbumLength": 49.08,
+   "Genre": "Rock",
+   "AvgSongLength": 4.46
+ },
+ {
+   "FIELD1": 109,
+   "Year": 2000,
+   "Ranking": 10,
+   "Sales": "10,715,000",
+   "Tracks": 17,
+   "AlbumLength": 66.58,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 3.92
+ },
+ {
+   "FIELD1": 110,
+   "Year": 2001,
+   "Ranking": 1,
+   "Sales": "15,000,000",
+   "Tracks": 14,
+   "AlbumLength": 55.18,
+   "Genre": "Rock",
+   "AvgSongLength": 3.94
+ },
+ {
+   "FIELD1": 111,
+   "Year": 2001,
+   "Ranking": 2,
+   "Sales": "13,000,000",
+   "Tracks": 13,
+   "AlbumLength": 49.23,
+   "Genre": "Pop",
+   "AvgSongLength": 3.79
+ },
+ {
+   "FIELD1": 112,
+   "Year": 2001,
+   "Ranking": 3,
+   "Sales": "12,000,000",
+   "Tracks": 16,
+   "AlbumLength": 63.07,
+   "Genre": "R&B",
+   "AvgSongLength": 3.94
+ },
+ {
+   "FIELD1": 113,
+   "Year": 2001,
+   "Ranking": 4,
+   "Sales": "10,000,000",
+   "Tracks": 13,
+   "AlbumLength": 50.15,
+   "Genre": "Pop",
+   "AvgSongLength": 3.86
+ },
+ {
+   "FIELD1": 114,
+   "Year": 2001,
+   "Ranking": 5,
+   "Sales": "9,301,500",
+   "Tracks": 10,
+   "AlbumLength": 39.13,
+   "Genre": "Rock",
+   "AvgSongLength": 3.91
+ },
+ {
+   "FIELD1": 115,
+   "Year": 2001,
+   "Ranking": 6,
+   "Sales": "8,000,000",
+   "Tracks": 13,
+   "AlbumLength": 38.93,
+   "Genre": "Rock",
+   "AvgSongLength": 2.99
+ },
+ {
+   "FIELD1": 116,
+   "Year": 2001,
+   "Ranking": 7,
+   "Sales": "7,428,000",
+   "Tracks": 11,
+   "AlbumLength": 50.08,
+   "Genre": "Rock",
+   "AvgSongLength": 4.55
+ },
+ {
+   "FIELD1": 117,
+   "Year": 2001,
+   "Ranking": 8,
+   "Sales": "7,235,958",
+   "Tracks": 15,
+   "AlbumLength": 59.62,
+   "Genre": "R&B",
+   "AvgSongLength": 3.97
+ },
+ {
+   "FIELD1": 118,
+   "Year": 2001,
+   "Ranking": 9,
+   "Sales": "7,185,329",
+   "Tracks": 12,
+   "AlbumLength": 39.78,
+   "Genre": "Pop",
+   "AvgSongLength": 3.32
+ },
+ {
+   "FIELD1": 119,
+   "Year": 2001,
+   "Ranking": 10,
+   "Sales": "7,000,000",
+   "Tracks": 15,
+   "AlbumLength": 62,
+   "Genre": "Rock",
+   "AvgSongLength": 4.13
+ },
+ {
+   "FIELD1": 120,
+   "Year": 2002,
+   "Ranking": 1,
+   "Sales": "27,000,000",
+   "Tracks": 14,
+   "AlbumLength": 45.05,
+   "Genre": "Pop",
+   "AvgSongLength": 3.22
+ },
+ {
+   "FIELD1": 121,
+   "Year": 2002,
+   "Ranking": 2,
+   "Sales": "20,891,750",
+   "Tracks": 20,
+   "AlbumLength": 77.32,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 3.87
+ },
+ {
+   "FIELD1": 122,
+   "Year": 2002,
+   "Ranking": 3,
+   "Sales": "18,000,000",
+   "Tracks": 13,
+   "AlbumLength": 48.62,
+   "Genre": "Rock",
+   "AvgSongLength": 3.74
+ },
+ {
+   "FIELD1": 123,
+   "Year": 2002,
+   "Ranking": 4,
+   "Sales": "11,639,492",
+   "Tracks": 11,
+   "AlbumLength": 54.13,
+   "Genre": "Rock",
+   "AvgSongLength": 4.92
+ },
+ {
+   "FIELD1": 124,
+   "Year": 2002,
+   "Ranking": 5,
+   "Sales": "11,483,262",
+   "Tracks": 31,
+   "AlbumLength": 79.57,
+   "Genre": "Rock",
+   "AvgSongLength": 2.57
+ },
+ {
+   "FIELD1": 125,
+   "Year": 2002,
+   "Ranking": 6,
+   "Sales": "11,000,000",
+   "Tracks": 19,
+   "AlbumLength": 79.67,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 4.19
+ },
+ {
+   "FIELD1": 126,
+   "Year": 2002,
+   "Ranking": 7,
+   "Sales": "10,111,942",
+   "Tracks": 12,
+   "AlbumLength": 46.1,
+   "Genre": "Rock",
+   "AvgSongLength": 3.84
+ },
+ {
+   "FIELD1": 127,
+   "Year": 2002,
+   "Ranking": 8,
+   "Sales": "10,000,000",
+   "Tracks": 13,
+   "AlbumLength": 63.25,
+   "Genre": "Pop",
+   "AvgSongLength": 4.87
+ },
+ {
+   "FIELD1": 128,
+   "Year": 2002,
+   "Ranking": 9,
+   "Sales": "9,530,000",
+   "Tracks": 19,
+   "AlbumLength": 72.92,
+   "Genre": "Country",
+   "AvgSongLength": 3.84
+ },
+ {
+   "FIELD1": 129,
+   "Year": 2002,
+   "Ranking": 10,
+   "Sales": "8,538,166",
+   "Tracks": 20,
+   "AlbumLength": 77.57,
+   "Genre": "Pop",
+   "AvgSongLength": 3.88
+ },
+ {
+   "FIELD1": 130,
+   "Year": 2003,
+   "Ranking": 1,
+   "Sales": "17,000,000",
+   "Tracks": 12,
+   "AlbumLength": 48.75,
+   "Genre": "Rock",
+   "AvgSongLength": 4.06
+ },
+ {
+   "FIELD1": 131,
+   "Year": 2003,
+   "Ranking": 2,
+   "Sales": "12,000,000",
+   "Tracks": 16,
+   "AlbumLength": 53.73,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 3.36
+ },
+ {
+   "FIELD1": 132,
+   "Year": 2003,
+   "Ranking": 3,
+   "Sales": "11,287,487",
+   "Tracks": 13,
+   "AlbumLength": 36.58,
+   "Genre": "Rock",
+   "AvgSongLength": 2.81
+ },
+ {
+   "FIELD1": 133,
+   "Year": 2003,
+   "Ranking": 4,
+   "Sales": "9,592,405",
+   "Tracks": 18,
+   "AlbumLength": 78.87,
+   "Genre": "Pop",
+   "AvgSongLength": 4.38
+ },
+ {
+   "FIELD1": 134,
+   "Year": 2003,
+   "Ranking": 5,
+   "Sales": "8,000,000",
+   "Tracks": 11,
+   "AlbumLength": 40.45,
+   "Genre": "Rock",
+   "AvgSongLength": 3.68
+ },
+ {
+   "FIELD1": 135,
+   "Year": 2003,
+   "Ranking": 6,
+   "Sales": "7,942,249",
+   "Tracks": 12,
+   "AlbumLength": 51.95,
+   "Genre": "Pop",
+   "AvgSongLength": 4.33
+ },
+ {
+   "FIELD1": 136,
+   "Year": 2003,
+   "Ranking": 7,
+   "Sales": "7,755,057",
+   "Tracks": 13,
+   "AlbumLength": 59.5,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 4.58
+ },
+ {
+   "FIELD1": 137,
+   "Year": 2003,
+   "Ranking": 8,
+   "Sales": "7,684,083",
+   "Tracks": 15,
+   "AlbumLength": 60.87,
+   "Genre": "Pop",
+   "AvgSongLength": 4.06
+ },
+ {
+   "FIELD1": 138,
+   "Year": 2003,
+   "Ranking": 9,
+   "Sales": "7,500,000",
+   "Tracks": 15,
+   "AlbumLength": 57.75,
+   "Genre": "R&B",
+   "AvgSongLength": 3.85
+ },
+ {
+   "FIELD1": 139,
+   "Year": 2003,
+   "Ranking": 10,
+   "Sales": "7,012,000",
+   "Tracks": 39,
+   "AlbumLength": 134.65,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 3.45
+ },
+ {
+   "FIELD1": 140,
+   "Year": 2004,
+   "Ranking": 1,
+   "Sales": "20,000,000",
+   "Tracks": 17,
+   "AlbumLength": 60.5,
+   "Genre": "R&B",
+   "AvgSongLength": 3.56
+ },
+ {
+   "FIELD1": 141,
+   "Year": 2004,
+   "Ranking": 2,
+   "Sales": "12,459,000",
+   "Tracks": 13,
+   "AlbumLength": 57.2,
+   "Genre": "Rock",
+   "AvgSongLength": 4.4
+ },
+ {
+   "FIELD1": 142,
+   "Year": 2004,
+   "Ranking": 3,
+   "Sales": "11,646,853",
+   "Tracks": 14,
+   "AlbumLength": 79.4,
+   "Genre": "Rock",
+   "AvgSongLength": 5.67
+ },
+ {
+   "FIELD1": 143,
+   "Year": 2004,
+   "Ranking": 4,
+   "Sales": "11,124,158",
+   "Tracks": 10,
+   "AlbumLength": 39.47,
+   "Genre": "Pop",
+   "AvgSongLength": 3.95
+ },
+ {
+   "FIELD1": 144,
+   "Year": 2004,
+   "Ranking": 5,
+   "Sales": "10,000,000",
+   "Tracks": 13,
+   "AlbumLength": 46.43,
+   "Genre": "Pop",
+   "AvgSongLength": 3.57
+ },
+ {
+   "FIELD1": 145,
+   "Year": 2004,
+   "Ranking": 6,
+   "Sales": "10,000,000",
+   "Tracks": 11,
+   "AlbumLength": 49.05,
+   "Genre": "Rock",
+   "AvgSongLength": 4.46
+ },
+ {
+   "FIELD1": 146,
+   "Year": 2004,
+   "Ranking": 7,
+   "Sales": "9,903,965",
+   "Tracks": 12,
+   "AlbumLength": 44.78,
+   "Genre": "Rock",
+   "AvgSongLength": 3.73
+ },
+ {
+   "FIELD1": 147,
+   "Year": 2004,
+   "Ranking": 8,
+   "Sales": "8,918,504",
+   "Tracks": 20,
+   "AlbumLength": 76.88,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 3.84
+ },
+ {
+   "FIELD1": 148,
+   "Year": 2004,
+   "Ranking": 9,
+   "Sales": "8,000,000",
+   "Tracks": 12,
+   "AlbumLength": 40.78,
+   "Genre": "Rock",
+   "AvgSongLength": 3.4
+ },
+ {
+   "FIELD1": 149,
+   "Year": 2004,
+   "Ranking": 10,
+   "Sales": "7,364,944",
+   "Tracks": 12,
+   "AlbumLength": 48.45,
+   "Genre": "Rock",
+   "AvgSongLength": 4.04
+ },
+ {
+   "FIELD1": 150,
+   "Year": 2005,
+   "Ranking": 1,
+   "Sales": "19,000,000",
+   "Tracks": 11,
+   "AlbumLength": 41.55,
+   "Genre": "Rock",
+   "AvgSongLength": 3.78
+ },
+ {
+   "FIELD1": 151,
+   "Year": 2005,
+   "Ranking": 2,
+   "Sales": "12,433,091",
+   "Tracks": 17,
+   "AlbumLength": 77.92,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 4.58
+ },
+ {
+   "FIELD1": 152,
+   "Year": 2005,
+   "Ranking": 3,
+   "Sales": "10,000,000",
+   "Tracks": 13,
+   "AlbumLength": 62.5,
+   "Genre": "Rock",
+   "AvgSongLength": 4.81
+ },
+ {
+   "FIELD1": 153,
+   "Year": 2005,
+   "Ranking": 4,
+   "Sales": "10,000,000",
+   "Tracks": 12,
+   "AlbumLength": 56.47,
+   "Genre": "Pop",
+   "AvgSongLength": 4.71
+ },
+ {
+   "FIELD1": 154,
+   "Year": 2005,
+   "Ranking": 5,
+   "Sales": "10,000,000",
+   "Tracks": 14,
+   "AlbumLength": 50,
+   "Genre": "Pop",
+   "AvgSongLength": 3.57
+ },
+ {
+   "FIELD1": 155,
+   "Year": 2005,
+   "Ranking": 6,
+   "Sales": "9,335,000",
+   "Tracks": 14,
+   "AlbumLength": 54.07,
+   "Genre": "Country",
+   "AvgSongLength": 3.86
+ },
+ {
+   "FIELD1": 156,
+   "Year": 2005,
+   "Ranking": 7,
+   "Sales": "8,033,713",
+   "Tracks": 22,
+   "AlbumLength": 77.37,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 3.52
+ },
+ {
+   "FIELD1": 157,
+   "Year": 2005,
+   "Ranking": 8,
+   "Sales": "8,000,000",
+   "Tracks": 15,
+   "AlbumLength": 50.78,
+   "Genre": "Rock",
+   "AvgSongLength": 3.39
+ },
+ {
+   "FIELD1": 158,
+   "Year": 2005,
+   "Ranking": 9,
+   "Sales": "7,864,434",
+   "Tracks": 15,
+   "AlbumLength": 66.05,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 4.4
+ },
+ {
+   "FIELD1": 159,
+   "Year": 2005,
+   "Ranking": 10,
+   "Sales": "7,000,000",
+   "Tracks": 12,
+   "AlbumLength": 53.03,
+   "Genre": "Pop",
+   "AvgSongLength": 4.42
+ },
+ {
+   "FIELD1": 160,
+   "Year": 2006,
+   "Ranking": 1,
+   "Sales": "16,000,000",
+   "Tracks": 11,
+   "AlbumLength": 34.93,
+   "Genre": "R&B",
+   "AvgSongLength": 3.18
+ },
+ {
+   "FIELD1": 161,
+   "Year": 2006,
+   "Ranking": 2,
+   "Sales": "10,000,000",
+   "Tracks": 13,
+   "AlbumLength": 54.33,
+   "Genre": "Pop",
+   "AvgSongLength": 4.18
+ },
+ {
+   "FIELD1": 162,
+   "Year": 2006,
+   "Ranking": 3,
+   "Sales": "8,255,866",
+   "Tracks": 12,
+   "AlbumLength": 66.2,
+   "Genre": "Pop",
+   "AvgSongLength": 5.52
+ },
+ {
+   "FIELD1": 163,
+   "Year": 2006,
+   "Ranking": 4,
+   "Sales": "8,000,000",
+   "Tracks": 26,
+   "AlbumLength": 78.63,
+   "Genre": "Rock",
+   "AvgSongLength": 3.02
+ },
+ {
+   "FIELD1": 164,
+   "Year": 2006,
+   "Ranking": 5,
+   "Sales": "7,749,000",
+   "Tracks": 13,
+   "AlbumLength": 98.42,
+   "Genre": "Pop",
+   "AvgSongLength": 7.57
+ },
+ {
+   "FIELD1": 165,
+   "Year": 2006,
+   "Ranking": 6,
+   "Sales": "7,290,000",
+   "Tracks": 12,
+   "AlbumLength": 48.08,
+   "Genre": "R&B",
+   "AvgSongLength": 4.01
+ },
+ {
+   "FIELD1": 166,
+   "Year": 2006,
+   "Ranking": 7,
+   "Sales": "7,270,000",
+   "Tracks": 11,
+   "AlbumLength": 40.47,
+   "Genre": "Country",
+   "AvgSongLength": 3.68
+ },
+ {
+   "FIELD1": 167,
+   "Year": 2006,
+   "Ranking": 8,
+   "Sales": "6,428,000",
+   "Tracks": 13,
+   "AlbumLength": 58,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 4.46
+ },
+ {
+   "FIELD1": 168,
+   "Year": 2006,
+   "Ranking": 9,
+   "Sales": "6,342,000",
+   "Tracks": 12,
+   "AlbumLength": 43.33,
+   "Genre": "Rock",
+   "AvgSongLength": 3.61
+ },
+ {
+   "FIELD1": 169,
+   "Year": 2006,
+   "Ranking": 10,
+   "Sales": "5,180,790",
+   "Tracks": 28,
+   "AlbumLength": 122.32,
+   "Genre": "Rock",
+   "AvgSongLength": 4.37
+ },
+ {
+   "FIELD1": 170,
+   "Year": 2007,
+   "Ranking": 1,
+   "Sales": "10,834,803",
+   "Tracks": 12,
+   "AlbumLength": 46.03,
+   "Genre": "Pop",
+   "AvgSongLength": 3.84
+ },
+ {
+   "FIELD1": 171,
+   "Year": 2007,
+   "Ranking": 2,
+   "Sales": "7,210,000",
+   "Tracks": 13,
+   "AlbumLength": 56.02,
+   "Genre": "Pop",
+   "AvgSongLength": 4.31
+ },
+ {
+   "FIELD1": 172,
+   "Year": 2007,
+   "Ranking": 3,
+   "Sales": "7,000,000",
+   "Tracks": 13,
+   "AlbumLength": 53.65,
+   "Genre": "Pop",
+   "AvgSongLength": 4.13
+ },
+ {
+   "FIELD1": 173,
+   "Year": 2007,
+   "Ranking": 4,
+   "Sales": "7,000,000",
+   "Tracks": 11,
+   "AlbumLength": 46.27,
+   "Genre": "Pop",
+   "AvgSongLength": 4.21
+ },
+ {
+   "FIELD1": 174,
+   "Year": 2007,
+   "Ranking": 5,
+   "Sales": "6,815,000",
+   "Tracks": 12,
+   "AlbumLength": 43.38,
+   "Genre": "Rock",
+   "AvgSongLength": 3.62
+ },
+ {
+   "FIELD1": 175,
+   "Year": 2007,
+   "Ranking": 6,
+   "Sales": "6,060,563",
+   "Tracks": 13,
+   "AlbumLength": 51.38,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 3.95
+ },
+ {
+   "FIELD1": 176,
+   "Year": 2007,
+   "Ranking": 7,
+   "Sales": "6,000,000",
+   "Tracks": 14,
+   "AlbumLength": 56.07,
+   "Genre": "R&B",
+   "AvgSongLength": 4
+ },
+ {
+   "FIELD1": 177,
+   "Year": 2007,
+   "Ranking": 8,
+   "Sales": "5,539,000",
+   "Tracks": 34,
+   "AlbumLength": 123.08,
+   "Genre": "Country",
+   "AvgSongLength": 3.62
+ },
+ {
+   "FIELD1": 178,
+   "Year": 2007,
+   "Ranking": 9,
+   "Sales": "5,500,000",
+   "Tracks": 20,
+   "AlbumLength": 90.77,
+   "Genre": "Rock",
+   "AvgSongLength": 4.54
+ },
+ {
+   "FIELD1": 179,
+   "Year": 2007,
+   "Ranking": 10,
+   "Sales": "5,135,000",
+   "Tracks": 13,
+   "AlbumLength": 50.45,
+   "Genre": "Pop",
+   "AvgSongLength": 3.88
+ },
+ {
+   "FIELD1": 180,
+   "Year": 2008,
+   "Ranking": 1,
+   "Sales": "14,340,358",
+   "Tracks": 14,
+   "AlbumLength": 50.33,
+   "Genre": "Pop",
+   "AvgSongLength": 3.6
+ },
+ {
+   "FIELD1": 181,
+   "Year": 2008,
+   "Ranking": 2,
+   "Sales": "11,901,000",
+   "Tracks": 13,
+   "AlbumLength": 53.68,
+   "Genre": "Country",
+   "AvgSongLength": 4.13
+ },
+ {
+   "FIELD1": 182,
+   "Year": 2008,
+   "Ranking": 3,
+   "Sales": "11,209,713",
+   "Tracks": 10,
+   "AlbumLength": 45.82,
+   "Genre": "Rock",
+   "AvgSongLength": 4.58
+ },
+ {
+   "FIELD1": 183,
+   "Year": 2008,
+   "Ranking": 4,
+   "Sales": "8,000,000",
+   "Tracks": 15,
+   "AlbumLength": 55.63,
+   "Genre": "Rock",
+   "AvgSongLength": 3.71
+ },
+ {
+   "FIELD1": 184,
+   "Year": 2008,
+   "Ranking": 5,
+   "Sales": "7,700,000",
+   "Tracks": 18,
+   "AlbumLength": 69.95,
+   "Genre": "Pop",
+   "AvgSongLength": 3.89
+ },
+ {
+   "FIELD1": 185,
+   "Year": 2008,
+   "Ranking": 6,
+   "Sales": "7,213,344",
+   "Tracks": 11,
+   "AlbumLength": 42.92,
+   "Genre": "Rock",
+   "AvgSongLength": 3.9
+ },
+ {
+   "FIELD1": 186,
+   "Year": 2008,
+   "Ranking": 7,
+   "Sales": "7,000,000",
+   "Tracks": 12,
+   "AlbumLength": 43.6,
+   "Genre": "Pop",
+   "AvgSongLength": 3.63
+ },
+ {
+   "FIELD1": 187,
+   "Year": 2008,
+   "Ranking": 8,
+   "Sales": "7,000,000",
+   "Tracks": 12,
+   "AlbumLength": 47.03,
+   "Genre": "Rock",
+   "AvgSongLength": 3.92
+ },
+ {
+   "FIELD1": 188,
+   "Year": 2008,
+   "Ranking": 9,
+   "Sales": "6,720,293",
+   "Tracks": 12,
+   "AlbumLength": 43.67,
+   "Genre": "Pop",
+   "AvgSongLength": 3.64
+ },
+ {
+   "FIELD1": 189,
+   "Year": 2008,
+   "Ranking": 10,
+   "Sales": "6,603,000",
+   "Tracks": 11,
+   "AlbumLength": 41.6,
+   "Genre": "Pop",
+   "AvgSongLength": 3.78
+ },
+ {
+   "FIELD1": 190,
+   "Year": 2009,
+   "Ranking": 1,
+   "Sales": "8,601,000",
+   "Tracks": 12,
+   "AlbumLength": 43,
+   "Genre": "Pop",
+   "AvgSongLength": 3.58
+ },
+ {
+   "FIELD1": 191,
+   "Year": 2009,
+   "Ranking": 2,
+   "Sales": "8,298,000",
+   "Tracks": 8,
+   "AlbumLength": 34.15,
+   "Genre": "Pop",
+   "AvgSongLength": 4.27
+ },
+ {
+   "FIELD1": 192,
+   "Year": 2009,
+   "Ranking": 3,
+   "Sales": "8,000,000",
+   "Tracks": 12,
+   "AlbumLength": 48.55,
+   "Genre": "Rock",
+   "AvgSongLength": 4.05
+ },
+ {
+   "FIELD1": 193,
+   "Year": 2009,
+   "Ranking": 4,
+   "Sales": "7,365,000",
+   "Tracks": 15,
+   "AlbumLength": 67.33,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 4.49
+ },
+ {
+   "FIELD1": 194,
+   "Year": 2009,
+   "Ranking": 5,
+   "Sales": "6,980,000",
+   "Tracks": 13,
+   "AlbumLength": 47.57,
+   "Genre": "Pop",
+   "AvgSongLength": 3.66
+ },
+ {
+   "FIELD1": 195,
+   "Year": 2009,
+   "Ranking": 6,
+   "Sales": "5,000,000",
+   "Tracks": 13,
+   "AlbumLength": 45.82,
+   "Genre": "Pop",
+   "AvgSongLength": 3.52
+ },
+ {
+   "FIELD1": 196,
+   "Year": 2009,
+   "Ranking": 7,
+   "Sales": "5,000,000",
+   "Tracks": 11,
+   "AlbumLength": 53.73,
+   "Genre": "Rock",
+   "AvgSongLength": 4.88
+ },
+ {
+   "FIELD1": 197,
+   "Year": 2009,
+   "Ranking": 8,
+   "Sales": "4,384,500",
+   "Tracks": 13,
+   "AlbumLength": 46.18,
+   "Genre": "Rock",
+   "AvgSongLength": 3.55
+ },
+ {
+   "FIELD1": 198,
+   "Year": 2009,
+   "Ranking": 9,
+   "Sales": "4,060,000",
+   "Tracks": 15,
+   "AlbumLength": 59.28,
+   "Genre": "Classical",
+   "AvgSongLength": 3.95
+ },
+ {
+   "FIELD1": 199,
+   "Year": 2009,
+   "Ranking": 10,
+   "Sales": "3,980,000",
+   "Tracks": 7,
+   "AlbumLength": 25.97,
+   "Genre": "Pop",
+   "AvgSongLength": 3.71
+ },
+ {
+   "FIELD1": 200,
+   "Year": 2010,
+   "Ranking": 1,
+   "Sales": "11,094,000",
+   "Tracks": 12,
+   "AlbumLength": 46.73,
+   "Genre": "Pop",
+   "AvgSongLength": 3.89
+ },
+ {
+   "FIELD1": 201,
+   "Year": 2010,
+   "Ranking": 2,
+   "Sales": "11,055,000",
+   "Tracks": 10,
+   "AlbumLength": 35.45,
+   "Genre": "Pop",
+   "AvgSongLength": 3.55
+ },
+ {
+   "FIELD1": 202,
+   "Year": 2010,
+   "Ranking": 3,
+   "Sales": "7,740,795",
+   "Tracks": 17,
+   "AlbumLength": 76.93,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 4.53
+ },
+ {
+   "FIELD1": 203,
+   "Year": 2010,
+   "Ranking": 4,
+   "Sales": "6,917,500",
+   "Tracks": 14,
+   "AlbumLength": 67.48,
+   "Genre": "Country",
+   "AvgSongLength": 4.82
+ },
+ {
+   "FIELD1": 204,
+   "Year": 2010,
+   "Ranking": 5,
+   "Sales": "6,668,000",
+   "Tracks": 11,
+   "AlbumLength": 46.65,
+   "Genre": "Pop",
+   "AvgSongLength": 4.24
+ },
+ {
+   "FIELD1": 205,
+   "Year": 2010,
+   "Ranking": 6,
+   "Sales": "5,235,395",
+   "Tracks": 10,
+   "AlbumLength": 37.62,
+   "Genre": "Pop",
+   "AvgSongLength": 3.76
+ },
+ {
+   "FIELD1": 206,
+   "Year": 2010,
+   "Ranking": 7,
+   "Sales": "4,913,500",
+   "Tracks": 11,
+   "AlbumLength": 44.17,
+   "Genre": "Country",
+   "AvgSongLength": 4.02
+ },
+ {
+   "FIELD1": 207,
+   "Year": 2010,
+   "Ranking": 8,
+   "Sales": "4,115,000",
+   "Tracks": 14,
+   "AlbumLength": 56.73,
+   "Genre": "Country",
+   "AvgSongLength": 4.05
+ },
+ {
+   "FIELD1": 208,
+   "Year": 2010,
+   "Ranking": 9,
+   "Sales": "3,705,000",
+   "Tracks": 14,
+   "AlbumLength": 46.3,
+   "Genre": "Pop",
+   "AvgSongLength": 3.31
+ },
+ {
+   "FIELD1": 209,
+   "Year": 2010,
+   "Ranking": 10,
+   "Sales": "3,588,000",
+   "Tracks": 13,
+   "AlbumLength": 68.6,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 5.28
+ },
+ {
+   "FIELD1": 210,
+   "Year": 2011,
+   "Ranking": 1,
+   "Sales": "30,000,000",
+   "Tracks": 11,
+   "AlbumLength": 48.02,
+   "Genre": "Pop",
+   "AvgSongLength": 4.37
+ },
+ {
+   "FIELD1": 211,
+   "Year": 2011,
+   "Ranking": 2,
+   "Sales": "15,000,000",
+   "Tracks": 16,
+   "AlbumLength": 51.73,
+   "Genre": "Pop",
+   "AvgSongLength": 3.23
+ },
+ {
+   "FIELD1": 212,
+   "Year": 2011,
+   "Ranking": 3,
+   "Sales": "7,428,000",
+   "Tracks": 12,
+   "AlbumLength": 49.88,
+   "Genre": "Pop",
+   "AvgSongLength": 4.16
+ },
+ {
+   "FIELD1": 213,
+   "Year": 2011,
+   "Ranking": 4,
+   "Sales": "7,126,944",
+   "Tracks": 14,
+   "AlbumLength": 61.12,
+   "Genre": "Pop",
+   "AvgSongLength": 4.37
+ },
+ {
+   "FIELD1": 214,
+   "Year": 2011,
+   "Ranking": 5,
+   "Sales": "6,920,000",
+   "Tracks": 18,
+   "AlbumLength": 80.3,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 4.46
+ },
+ {
+   "FIELD1": 215,
+   "Year": 2011,
+   "Ranking": 6,
+   "Sales": "5,836,188",
+   "Tracks": 13,
+   "AlbumLength": 45.93,
+   "Genre": "Pop",
+   "AvgSongLength": 3.53
+ },
+ {
+   "FIELD1": 216,
+   "Year": 2011,
+   "Ranking": 7,
+   "Sales": "5,530,000",
+   "Tracks": 12,
+   "AlbumLength": 46.2,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 3.85
+ },
+ {
+   "FIELD1": 217,
+   "Year": 2011,
+   "Ranking": 8,
+   "Sales": "5,110,000",
+   "Tracks": 15,
+   "AlbumLength": 60.42,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 4.03
+ },
+ {
+   "FIELD1": 218,
+   "Year": 2011,
+   "Ranking": 9,
+   "Sales": "4,608,000",
+   "Tracks": 11,
+   "AlbumLength": 37.48,
+   "Genre": "Pop",
+   "AvgSongLength": 3.41
+ },
+ {
+   "FIELD1": 219,
+   "Year": 2011,
+   "Ranking": 10,
+   "Sales": "4,590,102",
+   "Tracks": 14,
+   "AlbumLength": 44.15,
+   "Genre": "Rock",
+   "AvgSongLength": 3.15
+ },
+ {
+   "FIELD1": 220,
+   "Year": 2012,
+   "Ranking": 1,
+   "Sales": "9,146,263",
+   "Tracks": 11,
+   "AlbumLength": 43.85,
+   "Genre": "Rock",
+   "AvgSongLength": 3.99
+ },
+ {
+   "FIELD1": 221,
+   "Year": 2012,
+   "Ranking": 2,
+   "Sales": "8,946,749",
+   "Tracks": 10,
+   "AlbumLength": 34.85,
+   "Genre": "Pop",
+   "AvgSongLength": 3.49
+ },
+ {
+   "FIELD1": 222,
+   "Year": 2012,
+   "Ranking": 3,
+   "Sales": "8,819,124",
+   "Tracks": 16,
+   "AlbumLength": 65.15,
+   "Genre": "Pop",
+   "AvgSongLength": 4.07
+ },
+ {
+   "FIELD1": 223,
+   "Year": 2012,
+   "Ranking": 4,
+   "Sales": "6,434,983",
+   "Tracks": 12,
+   "AlbumLength": 49.47,
+   "Genre": "Pop",
+   "AvgSongLength": 4.12
+ },
+ {
+   "FIELD1": 224,
+   "Year": 2012,
+   "Ranking": 5,
+   "Sales": "6,231,084",
+   "Tracks": 13,
+   "AlbumLength": 50.82,
+   "Genre": "Rock",
+   "AvgSongLength": 3.91
+ },
+ {
+   "FIELD1": 225,
+   "Year": 2012,
+   "Ranking": 6,
+   "Sales": "5,914,619",
+   "Tracks": 13,
+   "AlbumLength": 42.32,
+   "Genre": "Pop",
+   "AvgSongLength": 3.26
+ },
+ {
+   "FIELD1": 226,
+   "Year": 2012,
+   "Ranking": 7,
+   "Sales": "4,600,000",
+   "Tracks": 14,
+   "AlbumLength": 48.93,
+   "Genre": "R&B",
+   "AvgSongLength": 3.5
+ },
+ {
+   "FIELD1": 227,
+   "Year": 2012,
+   "Ranking": 8,
+   "Sales": "4,391,000",
+   "Tracks": 12,
+   "AlbumLength": 52.28,
+   "Genre": "Rock",
+   "AvgSongLength": 4.36
+ },
+ {
+   "FIELD1": 228,
+   "Year": 2012,
+   "Ranking": 9,
+   "Sales": "4,377,500",
+   "Tracks": 14,
+   "AlbumLength": 55.1,
+   "Genre": "Pop",
+   "AvgSongLength": 3.94
+ },
+ {
+   "FIELD1": 229,
+   "Year": 2012,
+   "Ranking": 10,
+   "Sales": "4,141,507",
+   "Tracks": 13,
+   "AlbumLength": 48.15,
+   "Genre": "Pop",
+   "AvgSongLength": 3.7
+ },
+ {
+   "FIELD1": 230,
+   "Year": 2013,
+   "Ranking": 1,
+   "Sales": "10,000,000",
+   "Tracks": 32,
+   "AlbumLength": 69.67,
+   "Genre": "Pop",
+   "AvgSongLength": 2.18
+ },
+ {
+   "FIELD1": 231,
+   "Year": 2013,
+   "Ranking": 2,
+   "Sales": "5,790,318",
+   "Tracks": 16,
+   "AlbumLength": 78.47,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 4.9
+ },
+ {
+   "FIELD1": 232,
+   "Year": 2013,
+   "Ranking": 3,
+   "Sales": "5,750,087",
+   "Tracks": 14,
+   "AlbumLength": 47.68,
+   "Genre": "Pop",
+   "AvgSongLength": 3.41
+ },
+ {
+   "FIELD1": 233,
+   "Year": 2013,
+   "Ranking": 4,
+   "Sales": "5,000,000",
+   "Tracks": 10,
+   "AlbumLength": 46.92,
+   "Genre": "EDM",
+   "AvgSongLength": 4.69
+ },
+ {
+   "FIELD1": 234,
+   "Year": 2013,
+   "Ranking": 5,
+   "Sales": "4,845,500",
+   "Tracks": 13,
+   "AlbumLength": 48.48,
+   "Genre": "Pop",
+   "AvgSongLength": 3.73
+ },
+ {
+   "FIELD1": 235,
+   "Year": 2013,
+   "Ranking": 6,
+   "Sales": "4,595,000",
+   "Tracks": 13,
+   "AlbumLength": 59.37,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 4.57
+ },
+ {
+   "FIELD1": 236,
+   "Year": 2013,
+   "Ranking": 7,
+   "Sales": "4,500,223",
+   "Tracks": 10,
+   "AlbumLength": 70.02,
+   "Genre": "Pop",
+   "AvgSongLength": 7
+ },
+ {
+   "FIELD1": 237,
+   "Year": 2013,
+   "Ranking": 8,
+   "Sales": "4,160,000",
+   "Tracks": 13,
+   "AlbumLength": 44.53,
+   "Genre": "Country",
+   "AvgSongLength": 3.43
+ },
+ {
+   "FIELD1": 238,
+   "Year": 2013,
+   "Ranking": 9,
+   "Sales": "4,096,198",
+   "Tracks": 10,
+   "AlbumLength": 37.13,
+   "Genre": "Pop",
+   "AvgSongLength": 3.71
+ },
+ {
+   "FIELD1": 239,
+   "Year": 2013,
+   "Ranking": 10,
+   "Sales": "3,702,500",
+   "Tracks": 13,
+   "AlbumLength": 50.5,
+   "Genre": "Pop",
+   "AvgSongLength": 3.88
+ },
+ {
+   "FIELD1": 240,
+   "Year": 2014,
+   "Ranking": 1,
+   "Sales": "14,332,116",
+   "Tracks": 13,
+   "AlbumLength": 48.68,
+   "Genre": "Pop",
+   "AvgSongLength": 3.74
+ },
+ {
+   "FIELD1": 241,
+   "Year": 2014,
+   "Ranking": 2,
+   "Sales": "11,879,785",
+   "Tracks": 12,
+   "AlbumLength": 50.38,
+   "Genre": "Pop",
+   "AvgSongLength": 4.2
+ },
+ {
+   "FIELD1": 242,
+   "Year": 2014,
+   "Ranking": 3,
+   "Sales": "9,216,352",
+   "Tracks": 10,
+   "AlbumLength": 32.78,
+   "Genre": "Pop",
+   "AvgSongLength": 3.28
+ },
+ {
+   "FIELD1": 243,
+   "Year": 2014,
+   "Ranking": 4,
+   "Sales": "4,413,503",
+   "Tracks": 13,
+   "AlbumLength": 53.43,
+   "Genre": "Blues",
+   "AvgSongLength": 4.11
+ },
+ {
+   "FIELD1": 244,
+   "Year": 2014,
+   "Ranking": 5,
+   "Sales": "4,230,464",
+   "Tracks": 11,
+   "AlbumLength": 40.17,
+   "Genre": "Pop",
+   "AvgSongLength": 3.65
+ },
+ {
+   "FIELD1": 245,
+   "Year": 2014,
+   "Ranking": 6,
+   "Sales": "3,700,000",
+   "Tracks": 9,
+   "AlbumLength": 42.62,
+   "Genre": "Rock",
+   "AvgSongLength": 4.74
+ },
+ {
+   "FIELD1": 246,
+   "Year": 2014,
+   "Ranking": 7,
+   "Sales": "3,346,212",
+   "Tracks": 12,
+   "AlbumLength": 40.57,
+   "Genre": "Pop",
+   "AvgSongLength": 3.38
+ },
+ {
+   "FIELD1": 247,
+   "Year": 2014,
+   "Ranking": 8,
+   "Sales": "3,230,000",
+   "Tracks": 13,
+   "AlbumLength": 64.65,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 4.97
+ },
+ {
+   "FIELD1": 248,
+   "Year": 2014,
+   "Ranking": 9,
+   "Sales": "3,200,000",
+   "Tracks": 12,
+   "AlbumLength": 43.55,
+   "Genre": "Pop",
+   "AvgSongLength": 3.63
+ },
+ {
+   "FIELD1": 249,
+   "Year": 2014,
+   "Ranking": 10,
+   "Sales": "3,186,458",
+   "Tracks": 12,
+   "AlbumLength": 44.57,
+   "Genre": "Rock",
+   "AvgSongLength": 3.71
+ },
+ {
+   "FIELD1": 250,
+   "Year": 2015,
+   "Ranking": 1,
+   "Sales": "23,000,000",
+   "Tracks": 11,
+   "AlbumLength": 48.4,
+   "Genre": "Pop",
+   "AvgSongLength": 4.4
+ },
+ {
+   "FIELD1": 251,
+   "Year": 2015,
+   "Ranking": 2,
+   "Sales": "14,000,000",
+   "Tracks": 14,
+   "AlbumLength": 48.22,
+   "Genre": "Pop",
+   "AvgSongLength": 3.44
+ },
+ {
+   "FIELD1": 252,
+   "Year": 2015,
+   "Ranking": 3,
+   "Sales": "6,500,000",
+   "Tracks": 14,
+   "AlbumLength": 52.38,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 3.74
+ },
+ {
+   "FIELD1": 253,
+   "Year": 2015,
+   "Ranking": 4,
+   "Sales": "6,000,000",
+   "Tracks": 11,
+   "AlbumLength": 45.75,
+   "Genre": "Rock",
+   "AvgSongLength": 4.16
+ },
+ {
+   "FIELD1": 254,
+   "Year": 2015,
+   "Ranking": 5,
+   "Sales": "5,299,588",
+   "Tracks": 14,
+   "AlbumLength": 65.1,
+   "Genre": "R&B",
+   "AvgSongLength": 4.65
+ },
+ {
+   "FIELD1": 255,
+   "Year": 2015,
+   "Ranking": 6,
+   "Sales": "4,835,000",
+   "Tracks": 46,
+   "AlbumLength": 142.22,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 3.09
+ },
+ {
+   "FIELD1": 256,
+   "Year": 2015,
+   "Ranking": 7,
+   "Sales": "4,147,000",
+   "Tracks": 14,
+   "AlbumLength": 63.07,
+   "Genre": "Country",
+   "AvgSongLength": 4.5
+ },
+ {
+   "FIELD1": 257,
+   "Year": 2015,
+   "Ranking": 8,
+   "Sales": "3,885,000",
+   "Tracks": 11,
+   "AlbumLength": 32.45,
+   "Genre": "Pop",
+   "AvgSongLength": 2.95
+ },
+ {
+   "FIELD1": 258,
+   "Year": 2015,
+   "Ranking": 9,
+   "Sales": "3,376,423",
+   "Tracks": 13,
+   "AlbumLength": 44.65,
+   "Genre": "Pop",
+   "AvgSongLength": 3.43
+ },
+ {
+   "FIELD1": 259,
+   "Year": 2015,
+   "Ranking": 10,
+   "Sales": "2,655,000",
+   "Tracks": 12,
+   "AlbumLength": 39.48,
+   "Genre": "Pop",
+   "AvgSongLength": 3.29
+ },
+ {
+   "FIELD1": 260,
+   "Year": 2016,
+   "Ranking": 1,
+   "Sales": "7,657,000",
+   "Tracks": 20,
+   "AlbumLength": 81.23,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 4.06
+ },
+ {
+   "FIELD1": 261,
+   "Year": 2016,
+   "Ranking": 2,
+   "Sales": "6,111,355",
+   "Tracks": 14,
+   "AlbumLength": 50.67,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 3.62
+ },
+ {
+   "FIELD1": 262,
+   "Year": 2016,
+   "Ranking": 3,
+   "Sales": "4,421,666",
+   "Tracks": 18,
+   "AlbumLength": 68.67,
+   "Genre": "R&B",
+   "AvgSongLength": 3.82
+ },
+ {
+   "FIELD1": 263,
+   "Year": 2016,
+   "Ranking": 4,
+   "Sales": "4,207,235",
+   "Tracks": 13,
+   "AlbumLength": 43.6,
+   "Genre": "Pop",
+   "AvgSongLength": 3.35
+ },
+ {
+   "FIELD1": 264,
+   "Year": 2016,
+   "Ranking": 5,
+   "Sales": "4,170,954",
+   "Tracks": 9,
+   "AlbumLength": 33.47,
+   "Genre": "Pop",
+   "AvgSongLength": 3.72
+ },
+ {
+   "FIELD1": 265,
+   "Year": 2016,
+   "Ranking": 6,
+   "Sales": "3,661,560",
+   "Tracks": 12,
+   "AlbumLength": 45.75,
+   "Genre": "Pop",
+   "AvgSongLength": 3.81
+ },
+ {
+   "FIELD1": 266,
+   "Year": 2016,
+   "Ranking": 7,
+   "Sales": "3,462,374",
+   "Tracks": 11,
+   "AlbumLength": 39.52,
+   "Genre": "Pop",
+   "AvgSongLength": 3.59
+ },
+ {
+   "FIELD1": 267,
+   "Year": 2016,
+   "Ranking": 8,
+   "Sales": "3,418,440",
+   "Tracks": 12,
+   "AlbumLength": 47.1,
+   "Genre": "Pop",
+   "AvgSongLength": 3.92
+ },
+ {
+   "FIELD1": 268,
+   "Year": 2016,
+   "Ranking": 9,
+   "Sales": "3,189,149",
+   "Tracks": 11,
+   "AlbumLength": 40.88,
+   "Genre": "Pop",
+   "AvgSongLength": 3.72
+ },
+ {
+   "FIELD1": 269,
+   "Year": 2016,
+   "Ranking": 10,
+   "Sales": "2,727,078",
+   "Tracks": 40,
+   "AlbumLength": 75.8,
+   "Genre": "Pop",
+   "AvgSongLength": 1.9
+ },
+ {
+   "FIELD1": 270,
+   "Year": 2017,
+   "Ranking": 1,
+   "Sales": "13,430,805",
+   "Tracks": 12,
+   "AlbumLength": 46.23,
+   "Genre": "Pop",
+   "AvgSongLength": 3.85
+ },
+ {
+   "FIELD1": 271,
+   "Year": 2017,
+   "Ranking": 2,
+   "Sales": "6,295,619",
+   "Tracks": 13,
+   "AlbumLength": 39.85,
+   "Genre": "Pop",
+   "AvgSongLength": 3.07
+ },
+ {
+   "FIELD1": 272,
+   "Year": 2017,
+   "Ranking": 3,
+   "Sales": "5,746,523",
+   "Tracks": 15,
+   "AlbumLength": 55.63,
+   "Genre": "Pop",
+   "AvgSongLength": 3.71
+ },
+ {
+   "FIELD1": 273,
+   "Year": 2017,
+   "Ranking": 4,
+   "Sales": "4,790,478",
+   "Tracks": 11,
+   "AlbumLength": 39.2,
+   "Genre": "Rock",
+   "AvgSongLength": 3.56
+ },
+ {
+   "FIELD1": 274,
+   "Year": 2017,
+   "Ranking": 5,
+   "Sales": "4,070,414",
+   "Tracks": 14,
+   "AlbumLength": 54.9,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 3.92
+ },
+ {
+   "FIELD1": 275,
+   "Year": 2017,
+   "Ranking": 6,
+   "Sales": "3,681,211",
+   "Tracks": 15,
+   "AlbumLength": 54.62,
+   "Genre": "R&B",
+   "AvgSongLength": 3.64
+ },
+ {
+   "FIELD1": 276,
+   "Year": 2017,
+   "Ranking": 7,
+   "Sales": "3,371,000",
+   "Tracks": 12,
+   "AlbumLength": 42.98,
+   "Genre": "Country",
+   "AvgSongLength": 3.58
+ },
+ {
+   "FIELD1": 277,
+   "Year": 2017,
+   "Ranking": 8,
+   "Sales": "3,220,000",
+   "Tracks": 34,
+   "AlbumLength": 155.78,
+   "Genre": "Rock",
+   "AvgSongLength": 4.58
+ },
+ {
+   "FIELD1": 278,
+   "Year": 2017,
+   "Ranking": 9,
+   "Sales": "3,190,000",
+   "Tracks": 14,
+   "AlbumLength": 44.97,
+   "Genre": "R&B",
+   "AvgSongLength": 3.21
+ },
+ {
+   "FIELD1": 279,
+   "Year": 2017,
+   "Ranking": 10,
+   "Sales": "3,091,731",
+   "Tracks": 9,
+   "AlbumLength": 30.55,
+   "Genre": "Pop",
+   "AvgSongLength": 3.39
+ },
+ {
+   "FIELD1": 280,
+   "Year": 2018,
+   "Ranking": 1,
+   "Sales": "6,636,118",
+   "Tracks": 18,
+   "AlbumLength": 64.43,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 3.58
+ },
+ {
+   "FIELD1": 281,
+   "Year": 2018,
+   "Ranking": 2,
+   "Sales": "6,133,983",
+   "Tracks": 25,
+   "AlbumLength": 89.73,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 3.59
+ },
+ {
+   "FIELD1": 282,
+   "Year": 2018,
+   "Ranking": 3,
+   "Sales": "4,907,811",
+   "Tracks": 17,
+   "AlbumLength": 58.55,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 3.44
+ },
+ {
+   "FIELD1": 283,
+   "Year": 2018,
+   "Ranking": 4,
+   "Sales": "4,866,789",
+   "Tracks": 25,
+   "AlbumLength": 99.85,
+   "Genre": "Pop",
+   "AvgSongLength": 3.99
+ },
+ {
+   "FIELD1": 284,
+   "Year": 2018,
+   "Ranking": 5,
+   "Sales": "4,050,810",
+   "Tracks": 34,
+   "AlbumLength": 70.02,
+   "Genre": "Pop",
+   "AvgSongLength": 2.06
+ },
+ {
+   "FIELD1": 285,
+   "Year": 2018,
+   "Ranking": 6,
+   "Sales": "3,932,852",
+   "Tracks": 18,
+   "AlbumLength": 37.45,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 2.08
+ },
+ {
+   "FIELD1": 286,
+   "Year": 2018,
+   "Ranking": 7,
+   "Sales": "3,522,713",
+   "Tracks": 15,
+   "AlbumLength": 40.22,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 2.68
+ },
+ {
+   "FIELD1": 287,
+   "Year": 2018,
+   "Ranking": 8,
+   "Sales": "3,376,138",
+   "Tracks": 13,
+   "AlbumLength": 48.22,
+   "Genre": "HIp Hop",
+   "AvgSongLength": 3.71
+ },
+ {
+   "FIELD1": 288,
+   "Year": 2018,
+   "Ranking": 9,
+   "Sales": "3,363,039",
+   "Tracks": 11,
+   "AlbumLength": 44.03,
+   "Genre": "Pop",
+   "AvgSongLength": 4
+ },
+ {
+   "FIELD1": 289,
+   "Year": 2018,
+   "Ranking": 10,
+   "Sales": "2,585,920",
+   "Tracks": 22,
+   "AlbumLength": 79.73,
+   "Genre": "Rock",
+   "AvgSongLength": 3.62
+ },
+ {
+   "FIELD1": 290,
+   "Year": 2019,
+   "Ranking": 1,
+   "Sales": "6,031,516",
+   "Tracks": 14,
+   "AlbumLength": 40.93,
+   "Genre": "Pop",
+   "AvgSongLength": 2.92
+ },
+ {
+   "FIELD1": 291,
+   "Year": 2019,
+   "Ranking": 2,
+   "Sales": "6,243,665",
+   "Tracks": 17,
+   "AlbumLength": 50.93,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 3
+ },
+ {
+   "FIELD1": 292,
+   "Year": 2019,
+   "Ranking": 3,
+   "Sales": "5,670,554",
+   "Tracks": 7,
+   "AlbumLength": 26.08,
+   "Genre": "Pop",
+   "AvgSongLength": 3.73
+ },
+ {
+   "FIELD1": 293,
+   "Year": 2019,
+   "Ranking": 4,
+   "Sales": "4,787,733",
+   "Tracks": 18,
+   "AlbumLength": 61.8,
+   "Genre": "Pop",
+   "AvgSongLength": 3.43
+ },
+ {
+   "FIELD1": 294,
+   "Year": 2019,
+   "Ranking": 5,
+   "Sales": "3,665,436",
+   "Tracks": 12,
+   "AlbumLength": 41.18,
+   "Genre": "Pop",
+   "AvgSongLength": 3.43
+ },
+ {
+   "FIELD1": 295,
+   "Year": 2019,
+   "Ranking": 6,
+   "Sales": "3,646,799",
+   "Tracks": 12,
+   "AlbumLength": 46.62,
+   "Genre": "Pop",
+   "AvgSongLength": 3.88
+ },
+ {
+   "FIELD1": 296,
+   "Year": 2019,
+   "Ranking": 7,
+   "Sales": "3,357,000",
+   "Tracks": 17,
+   "AlbumLength": 59.7,
+   "Genre": "Country",
+   "AvgSongLength": 3.51
+ },
+ {
+   "FIELD1": 297,
+   "Year": 2019,
+   "Ranking": 8,
+   "Sales": "3,300,000",
+   "Tracks": 17,
+   "AlbumLength": 304.03,
+   "Genre": "Pop",
+   "AvgSongLength": 17.88
+ },
+ {
+   "FIELD1": 298,
+   "Year": 2019,
+   "Ranking": 9,
+   "Sales": "3,080,507",
+   "Tracks": 7,
+   "AlbumLength": 25.37,
+   "Genre": "Pop",
+   "AvgSongLength": 3.62
+ },
+ {
+   "FIELD1": 299,
+   "Year": 2019,
+   "Ranking": 10,
+   "Sales": "2,551,838",
+   "Tracks": 15,
+   "AlbumLength": 49.8,
+   "Genre": "Pop",
+   "AvgSongLength": 3.32
+ },
+ {
+   "FIELD1": 300,
+   "Year": 2020,
+   "Ranking": 1,
+   "Sales": "6,829,450",
+   "Tracks": 20,
+   "AlbumLength": 75,
+   "Genre": "Pop",
+   "AvgSongLength": 3.75
+ },
+ {
+   "FIELD1": 301,
+   "Year": 2020,
+   "Ranking": 2,
+   "Sales": "5,397,015",
+   "Tracks": 8,
+   "AlbumLength": 28.5,
+   "Genre": "Pop",
+   "AvgSongLength": 3.56
+ },
+ {
+   "FIELD1": 302,
+   "Year": 2020,
+   "Ranking": 3,
+   "Sales": "4,777,389",
+   "Tracks": 19,
+   "AlbumLength": 56.68,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 2.98
+ },
+ {
+   "FIELD1": 303,
+   "Year": 2020,
+   "Ranking": 4,
+   "Sales": "4,402,942",
+   "Tracks": 14,
+   "AlbumLength": 56.32,
+   "Genre": "R&B",
+   "AvgSongLength": 4.02
+ },
+ {
+   "FIELD1": 304,
+   "Year": 2020,
+   "Ranking": 5,
+   "Sales": "4,115,487",
+   "Tracks": 16,
+   "AlbumLength": 63.48,
+   "Genre": "Pop",
+   "AvgSongLength": 3.97
+ },
+ {
+   "FIELD1": 305,
+   "Year": 2020,
+   "Ranking": 6,
+   "Sales": "3,920,000",
+   "Tracks": 20,
+   "AlbumLength": 60.9,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 3.04
+ },
+ {
+   "FIELD1": 306,
+   "Year": 2020,
+   "Ranking": 7,
+   "Sales": "3,332,300",
+   "Tracks": 11,
+   "AlbumLength": 37.28,
+   "Genre": "Pop",
+   "AvgSongLength": 3.39
+ },
+ {
+   "FIELD1": 307,
+   "Year": 2020,
+   "Ranking": 8,
+   "Sales": "3,045,000",
+   "Tracks": 22,
+   "AlbumLength": 58.83,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 2.67
+ },
+ {
+   "FIELD1": 308,
+   "Year": 2020,
+   "Ranking": 9,
+   "Sales": "2,947,398",
+   "Tracks": 8,
+   "AlbumLength": 24.47,
+   "Genre": "Pop",
+   "AvgSongLength": 3.06
+ },
+ {
+   "FIELD1": 309,
+   "Year": 2020,
+   "Ranking": 10,
+   "Sales": "2,741,096",
+   "Tracks": 12,
+   "AlbumLength": 35.48,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 2.96
+ },
+ {
+   "FIELD1": 310,
+   "Year": 2021,
+   "Ranking": 1,
+   "Sales": "4,485,025",
+   "Tracks": 12,
+   "AlbumLength": 58.23,
+   "Genre": "Pop",
+   "AvgSongLength": 4.85
+ },
+ {
+   "FIELD1": 311,
+   "Year": 2021,
+   "Ranking": 2,
+   "Sales": "3,830,500",
+   "Tracks": 11,
+   "AlbumLength": 34.68,
+   "Genre": "Pop",
+   "AvgSongLength": 3.15
+ },
+ {
+   "FIELD1": 312,
+   "Year": 2021,
+   "Ranking": 3,
+   "Sales": "3,633,287",
+   "Tracks": 10,
+   "AlbumLength": 35.15,
+   "Genre": "Pop",
+   "AvgSongLength": 3.51
+ },
+ {
+   "FIELD1": 313,
+   "Year": 2021,
+   "Ranking": 4,
+   "Sales": "3,498,564",
+   "Tracks": 11,
+   "AlbumLength": 38.72,
+   "Genre": "Pop",
+   "AvgSongLength": 3.52
+ },
+ {
+   "FIELD1": 314,
+   "Year": 2021,
+   "Ranking": 5,
+   "Sales": "3,461,000",
+   "Tracks": 30,
+   "AlbumLength": 90.88,
+   "Genre": "Country",
+   "AvgSongLength": 3.03
+ },
+ {
+   "FIELD1": 315,
+   "Year": 2021,
+   "Ranking": 6,
+   "Sales": "3,402,981",
+   "Tracks": 11,
+   "AlbumLength": 24.27,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 2.21
+ },
+ {
+   "FIELD1": 316,
+   "Year": 2021,
+   "Ranking": 7,
+   "Sales": "3,051,131",
+   "Tracks": 16,
+   "AlbumLength": 45.42,
+   "Genre": "Pop",
+   "AvgSongLength": 2.84
+ },
+ {
+   "FIELD1": 317,
+   "Year": 2021,
+   "Ranking": 8,
+   "Sales": "2,401,368",
+   "Tracks": 6,
+   "AlbumLength": 19.43,
+   "Genre": "Pop",
+   "AvgSongLength": 3.24
+ },
+ {
+   "FIELD1": 318,
+   "Year": 2021,
+   "Ranking": 9,
+   "Sales": "2,264,500",
+   "Tracks": 21,
+   "AlbumLength": 86.03,
+   "Genre": "Hip Hop",
+   "AvgSongLength": 4.1
+ },
+ {
+   "FIELD1": 319,
+   "Year": 2021,
+   "Ranking": 10,
+   "Sales": "1,909,009",
+   "Tracks": 14,
+   "AlbumLength": 44.1,
+   "Genre": "Pop",
+   "AvgSongLength": 3.15
+ }
+]
