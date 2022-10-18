@@ -1,5 +1,5 @@
 const margin = { top: 40, right: 40, bottom: 40, left: 40 };
-const width = 600 - margin.left - margin.right;
+const width = 550 - margin.left - margin.right;
 const height = 400 - margin.top - margin.bottom;
 
 function init() {
@@ -10,156 +10,187 @@ function init() {
 }
 
 function createCustomLineChart(id){
+
+    //create the svg
     const svg = d3
     .select(id)
     .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom);
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-
+    //open data and build the chart
     d3.json("final.json").then(function(data){
 
+        //build x-scale and x-axis
         const x = d3
             .scaleLinear()
             .domain([0,45])
             .range([0, width]);
-        
-        //console.log(data)
-
         svg
             .append("g")
             .attr("id", "gXAxis")
+            .attr("stroke-width", 1.25)
             .attr("transform", `translate(20, ${height + 20})`)
             .call(d3.axisBottom(x).tickFormat(function(d, i) {
                 return d + " - " + (d + 5)
             }));
 
+        //build y-scale and y-axis
         const y = d3
-            .scaleLinear() //TODO change scale
-            .domain([50,0])
+            .scaleLinear() 
+            .domain([d3.max(data, d => parseInt(d.Sales.replace(/,/g, ''))),0])
             .range([0, height]);
-      
         svg
             .append("g")
-            .attr("id", "gYAxis").attr("transform", `translate(20,20)`)
-            .call(d3.axisLeft(y));
+            .attr("id", "gYAxis")
+            .attr("stroke-width", 1.25)
+            .attr("transform", `translate(20,20)`)
+            .call(d3.axisLeft(y).tickFormat(function(d, i) {return d / 1000000 }));
 
+        //build the scale for the different colors
         var color = d3.scaleOrdinal().domain([0,5]).range(['red','blue', 'yellow','green', 'black', 'orange'])
     
-        var listOfGenre = ["Pop", "Rock", "R&B", "Hip Hop", "Country"]
-        var tmp = []
+        //List of genre and number of tracks that will be display on the chart  
+        var list_of_genre = ["Pop", "Rock", "R&B", "Hip Hop", "Country"]
+        var list_of_Tracks = [0,5,10,15,20,25,30,35,40,45]
+
         //TODO no hardcoding
-        var list = [5,10,15,20,25,30,35,40,45]
-        var map = new Map()
+        var selected_data = []
+        var new_data = new Map()
 
-        listOfGenre.forEach(elem => {
-            tmp = data.filter(d => d.Genre == elem).sort((a, b) => a.Tracks - b.Tracks)
+        //for each genre, build the path and the circles
+        list_of_genre.forEach(elem => {
+            selected_data = data.filter(d => d.Genre == elem).sort((a, b) => a.Tracks - b.Tracks)
 
-            map = new Map()
-            list.forEach(e => {
-                mean = d3.mean(tmp.filter(d => Math.ceil(d.Tracks/5)*5 == e).map(z => parseInt(z.Sales.replace(/,/g, ''))))
-                if(mean == undefined){
-                    mean = 0
-                }
-                map.set(e, mean / 1000000)
+            new_data = new Map()
+            list_of_Tracks.forEach(e => {
+                mean = d3.mean(selected_data.filter(d => Math.ceil(d.Tracks/5)*5 == e).map(z => parseInt(z.Sales.replace(/,/g, ''))))
+                if(mean == undefined) mean = 0
+                new_data.set(e, mean)
             })
 
+            //create the path
             svg
                 .append("path")
-                .datum(map)
+                .datum(new_data)
                 .attr("fill", "none")
-                .attr("stroke", color(listOfGenre.indexOf(elem)))
+                .attr("stroke", color(list_of_genre.indexOf(elem)))
                 .attr("stroke-width", 1.5)
-                .attr("d", d3.line().curve(d3.curveNatural)
+                .attr("transform", `translate(20,0)`)
+                .attr("d", d3.line()
                     .x(function(d) { return x(d[0]) })
-                    .y(function(d) { return y(d[1])}));//TODO parseInt not working
+                    .y(function(d) { return y(d[1])}));
 
             //plot the circles
             svg
                 .selectAll("circle")
                 .append("g")
-                .data(map)
+                .data(new_data)
                 .enter()
                 .append("circle")
+                .attr("stroke-width", 1.5)
+                .attr("transform", `translate(20,0)`)
                 .attr("cx", (d) => x(d[0]))
                 .attr("cy", (d) => y(d[1]))
                 .attr("r", 4)
-                .style("fill", color(listOfGenre.indexOf(elem))); //TODO arrange colors fo circles + plot every circle
+                .style("fill", color(list_of_genre.indexOf(elem))); //TODO arrange colors fo circles + plot every circle
 
         });
 
     });
-    
-
 }
 
 function createDualAxisLineChart(id){
-    const svg = d3
-    .select(id)
-    .attr("width", (width + margin.left + margin.right))
-    .attr("height", (height + margin.top + margin.bottom));
 
+    //create the svg
+    const svg = d3
+        .select(id)
+        .attr("width", (width + margin.left + margin.right + margin.right/2))
+        .attr("height", (height + margin.top + margin.bottom))
+        .append("g")
+        .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+    //retrieve data and build the chart
     d3.json("final.json").then(function(data){
 
+        //build x-scale and x-axis
         const x = d3
-            .scalePoint()
-            .domain(data.filter(d => d.Year % 5 == 0).map(d => d.Year))
+            .scaleLinear()
+            .domain([d3.min(data, d => d.Year),d3.max(data, d => d.Year)])
             .range([0, width]);
-        
-        //console.log(data)
-
         svg
-        .append("g")
-        .attr("id", "gXAxis")
-        .attr("transform", `translate(25, ${height + 20})`)
-        .call(d3.axisBottom(x).ticks(10));
+            .append("g")
+            .attr("id", "gXAxis")
+            .attr("stroke-width", 1.25)
+            .attr("transform", `translate(25, ${height + 20})`)
+            .call(d3.axisBottom(x).tickFormat(function(d, i) {return d }));
         
-        //First y-axis
+        //build the left y-scale and y-axis
         const y = d3
-            .scaleLinear() //TODO change scale
-            .domain([8, 0])
+            .scaleLinear()
+            .domain([8, 0])//TODO no hardcoding
             .range([0, height]);
-      
         svg
             .append("g")
             .attr("id", "gYAxis")
             .attr("stroke", "#c71585")
+            .attr("stroke-width", 1.25)
             .attr("transform", `translate(25 ,20)`)
             .call(d3.axisLeft(y));
 
         //TODO change color axis
 
-        //Second y-axis
+        //build the right y-scale and y-axis
         const y2 = d3
             .scaleLinear()
-            .domain([50,0])
+            .domain([d3.max(data, d => parseInt(d.Sales.replace(/,/g, ''))),0])
             .range([0, height]);
-            
         svg
             .append("g")
             .attr("id", "gYAxis")
             .attr("transform", `translate(${width + 25} ,20)`)
             .attr("stroke", "#008b8b")
+            .attr("stroke-width", 1.25)
             .attr("fill", "red")
-            .call(d3.axisRight(y2));
+            .call(d3.axisRight(y2).tickFormat(function(d, i) {return d / 1000000}));
         
-        //TODO no hardcoding
-        var map = new Map()
-        var list = [1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021]
-        list.forEach(e => {
-            mean = d3.mean(data.filter(d => d.Year == e).map(d => d.AvgSongLength))
-            map.set(e, mean)
-        })
-        console.log(map)
+        //list of all years
+        var list_of_year = new Set(data.map(d => d.Year))
 
+        //create the new data to be plotted from the left axis
+        var new_data1 = new Map()
+        list_of_year.forEach(e => {
+            mean = d3.mean(data.filter(d => d.Year == e).map(d => d.AvgSongLength))
+            new_data1.set(e, mean)
+        })
         svg
             .append("path")
-            .datum(map)
+            .datum(new_data1)
             .attr("fill", "none")
-            .attr("stroke", "red")
-            .attr("stroke-width", 1.5)
+            .attr("stroke", "#c71585")
+            .attr("stroke-width", 2)
+            .attr("transform", `translate(25, 0)`)
             .attr("d", d3.line()
                     .x(function(d) { return x(d[0])})
                     .y(function(d) { return y(d[1])}));
+
+        //create the new data to be plotted from the right axis
+        var new_data2 = new Map()
+        list_of_year.forEach(e => {
+            mean = d3.mean(data.filter(d => d.Year == e).map(d => parseInt(d.Sales.replace(/,/g, ''))))
+            new_data2.set(e, mean)
+        })
+        svg
+            .append("path")
+            .datum(new_data2)
+            .attr("fill", "none")
+            .attr("stroke", "#008b8b")
+            .attr("stroke-width", 2)
+            .attr("transform", `translate(25, 0)`)
+            .attr("d", d3.line()
+                    .x(function(d) { return x(d[0])})
+                    .y(function(d) { return y2(d[1])}));
     });
 
 }
@@ -167,13 +198,13 @@ function createDualAxisLineChart(id){
 function createHeatmap(id){
     const svg = d3
     .select(id)
-    .attr("width", width + margin.left + margin.right)
+    .attr("width", 2*(width + margin.left + margin.right))
     .attr("height", height + margin.top + margin.bottom);
 }
 
 function createSankeyDiagram(id){
     const svg = d3
     .select(id)
-    .attr("width", width/3)
-    .attr("height", height + margin.top + margin.bottom);
+    .attr("width", width)
+    .attr("height", 2*height + margin.top + margin.bottom);
 }
