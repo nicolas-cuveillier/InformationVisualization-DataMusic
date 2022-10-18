@@ -33,7 +33,7 @@
       .domain(myGroups)
       .padding(0.05);
     svg.append("g")
-      .style("font-size", 15)
+      .style("font-size", 13)
       .attr("transform", `translate(0, ${height})`)
       .call(d3.axisBottom(x).tickSize(0))
       .select(".domain").remove()
@@ -47,7 +47,8 @@
       .style("font-size", 15)
       .call(d3.axisLeft(y).tickSize(0))
       .select(".domain").remove()
-  
+    
+    
     // Build color scale
     const myColor = d3.scaleSequential()
       .interpolator(d3.interpolateGreens)
@@ -68,50 +69,71 @@
     const mouseover = function(event,d) {
       tooltip
         .style("opacity", 1)
-      d3.select(this)
-        .style("stroke", "black")
-        .style("opacity", 1)
     }
+
     const mousemove = function(event,d) {
       tooltip
-        .html("The exact value of<br>this cell is: " + d.AlbumLength)
+        .html("Album length in minutes: " + d.AlbumLength)
         .style("left", (event.x)/2 + "px")
         .style("top", (event.y)/2 + "px")
     }
+
     const mouseleave = function(event,d) {
       tooltip
         .style("opacity", 0)
-      d3.select(this)
-        .style("stroke", "none")
-        .style("opacity", 0.8)
     }
-  
-    // add the squares
-    svg.selectAll()
-      .data(data, function(d) {return d.Year+':'+d.Ranking;})
-      .join("rect")
-        .attr("x", function(d) { return x(d.Year) })
-        .attr("y", function(d) { return y(d.Ranking) })
-        .attr("rx", 4)
-        .attr("ry", 4)
-        .attr("width", x.bandwidth() )
-        .attr("height", y.bandwidth() )
-        .style("fill", function(d) { return myColor(d.AlbumLength)} )
-        .style("stroke-width", 4)
-        .style("stroke", "none")
-        .style("opacity", 0.8)
-      .on("mouseover", mouseover)
-      .on("mousemove", mousemove)
-      .on("mouseleave", mouseleave)
-  })
-  
+    
+    let highlightRow = 0;
+
+    function setHighlightRow(row) {
+      if (row == highlightRow) {
+        return "yellow"
+      }
+      return "white"
+    } 
+
+    const onclick = function(event,d) {
+        if (highlightRow == this.id) {
+          highlightRow = 0;
+        }
+        else highlightRow = this.id;
+        console.log(this.id)
+        console.log(highlightRow)
+        update()
+      }
+
+    function update(){
+      svg.selectAll()
+        .data(data, function(d) {return d.Year+':'+d.Ranking;})
+        .join("rect")
+          .attr("x", function(d) { return x(d.Year) })
+          .attr("y", function(d) { return y(d.Ranking) })
+          .attr("id", function(d) { return d.Ranking })
+          .attr("rx", 4)
+          .attr("ry", 4)
+          .attr("width", x.bandwidth() )
+          .attr("height", y.bandwidth() )
+          .style("fill", function(d) { return myColor(d.AlbumLength)} )
+          .style("stroke-width", 4)
+          .style("stroke", function(d) { return setHighlightRow(d.Ranking)})
+          .style("opacity", 0.8)
+        .on("mouseover", mouseover)
+        .on("mousemove", mousemove)
+        .on("mouseleave", mouseleave)
+        .on("click", onclick)
+      }
+      update()
+      })
+      
+
+    
   // Add title to graph
   svg.append("text")
           .attr("x", 0)
           .attr("y", -50)
           .attr("text-anchor", "left")
           .style("font-size", "22px")
-          .text("A d3.js heatmap");
+          .text("Heatmap");
   
   // Add subtitle to graph
   svg.append("text")
@@ -121,7 +143,6 @@
           .style("font-size", "14px")
           .style("fill", "grey")
           .style("max-width", 400)
-          .text("A short description of the take-away message of this chart.");
-  
+          .text("A heatmap showing the album length for the top 3 songs");
   
   </script>
