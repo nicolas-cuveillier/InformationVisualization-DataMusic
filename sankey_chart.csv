@@ -1,4 +1,4 @@
-source,target,Row Number,value
+source,target,row,value
 Pop,60-80,0,1
 Pop,40-60,1,1
 Country,<40,2,1

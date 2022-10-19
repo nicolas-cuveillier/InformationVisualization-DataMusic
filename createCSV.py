@@ -3,9 +3,10 @@ import pandas as pd
 # read DataFrame
 data = pd.read_csv('final.csv')
 
-df = data[['Genre', 'Album Length', 'Worldwide Sales (Est.)']]
+df = data.iloc[200:300]
+df = df[['Genre', 'Album Length', 'Worldwide Sales (Est.)']]
 
-for i in range(len(data)):
+for i in range(200, 300):
     album_length = float(df.loc[i]['Album Length'])
     worldwide_sales = float((df.loc[i]['Worldwide Sales (Est.)']).replace(',', ''))
 
@@ -29,14 +30,15 @@ for i in range(len(data)):
     else:
         df.loc[i, 'Worldwide Sales (Est.)'] = '<5,000,000'
     
-    df.loc[i, 'Row Number'] = str(i)
+    df.loc[i, 'row'] = str(i)
 
-df.to_csv(f'sankey_data.csv', index=False)
+df.to_csv(f'sankey_data_10s.csv', index=False)
 
-sankey_data = pd.read_csv('sankey_data.csv')
+sankey_data = pd.read_csv('sankey_data_10s.csv')
+print(sankey_data)
 
-df_1 = sankey_data[['Genre', 'Album Length', 'Row Number']]
-df_2 = sankey_data[['Album Length', 'Worldwide Sales (Est.)', 'Row Number']]
+df_1 = sankey_data[['Genre', 'Album Length', 'row']]
+df_2 = sankey_data[['Album Length', 'Worldwide Sales (Est.)', 'row']]
 
 df_1.rename(columns={'Genre': 'source'}, inplace=True)
 df_1.rename(columns={'Album Length': 'target'}, inplace=True)
@@ -46,15 +48,9 @@ df_2.rename(columns={'Album Length': 'source'}, inplace=True)
 df_2.rename(columns={'Worldwide Sales (Est.)': 'target'}, inplace=True)
 df_2['value'] = 1
 
-pd.concat([df_1, df_2]).to_csv(f'sankey_chart.csv', index=False)
+pd.concat([df_1, df_2]).to_csv(f'sankey_chart_10s.csv', index=False)
 
-sankey = pd.read_csv('sankey_chart.csv')
-print(sankey)
+sankey = pd.read_csv('sankey_chart_10s.csv')
 
 sorted = sankey.pivot_table(columns=['source', 'target'], aggfunc={'value': 'size'}).transpose()
-sorted.to_csv(f'sankey_sorted.csv', index=True)
-print(sorted)
-
-for i in range(len(sankey)):
-    pass
-
+sorted.to_csv(f'sankey_sorted_10s.csv', index=True)

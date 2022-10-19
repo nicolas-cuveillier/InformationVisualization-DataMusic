@@ -29,8 +29,30 @@
   <script>
     var units = "albums";
 
+    var decade = null;
     var source = null;
-    var target = null;
+    var rows = [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+    ];
 
     // set the dimensions and margins of the graph
     var margin = { top: 10, right: 10, bottom: 10, left: 10 },
@@ -64,6 +86,18 @@
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+    var button = d3
+      .select("body")
+      .append("button")
+      .append("text")
+      .text("CHANGE DECADE")
+      .attr("width", 100)
+      .attr("height", 200)
+      .on("click", function () {
+        decade === "90s" ? (decade = null) : (decade = "90s");
+        console.log(decade);
+      });
+
     // Set the sankey diagram properties
     var sankey = d3
       .sankey()
@@ -74,7 +108,7 @@
     var path = sankey.link();
 
     // load the data
-    d3.csv("sankey_sorted.csv", function (error, data) {
+    d3.csv("sankey_chart.csv", function (error, data) {
       //set up graph in same style as original example but empty
       graph = { nodes: [], links: [] };
 
@@ -85,6 +119,7 @@
           source: d.source,
           target: d.target,
           value: +d.value,
+          row: d.row,
         });
       });
 
@@ -102,6 +137,7 @@
       graph.links.forEach(function (d, i) {
         graph.links[i].source = graph.nodes.indexOf(graph.links[i].source);
         graph.links[i].target = graph.nodes.indexOf(graph.links[i].target);
+        /* graph.links[i].row = graph.nodes.indexOf(graph.links[i].row); */
       });
 
       // now loop through each nodes to make nodes an array of objects
@@ -125,10 +161,7 @@
           return Math.max(1, d.dy);
         })
         .style("stroke-opacity", function (d) {
-          if (source !== null) {
-            return source === d.source.name ? "0.3" : "0.05";
-            /* return source === d.source.name ? "#1ab" : "#000"; */
-          }
+          return "0.2";
         })
         .sort(function (a, b) {
           return b.dy - a.dy;
@@ -166,12 +199,14 @@
         .on("mouseover", function (d, i) {
           source = d.name;
           link.style("stroke-opacity", function (d) {
-            if (source !== null) {
-              return source === d.source.name ? "0.3" : "0.05";
+            if (source === d.source.name) {
+              rows.push(d.row);
             }
+            return rows.includes(d.row) ? "0.3" : "0.05";
           });
         })
         .on("mouseleave", function (d, i) {
+          rows = [];
           source = null;
           link.style("stroke-opacity", function (d) {
             return "0.2";
@@ -182,7 +217,7 @@
       node
         .append("rect")
         .attr("height", function (d) {
-          return d.dy;
+          return d.dy > 10 ? d.dy : 10;
         })
         .attr("width", sankey.nodeWidth())
         .style("fill", function (d) {
