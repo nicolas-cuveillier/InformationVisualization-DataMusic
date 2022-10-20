@@ -15,7 +15,7 @@ function createCustomLineChart(id){
     const svg = d3
     .select(id)
     .attr("width", width + 2*(margin.left + margin.right) + 100)
-    .attr("height", height + margin.top + margin.bottom)
+    .attr("height", height + margin.top + margin.bottom + 20)
     .append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
@@ -39,7 +39,7 @@ function createCustomLineChart(id){
         //build y-scale and y-axis
         const y = d3
             .scaleLinear() 
-            .domain([d3.max(data, d => parseInt(d.Sales.replace(/,/g, ''))),0])
+            .domain([d3.max(data, d => parseInt(d.Sales.replace(/,/g, ''))) / 1.5,0])
             .range([0, height]);
         svg
             .append("g")
@@ -55,7 +55,6 @@ function createCustomLineChart(id){
         var list_of_genre = ["Pop", "Rock", "R&B", "Hip Hop", "Country"]
         var list_of_Tracks = [0,5,10,15,20,25,30,35,40,45]
 
-        //TODO no hardcoding
         var selected_data = []
         var new_data = new Map()
 
@@ -84,8 +83,9 @@ function createCustomLineChart(id){
                     .y(function(d) { return y(d[1])}));
 
             //plot the circles
+            circles = "circle" + new String(list_of_genre.indexOf(elem))
             svg
-                .selectAll("circle")
+                .selectAll(circles)
                 .append("g")
                 .data(new_data)
                 .enter()
@@ -101,19 +101,36 @@ function createCustomLineChart(id){
 
         //Add name for y-axis
         svg.append("text")
-          .attr("x", -15)
+          .attr("x", -20)
           .attr("y", -15)
           .attr("text-anchor", "left")
           .style("font-size", "16px")
-          .text("Worldwide Sales (in millions)");
+          .text("Worldwide Sales");
+        svg.append("text")
+          .attr("x", -15)
+          .attr("y", -0)
+          .attr("text-anchor", "left")
+          .style("font-size", "16px")
+          .text("(in millions)");
 
         //Add name for x-axis
         svg.append("text")
-          .attr("x", width + margin.left)
-          .attr("y", height + margin.top)
+          .attr("x", width/2)
+          .attr("y", height + margin.top + 15)
           .attr("text-anchor", "left")
           .style("font-size", "16px")
           .text("Number of tracks");
+
+        //Add legend
+        list_of_genre.forEach(elem => {
+          svg.append("text")
+            .attr("x", width )
+            .attr("y", height/2 + 20*list_of_genre.indexOf(elem) - margin.top)
+            .attr("text-anchor", "left")
+            .style("font-size", "16px")
+            .style("color", color(list_of_genre.indexOf(elem)))
+            .text(elem);
+        })
 
     });
 }
@@ -231,11 +248,17 @@ function createDualAxisLineChart(id){
 
         //Add name for y-axis
         svg.append("text")
-        .attr("x", -25)
-        .attr("y", -20)
-        .attr("text-anchor", "left")
-        .style("font-size", "16px")
-        .text("Average Song Length per Album (in minutes)");
+          .attr("x", -25)
+          .attr("y", -17)
+          .attr("text-anchor", "left")
+          .style("font-size", "16px")
+          .text("Average Song Length per Album");
+        svg.append("text")
+          .attr("x", -15)
+          .attr("y", -0)
+          .attr("text-anchor", "left")
+          .style("font-size", "16px")
+          .text("(in minutes)");
 
       //Add name for x-axis
       svg.append("text")
