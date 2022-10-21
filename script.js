@@ -10,19 +10,19 @@ var rows = [];
 function init() {
   createCustomLineChart("#customLineChart");
   createDualAxisLineChart("#dualLineChart");
-  createSankeyDiagram("#sankey");
   createHeatmap("#heatMap");
+  createSankeyChart("", "#all");
   d3.select("#first").on("click", () => {
-    updateSankeyChart("_90s", "#first");
+    createSankeyChart("_90s", "#first");
   });
   d3.select("#second").on("click", () => {
-    updateSankeyChart("_00s", "#second");
+    createSankeyChart("_00s", "#second");
   });
   d3.select("#third").on("click", () => {
-    updateSankeyChart("_10s", "#third");
+    createSankeyChart("_10s", "#third");
   });
   d3.select("#all").on("click", () => {
-    updateSankeyChart("", "#all");
+    createSankeyChart("", "#all");
   });
 }
 let selected_ranking = 0;
@@ -629,193 +629,7 @@ function createHeatmap(id) {
     .text("Year");
 }
 
-function createSankeyDiagram(id) {
-  var margin = { top: 10, right: 10, bottom: 10, left: 10 },
-    width = 600 - margin.left - margin.right,
-    height = 700 - margin.top - margin.bottom;
-
-  const svg = d3
-    .select(id)
-    .attr("width", width)
-    .attr("height", 2 * (height + margin.top + margin.bottom))
-    .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-  var formatNumber = d3.format(",.0f"),
-    format = function (d) {
-      return formatNumber(d) + " " + units;
-    },
-    color = d3.scaleOrdinal([
-      "#4e79a7",
-      "#f28e2c",
-      "#e15759",
-      "#76b7b2",
-      "#59a14f",
-      "#edc949",
-      "#af7aa1",
-      "#ff9da7",
-      "#9c755f",
-      "#bab0ab",
-    ]);
-
-  var sankey = d3.sankey().nodeWidth(36).nodePadding(40).size([width, height]);
-  var path = sankey.link();
-
-  graph = { nodes: [], links: [] };
-  d3.csv("sankey_chart.csv").then(function (data, rows) {
-    graph = { nodes: [], links: [] };
-    data.forEach(function (d) {
-      graph.nodes.push({ name: d.source });
-      graph.nodes.push({ name: d.target });
-      graph.links.push({
-        source: d.source,
-        target: d.target,
-        value: +d.value,
-        row: d.row,
-      });
-    });
-
-    // return only distinct nodes
-    graph.nodes = d3.group(graph.nodes, (d) => d.name);
-
-    var nodesArray = [];
-    for (let [key, value] of graph.nodes) {
-      nodesArray.push(key);
-    }
-    graph.nodes = nodesArray;
-
-    // loop through each link replacing the text with its index from node
-    graph.links.forEach(function (d, i) {
-      graph.links[i].source = graph.nodes.indexOf(graph.links[i].source);
-      graph.links[i].target = graph.nodes.indexOf(graph.links[i].target);
-    });
-
-    // now loop through each nodes to make nodes an array of objects
-    // rather than an array of strings
-    graph.nodes.forEach(function (d, i) {
-      graph.nodes[i] = { name: d };
-    });
-    sankey.nodes(graph.nodes).links(graph.links).layout(32);
-
-    // add the links
-    var link = svg
-      .append("g")
-      .selectAll(".link")
-      .data(graph.links)
-      .enter()
-      .append("path")
-      .attr("class", "link")
-      .attr("d", path)
-      .style("stroke-width", function (d) {
-        return Math.max(1, d.dy);
-      })
-      .style("stroke-opacity", function (d) {
-        return "0.2";
-      })
-      .sort(function (a, b) {
-        return b.dy - a.dy;
-      });
-
-    // add the link titles
-    link.append("title").text(function (d) {
-      return d.source.name + " → " + d.target.name + "\n" + format(d.value);
-    });
-
-    // add the nodes
-    var node = svg
-      .append("g")
-      .selectAll(".node")
-      .data(graph.nodes)
-      .enter()
-      .append("g")
-      .attr("class", "node")
-      .attr("transform", function (d) {
-        return "translate(" + d.x + "," + d.y + ")";
-      })
-      .call(
-        d3
-          .drag()
-          .subject(function (d) {
-            return d;
-          })
-          .on("start", function () {
-            this.parentNode.appendChild(this);
-          })
-          .on("drag", dragmove)
-      );
-
-    d3.selectAll(".node")
-      .on("mouseover", function (d, i) {
-        source = d.name;
-        link.style("stroke-opacity", function (d) {
-          if (source === d.source.name) {
-            rows.push(d.row);
-          }
-          return rows.includes(d.row) ? "0.3" : "0.05";
-        });
-      })
-      .on("mouseleave", function (d, i) {
-        rows = [];
-        source = null;
-        link.style("stroke-opacity", function (d) {
-          return "0.2";
-        });
-      });
-
-    // add rectangles for the nodes
-    node
-      .append("rect")
-      .attr("height", function (d) {
-        return d.dy > 10 ? d.dy : 10;
-      })
-      .attr("width", sankey.nodeWidth())
-      .style("fill", function (d) {
-        return (d.color = color(d.name.replace(/ .*/, "")));
-      })
-      .style("stroke", function (d) {
-        return d3.rgb(d.color).darker(2);
-      })
-      .append("title")
-      .text(function (d) {
-        return d.name + "\n" + format(d.value);
-      });
-
-    // add title for the nodes
-    node
-      .append("text")
-      .attr("x", -6)
-      .attr("y", function (d) {
-        return d.dy / 2;
-      })
-      .attr("dy", ".35em")
-      .attr("text-anchor", "end")
-      .attr("transform", null)
-      .text(function (d) {
-        return d.name;
-      })
-      .filter(function (d) {
-        return d.x < width / 2;
-      })
-      .attr("x", 6 + sankey.nodeWidth())
-      .attr("text-anchor", "start");
-
-    // the function for moving the nodes
-    function dragmove(d) {
-      d3.select(this).attr(
-        "transform",
-        "translate(" +
-          d.x +
-          "," +
-          (d.y = Math.max(0, Math.min(height - d.dy, d3.event.y))) +
-          ")"
-      );
-      sankey.relayout();
-      link.attr("d", path);
-    }
-  });
-}
-
-function updateSankeyChart(decade, id) {
+function createSankeyChart(decade, id) {
   d3.selectAll(".button").style("background-color", "#aaa");
   d3.selectAll(".link").remove();
   d3.selectAll(".node").remove();
@@ -830,7 +644,7 @@ function updateSankeyChart(decade, id) {
   const svg = d3
     .select("#sankey")
     .attr("width", width)
-    .attr("height", 2 * (height + margin.top + margin.bottom))
+    .attr("height", height)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
