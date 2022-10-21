@@ -38,7 +38,7 @@ function createCustomLineChart(id){
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
     //open data and build the chart
-    d3.csv("https://gist.githubusercontent.com/helenfs/c22b355263843bec54e90808ab594dd5/raw/482c6bdb4f4458518b4e67986015df9b32839eeb/final.csv").then(function(data){
+    d3.json("final.json").then(function(data){
 
         //build x-scale and x-axis
         const x = d3
@@ -70,7 +70,7 @@ function createCustomLineChart(id){
         var color = d3.scaleOrdinal().domain([0,5]).range(['#B22222','blue', '#FFD700','green', '#00BFFF', 'orange'])
     
         //List of genre and number of tracks that will be display on the chart  
-        var list_of_genre = ["Pop", "Rock", "R&B", "Hip Hop", "Country"]
+        var list_of_genre = ["Pop", "Rock", "RB", "HipHop", "Country"]
         var list_of_Tracks = [0,5,10,15,20,25,30,35,40,45]
 
         var selected_data = []
@@ -91,10 +91,14 @@ function createCustomLineChart(id){
             svg
                 .append("path")
                 .datum(new_data)
-                .attr("fill", "none").transition()
+                .attr("class", "customItemValue_" + elem + "_path")
+                .on("mouseover", (event, d) => handleCustomLineChartMouseOver(elem))
+                .on("mouseleave", (event, d) => handleCustomLineChartMouseLeave())
+                .attr("fill", "none")
+                .transition()
                 .duration(1000)
                 .attr("stroke", color(list_of_genre.indexOf(elem)))
-                .attr("stroke-width", 1.75)
+                .attr("stroke-width", 2.5)
                 .attr("transform", `translate(20,0)`)
                 .attr("d", d3.line()
                     .x(function(d) { return x(d[0]) })
@@ -108,12 +112,15 @@ function createCustomLineChart(id){
                 .data(new_data)
                 .enter()
                 .append("circle")
-                .attr("stroke-width", 1.5)
+                .attr("class", "customItemValue_" + elem + "_circle")
+                .attr("stroke-width", 2)
                 .attr("transform", `translate(20,0)`)
+                .on("mouseover", (event, d) => handleCustomLineChartMouseOver(elem))
+                .on("mouseleave", (event, d) => handleCustomLineChartMouseLeave())
                 .attr("cx", (d) => x(d[0]))
                 .attr("cy", (d) => y(d[1]))
                 .attr("r", 4)
-                .style("fill", color(list_of_genre.indexOf(elem))); //TODO arrange colors fo circles + plot every circle
+                .style("fill", color(list_of_genre.indexOf(elem)));
 
         });
 
@@ -146,11 +153,29 @@ function createCustomLineChart(id){
             .attr("y", height/2 + 20*list_of_genre.indexOf(elem) - margin.top)
             .attr("text-anchor", "left")
             .style("font-size", "16px")
-            .style("color", color(list_of_genre.indexOf(elem)))
+            .style("fill", color(list_of_genre.indexOf(elem)))
             .text(elem);
         })
 
     });
+}
+
+const list_of_genre = ["Pop", "Rock", "RB", "HipHop", "Country"]
+
+function handleCustomLineChartMouseOver(genre){
+  list_of_genre.filter(e => e !== genre).forEach(genre => {
+    d3.selectAll(".customItemValue_" + genre + "_path").attr("opacity", 0.35).attr("stroke", "gray");
+    d3.selectAll(".customItemValue_" + genre + "_circle").attr("opacity", 0.35).style("fill", "gray");
+  })
+  
+}
+
+function handleCustomLineChartMouseLeave() {
+  const color = d3.scaleOrdinal().domain([0,5]).range(['#B22222','blue', '#FFD700','green', '#00BFFF', 'orange'])
+  list_of_genre.forEach(genre => {
+    d3.selectAll(".customItemValue_" + genre + "_path").attr("opacity", 1).attr("stroke", color(list_of_genre.indexOf(genre)));
+    d3.selectAll(".customItemValue_" + genre + "_circle").attr("opacity", 1).style("fill", color(list_of_genre.indexOf(genre)));
+  })
 }
 
 function createDualAxisLineChart(id){

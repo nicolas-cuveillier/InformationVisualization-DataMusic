@@ -36,7 +36,7 @@
    "Sales": "18,000,000",
    "Tracks": 13,
    "AlbumLength": 59.07,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 4.54
  },
  {
@@ -336,7 +336,7 @@
    "Sales": "20,000,000",
    "Tracks": 28,
    "AlbumLength": 75.38,
-   "Genre": "R&B",
+   "Genre": "RB",
    "AvgSongLength": 2.69
  },
  {
@@ -396,7 +396,7 @@
    "Sales": "10,000,000",
    "Tracks": 12,
    "AlbumLength": 53.3,
-   "Genre": "R&B",
+   "Genre": "RB",
    "AvgSongLength": 4.44
  },
  {
@@ -456,7 +456,7 @@
    "Sales": "14,355,000",
    "Tracks": 16,
    "AlbumLength": 56.17,
-   "Genre": "R&B",
+   "Genre": "RB",
    "AvgSongLength": 3.51
  },
  {
@@ -476,7 +476,7 @@
    "Sales": "13,999,880",
    "Tracks": 13,
    "AlbumLength": 57.63,
-   "Genre": "R&B",
+   "Genre": "RB",
    "AvgSongLength": 4.43
  },
  {
@@ -586,7 +586,7 @@
    "Sales": "12,000,000",
    "Tracks": 16,
    "AlbumLength": 72.85,
-   "Genre": "R&B",
+   "Genre": "RB",
    "AvgSongLength": 4.55
  },
  {
@@ -636,7 +636,7 @@
    "Sales": "15,000,000",
    "Tracks": 12,
    "AlbumLength": 54.93,
-   "Genre": "R&B",
+   "Genre": "RB",
    "AvgSongLength": 4.58
  },
  {
@@ -656,7 +656,7 @@
    "Sales": "13,860,000",
    "Tracks": 13,
    "AlbumLength": 60.87,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 4.68
  },
  {
@@ -816,7 +816,7 @@
    "Sales": "20,000,000",
    "Tracks": 14,
    "AlbumLength": 69.33,
-   "Genre": "R&B",
+   "Genre": "RB",
    "AvgSongLength": 4.95
  },
  {
@@ -826,7 +826,7 @@
    "Sales": "15,000,000",
    "Tracks": 16,
    "AlbumLength": 66.6,
-   "Genre": "R&B",
+   "Genre": "RB",
    "AvgSongLength": 4.16
  },
  {
@@ -1006,7 +1006,7 @@
    "Sales": "32,000,000",
    "Tracks": 18,
    "AlbumLength": 72.07,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 4
  },
  {
@@ -1096,7 +1096,7 @@
    "Sales": "10,715,000",
    "Tracks": 17,
    "AlbumLength": 66.58,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 3.92
  },
  {
@@ -1126,7 +1126,7 @@
    "Sales": "12,000,000",
    "Tracks": 16,
    "AlbumLength": 63.07,
-   "Genre": "R&B",
+   "Genre": "RB",
    "AvgSongLength": 3.94
  },
  {
@@ -1176,7 +1176,7 @@
    "Sales": "7,235,958",
    "Tracks": 15,
    "AlbumLength": 59.62,
-   "Genre": "R&B",
+   "Genre": "RB",
    "AvgSongLength": 3.97
  },
  {
@@ -1216,7 +1216,7 @@
    "Sales": "20,891,750",
    "Tracks": 20,
    "AlbumLength": 77.32,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 3.87
  },
  {
@@ -1256,7 +1256,7 @@
    "Sales": "11,000,000",
    "Tracks": 19,
    "AlbumLength": 79.67,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 4.19
  },
  {
@@ -1316,7 +1316,7 @@
    "Sales": "12,000,000",
    "Tracks": 16,
    "AlbumLength": 53.73,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 3.36
  },
  {
@@ -1366,7 +1366,7 @@
    "Sales": "7,755,057",
    "Tracks": 13,
    "AlbumLength": 59.5,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 4.58
  },
  {
@@ -1386,7 +1386,7 @@
    "Sales": "7,500,000",
    "Tracks": 15,
    "AlbumLength": 57.75,
-   "Genre": "R&B",
+   "Genre": "RB",
    "AvgSongLength": 3.85
  },
  {
@@ -1396,7 +1396,7 @@
    "Sales": "7,012,000",
    "Tracks": 39,
    "AlbumLength": 134.65,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 3.45
  },
  {
@@ -1406,7 +1406,7 @@
    "Sales": "20,000,000",
    "Tracks": 17,
    "AlbumLength": 60.5,
-   "Genre": "R&B",
+   "Genre": "RB",
    "AvgSongLength": 3.56
  },
  {
@@ -1476,7 +1476,7 @@
    "Sales": "8,918,504",
    "Tracks": 20,
    "AlbumLength": 76.88,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 3.84
  },
  {
@@ -1516,7 +1516,7 @@
    "Sales": "12,433,091",
    "Tracks": 17,
    "AlbumLength": 77.92,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 4.58
  },
  {
@@ -1566,7 +1566,7 @@
    "Sales": "8,033,713",
    "Tracks": 22,
    "AlbumLength": 77.37,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 3.52
  },
  {
@@ -1586,7 +1586,7 @@
    "Sales": "7,864,434",
    "Tracks": 15,
    "AlbumLength": 66.05,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 4.4
  },
  {
@@ -1606,7 +1606,7 @@
    "Sales": "16,000,000",
    "Tracks": 11,
    "AlbumLength": 34.93,
-   "Genre": "R&B",
+   "Genre": "RB",
    "AvgSongLength": 3.18
  },
  {
@@ -1656,7 +1656,7 @@
    "Sales": "7,290,000",
    "Tracks": 12,
    "AlbumLength": 48.08,
-   "Genre": "R&B",
+   "Genre": "RB",
    "AvgSongLength": 4.01
  },
  {
@@ -1676,7 +1676,7 @@
    "Sales": "6,428,000",
    "Tracks": 13,
    "AlbumLength": 58,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 4.46
  },
  {
@@ -1756,7 +1756,7 @@
    "Sales": "6,060,563",
    "Tracks": 13,
    "AlbumLength": 51.38,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 3.95
  },
  {
@@ -1766,7 +1766,7 @@
    "Sales": "6,000,000",
    "Tracks": 14,
    "AlbumLength": 56.07,
-   "Genre": "R&B",
+   "Genre": "RB",
    "AvgSongLength": 4
  },
  {
@@ -1936,7 +1936,7 @@
    "Sales": "7,365,000",
    "Tracks": 15,
    "AlbumLength": 67.33,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 4.49
  },
  {
@@ -2026,7 +2026,7 @@
    "Sales": "7,740,795",
    "Tracks": 17,
    "AlbumLength": 76.93,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 4.53
  },
  {
@@ -2096,7 +2096,7 @@
    "Sales": "3,588,000",
    "Tracks": 13,
    "AlbumLength": 68.6,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 5.28
  },
  {
@@ -2146,7 +2146,7 @@
    "Sales": "6,920,000",
    "Tracks": 18,
    "AlbumLength": 80.3,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 4.46
  },
  {
@@ -2166,7 +2166,7 @@
    "Sales": "5,530,000",
    "Tracks": 12,
    "AlbumLength": 46.2,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 3.85
  },
  {
@@ -2176,7 +2176,7 @@
    "Sales": "5,110,000",
    "Tracks": 15,
    "AlbumLength": 60.42,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 4.03
  },
  {
@@ -2266,7 +2266,7 @@
    "Sales": "4,600,000",
    "Tracks": 14,
    "AlbumLength": 48.93,
-   "Genre": "R&B",
+   "Genre": "RB",
    "AvgSongLength": 3.5
  },
  {
@@ -2316,7 +2316,7 @@
    "Sales": "5,790,318",
    "Tracks": 16,
    "AlbumLength": 78.47,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 4.9
  },
  {
@@ -2356,7 +2356,7 @@
    "Sales": "4,595,000",
    "Tracks": 13,
    "AlbumLength": 59.37,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 4.57
  },
  {
@@ -2476,7 +2476,7 @@
    "Sales": "3,230,000",
    "Tracks": 13,
    "AlbumLength": 64.65,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 4.97
  },
  {
@@ -2526,7 +2526,7 @@
    "Sales": "6,500,000",
    "Tracks": 14,
    "AlbumLength": 52.38,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 3.74
  },
  {
@@ -2546,7 +2546,7 @@
    "Sales": "5,299,588",
    "Tracks": 14,
    "AlbumLength": 65.1,
-   "Genre": "R&B",
+   "Genre": "RB",
    "AvgSongLength": 4.65
  },
  {
@@ -2556,7 +2556,7 @@
    "Sales": "4,835,000",
    "Tracks": 46,
    "AlbumLength": 142.22,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 3.09
  },
  {
@@ -2606,7 +2606,7 @@
    "Sales": "7,657,000",
    "Tracks": 20,
    "AlbumLength": 81.23,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 4.06
  },
  {
@@ -2616,7 +2616,7 @@
    "Sales": "6,111,355",
    "Tracks": 14,
    "AlbumLength": 50.67,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 3.62
  },
  {
@@ -2626,7 +2626,7 @@
    "Sales": "4,421,666",
    "Tracks": 18,
    "AlbumLength": 68.67,
-   "Genre": "R&B",
+   "Genre": "RB",
    "AvgSongLength": 3.82
  },
  {
@@ -2746,7 +2746,7 @@
    "Sales": "4,070,414",
    "Tracks": 14,
    "AlbumLength": 54.9,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 3.92
  },
  {
@@ -2756,7 +2756,7 @@
    "Sales": "3,681,211",
    "Tracks": 15,
    "AlbumLength": 54.62,
-   "Genre": "R&B",
+   "Genre": "RB",
    "AvgSongLength": 3.64
  },
  {
@@ -2786,7 +2786,7 @@
    "Sales": "3,190,000",
    "Tracks": 14,
    "AlbumLength": 44.97,
-   "Genre": "R&B",
+   "Genre": "RB",
    "AvgSongLength": 3.21
  },
  {
@@ -2806,7 +2806,7 @@
    "Sales": "6,636,118",
    "Tracks": 18,
    "AlbumLength": 64.43,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 3.58
  },
  {
@@ -2816,7 +2816,7 @@
    "Sales": "6,133,983",
    "Tracks": 25,
    "AlbumLength": 89.73,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 3.59
  },
  {
@@ -2826,7 +2826,7 @@
    "Sales": "4,907,811",
    "Tracks": 17,
    "AlbumLength": 58.55,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 3.44
  },
  {
@@ -2856,7 +2856,7 @@
    "Sales": "3,932,852",
    "Tracks": 18,
    "AlbumLength": 37.45,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 2.08
  },
  {
@@ -2866,7 +2866,7 @@
    "Sales": "3,522,713",
    "Tracks": 15,
    "AlbumLength": 40.22,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 2.68
  },
  {
@@ -2916,7 +2916,7 @@
    "Sales": "6,243,665",
    "Tracks": 17,
    "AlbumLength": 50.93,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 3
  },
  {
@@ -3026,7 +3026,7 @@
    "Sales": "4,777,389",
    "Tracks": 19,
    "AlbumLength": 56.68,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 2.98
  },
  {
@@ -3036,7 +3036,7 @@
    "Sales": "4,402,942",
    "Tracks": 14,
    "AlbumLength": 56.32,
-   "Genre": "R&B",
+   "Genre": "RB",
    "AvgSongLength": 4.02
  },
  {
@@ -3056,7 +3056,7 @@
    "Sales": "3,920,000",
    "Tracks": 20,
    "AlbumLength": 60.9,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 3.04
  },
  {
@@ -3076,7 +3076,7 @@
    "Sales": "3,045,000",
    "Tracks": 22,
    "AlbumLength": 58.83,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 2.67
  },
  {
@@ -3096,7 +3096,7 @@
    "Sales": "2,741,096",
    "Tracks": 12,
    "AlbumLength": 35.48,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 2.96
  },
  {
@@ -3156,7 +3156,7 @@
    "Sales": "3,402,981",
    "Tracks": 11,
    "AlbumLength": 24.27,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 2.21
  },
  {
@@ -3186,7 +3186,7 @@
    "Sales": "2,264,500",
    "Tracks": 21,
    "AlbumLength": 86.03,
-   "Genre": "Hip Hop",
+   "Genre": "HipHop",
    "AvgSongLength": 4.1
  },
  {
