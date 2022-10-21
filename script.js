@@ -8,6 +8,24 @@ function init() {
     createSankeyDiagram("#sankey")
     createHeatmap("#heatMap")
 }
+let selected_ranking = 0;
+function updateOnRankSelected(row){
+  if (selected_ranking == row) {
+    selected_ranking = 0;
+  }
+  else selected_ranking = row;
+  console.log(row)
+  console.log(selected_ranking)
+  // updateHeatmap()
+  // updateAvgLines()
+  d3.select("#length_line").remove()
+  d3.select("#sales_line").remove()
+  d3.select("#avg_length_line").remove()
+  d3.select("#avg_sales_line").remove()
+
+  createHeatmap("#heatMap")
+  createDualAxisLineChart("#dualLineChart")
+}
 
 function createCustomLineChart(id){
 
@@ -20,7 +38,7 @@ function createCustomLineChart(id){
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
     //open data and build the chart
-    d3.json("final.json").then(function(data){
+    d3.csv("https://gist.githubusercontent.com/helenfs/c22b355263843bec54e90808ab594dd5/raw/482c6bdb4f4458518b4e67986015df9b32839eeb/final.csv").then(function(data){
 
         //build x-scale and x-axis
         const x = d3
@@ -146,7 +164,7 @@ function createDualAxisLineChart(id){
         .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
     //retrieve data and build the chart
-    d3.json("final.json").then(function(data){
+    d3.csv("https://gist.githubusercontent.com/helenfs/c22b355263843bec54e90808ab594dd5/raw/482c6bdb4f4458518b4e67986015df9b32839eeb/final.csv").then(function(data){
 
         //build x-scale and x-axis
         const x = d3
@@ -207,22 +225,31 @@ function createDualAxisLineChart(id){
         
         //list of all years
         var list_of_year = new Set(data.map(d => d.Year))
-
+        
+        d3.select("d").join((exit) => {
+          exit.remove();
+        })
         //create the new data to be plotted from the left axis
         var new_data1 = new Map()
         list_of_year.forEach(e => {
+          if(selected_ranking == 0){
             mean = d3.mean(data.filter(d => d.Year == e).map(d => d.AvgSongLength))
-            new_data1.set(e, mean)
+          }
+          else{
+            mean = d3.mean(data.filter(d => d.Year == e && d.Ranking == selected_ranking).map(d => d.AvgSongLength))
+          }
+          new_data1.set(e, mean)
         })
         svg
             .append("path")
             .datum(new_data1)
             .attr("fill", "none")
+            .attr("id", "length_line")
             .attr("stroke", "#c71585")
             .transition()
             .duration(1000)
             .attr("stroke-width", 2)
-            .attr("transform", `translate(25, 0)`)
+            .attr("transform", `translate(25, 20)`)
             .attr("d", d3.line()
                     .x(function(d) { return x(d[0])})
                     .y(function(d) { return y(d[1])}));
@@ -230,46 +257,101 @@ function createDualAxisLineChart(id){
         //create the new data to be plotted from the right axis
         var new_data2 = new Map()
         list_of_year.forEach(e => {
-            mean = d3.mean(data.filter(d => d.Year == e).map(d => parseInt(d.Sales.replace(/,/g, ''))))
+            (selected_ranking != 0 ? data.filter(d => d.Ranking == selected_ranking) : null)
+            if(selected_ranking == 0){
+              mean = d3.mean(data.filter(d => d.Year == e).map(d => parseInt(d.Sales.replace(/,/g, ''))))
+            }
+            else {
+              mean = d3.mean(data.filter(d => d.Year == e && d.Ranking == selected_ranking).map(d => parseInt(d.Sales.replace(/,/g, ''))))
+            }
             new_data2.set(e, mean)
         })
         svg
             .append("path")
             .datum(new_data2)
             .attr("fill", "none")
+            .attr("id", "sales_line")
             .attr("stroke", "#008b8b")
             .transition()
             .duration(1000)
             .attr("stroke-width", 2)
-            .attr("transform", `translate(25, 0)`)
+            .attr("transform", `translate(25, 20)`)
             .attr("d", d3.line()
                     .x(function(d) { return x(d[0])})
                     .y(function(d) { return y2(d[1])}));
 
-        //Add name for y-axis
-        svg.append("text")
-          .attr("x", -25)
-          .attr("y", -17)
-          .attr("text-anchor", "left")
-          .style("font-size", "16px")
-          .text("Average Song Length per Album");
-        svg.append("text")
-          .attr("x", -15)
-          .attr("y", -0)
-          .attr("text-anchor", "left")
-          .style("font-size", "16px")
-          .text("(in minutes)");
+      var decades_avg_length = new Map()
+      if (selected_ranking == 0) {
+        mean_avg_length = d3.mean(data.map(d => d.AvgSongLength))
+      }
+      else {
+        mean_avg_length = d3.mean(data.filter(d => d.Ranking == selected_ranking).map(d => d.AvgSongLength))
+      }
+      list_of_year.forEach(e => {
+      decades_avg_length.set(e, mean_avg_length)})
 
-      //Add name for x-axis
-      svg.append("text")
-        .attr("x", width/2)
-        .attr("y", height + margin.top + margin.bottom/4)
-        .attr("text-anchor", "left")
-        .style("font-size", "16px")
-        .text("Year");
-    });
+        console.log(decades_avg_length)
+        svg
+            .append("path")
+            .datum(decades_avg_length)
+            .attr("fill", "none")
+            .attr("id", "avg_length_line")
+            .attr("stroke", "#c71585")
+            .attr("stroke-width", 1)
+            .attr("stroke-dasharray", "5,5")
+            .attr("transform", `translate(25, 20)`)
+            .attr("d", d3.line()
+                    .x(function(d) { return x(d[0])})
+                    .y(function(d) { return y(d[1])}));
+        
+        var decades_avg_sales = new Map()
+        if (selected_ranking == 0) {
+          mean_avg_sales = d3.mean(data.map(d => parseInt(d.Sales.replace(/,/g, ''))))
+        }
+        else {
+          mean_avg_sales = d3.mean(data.filter(d => d.Ranking == selected_ranking).map(d => parseInt(d.Sales.replace(/,/g, ''))))
+        }
+        list_of_year.forEach(e => {
+          decades_avg_sales.set(e, mean_avg_sales)})
 
-}
+        console.log(decades_avg_sales)
+        svg
+            .append("path")
+            .datum(decades_avg_sales)
+            .attr("fill", "none")
+            .attr("id", "avg_sales_line")
+            .attr("stroke", "#008b8b")
+            .attr("stroke-width", 1)
+            .attr("stroke-dasharray", "5,5")
+            .attr("transform", `translate(25, 20)`)
+            .attr("d", d3.line()
+                    .x(function(d) { return x(d[0])})
+                    .y(function(d) { return y2(d[1])}));
+                //Add name for y-axis
+                svg.append("text")
+                .attr("x", -25)
+                .attr("y", -17)
+                .attr("text-anchor", "left")
+                .style("font-size", "16px")
+                .text("Average Song Length per Album");
+              svg.append("text")
+                .attr("x", -15)
+                .attr("y", -0)
+                .attr("text-anchor", "left")
+                .style("font-size", "16px")
+                .text("(in minutes)");
+      
+            //Add name for x-axis
+            svg.append("text")
+              .attr("x", width/2)
+              .attr("y", height + margin.top + margin.bottom/4)
+              .attr("text-anchor", "left")
+              .style("font-size", "16px")
+              .text("Year");
+          });
+        }
+
+        
 
 function createHeatmap(id){
 
@@ -324,64 +406,58 @@ function createHeatmap(id){
       .style("padding", "5px")
   
     // Three function that change the tooltip when user hover / move / leave a cell
-    const mouseover = function(event,d) {
-      tooltip
+    function handleMouseover(item) {
+      d3.selectAll(".itemvalue")
+        .filter(function(d, i){
+          return d.AvgSongLength == item.AvgSongLength
+        })
         .style("opacity", 1)
+      // tooltip
+      //   .style("opacity", 1)
     }
-
     const mousemove = function(event,d) {
-      tooltip
-        .html("Album length in minutes: " + d.AlbumLength)
-        .style("left", (event.x)/2 + "px")
-        .style("top", (event.y)/2 + "px")
+      // tooltip
+      //   .html("Album length in minutes: " + d.AlbumLength)
+      //   .style("left", (event.x)/2 + "px")
+      //   .style("top", (event.y)/2 + "px")
     }
-
     const mouseleave = function(event,d) {
-      tooltip
-        .style("opacity", 0)
+      // tooltip
+      //   .style("opacity", 0)
     }
-    
-    let highlightRow = 0;
-
     function setHighlightRow(row) {
-      if (row == highlightRow) {
+      if (row == selected_ranking) {
         return "yellow"
       }
       return "white"
     } 
 
     const onclick = function(event,d) {
-        if (highlightRow == this.id) {
-          highlightRow = 0;
-        }
-        else highlightRow = this.id;
-        console.log(this.id)
-        console.log(highlightRow)
-        update()
+      updateOnRankSelected(this.id)
+        
       }
 
-    function update(){
-      svg.selectAll()
-        .data(data, function(d) {return d.Year+':'+d.Ranking;})
-        .join("rect")
-          .attr("x", function(d) { return x(d.Year) })
-          .attr("y", function(d) { return y(d.Ranking) })
-          .attr("id", function(d) { return d.Ranking })
-          .attr("rx", 4)
-          .attr("ry", 4)
-          .attr("width", x.bandwidth() )
-          .attr("height", y.bandwidth() )
-          .style("fill", function(d) { return myColor(d.AlbumLength)} )
-          .style("stroke-width", 4)
-          .style("stroke", function(d) { return setHighlightRow(d.Ranking)})
-          .style("opacity", 0.8)
-        .on("mouseover", mouseover)
-        .on("mousemove", mousemove)
-        .on("mouseleave", mouseleave)
-        .on("click", onclick)
+    svg.selectAll()
+      .data(data, function(d) {return d.Year+':'+d.Ranking;})
+      .join("rect")
+        .attr("x", function(d) { return x(d.Year) })
+        .attr("y", function(d) { return y(d.Ranking) })
+        .attr("id", function(d) { return d.Ranking })
+        .attr("class", "heatmap itemvalue")
+        .attr("rx", 4)
+        .attr("ry", 4)
+        .attr("width", x.bandwidth() )
+        .attr("height", y.bandwidth() )
+        .style("fill", function(d) { return myColor(d.AlbumLength)} )
+        .style("stroke-width", 4)
+        .style("stroke", function(d) { return setHighlightRow(d.Ranking)})
+        .style("opacity", 1)
+      .on("mouseover", (d) => handleMouseover(d))
+      .on("mousemove", mousemove)
+      .on("mouseleave", mouseleave)
+      .on("click", onclick)
       }
-      update()
-      })
+      )
       
 
     
