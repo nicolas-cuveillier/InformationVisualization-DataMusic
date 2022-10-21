@@ -189,7 +189,7 @@ function createDualAxisLineChart(id){
         .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
     //retrieve data and build the chart
-    d3.csv("https://gist.githubusercontent.com/helenfs/c22b355263843bec54e90808ab594dd5/raw/482c6bdb4f4458518b4e67986015df9b32839eeb/final.csv").then(function(data){
+    d3.json("final.json").then(function(data){
 
         //build x-scale and x-axis
         const x = d3
@@ -373,7 +373,7 @@ function createDualAxisLineChart(id){
               .attr("text-anchor", "left")
               .style("font-size", "16px")
               .text("Year");
-          });
+           });
         }
 
         
@@ -387,7 +387,7 @@ function createHeatmap(id){
             .attr("transform", `translate(${margin.left}, ${margin.top})`);
   
   //Read the data
-  d3.csv("https://gist.githubusercontent.com/helenfs/f9aa9a8f4b4b035fc95d4cf5113150f2/raw/728f581ce7fd9af1b5b0e5f6c3f4a6999cddbdba/test.csv").then(function(data) {
+  d3.csv("heatmap.csv").then(function(data) {
     // Labels of row and columns -> unique identifier of the column called 'group' and 'variable'
     const myGroups = Array.from(new Set(data.map(d => d.Year)))
     const myVars = Array.from(new Set(data.map(d => d.Ranking)))
@@ -488,21 +488,28 @@ function createHeatmap(id){
     
   // Add title to graph
   svg.append("text")
-          .attr("x", 0)
-          .attr("y", -50)
+          .attr("x", width)
+          .attr("y", -20)
           .attr("text-anchor", "left")
           .style("font-size", "22px")
           .text("Heatmap");
   
   // Add subtitle to graph
   svg.append("text")
-          .attr("x", 0)
-          .attr("y", -20)
+          .attr("x", -20)
+          .attr("y", -10)
           .attr("text-anchor", "left")
-          .style("font-size", "14px")
-          .style("fill", "grey")
-          .style("max-width", 400)
-          .text("A heatmap showing the album length for the top 3 songs");
+          .style("font-size", "16px")
+          //.style("fill", "grey")
+          //.style("max-width", 400)
+          .text("Album rank");
+
+    svg.append("text")
+          .attr("x", width + margin.left)
+          .attr("y", height + margin.bottom/2)
+          .attr("text-anchor", "left")
+          .style("font-size", "16px")
+          .text("Year");
     
 }
 
