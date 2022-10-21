@@ -1,4 +1,4 @@
-const margin = { top: 40, right: 60, bottom: 40, left: 60 };
+const margin = { top: 40, right: 60, bottom: 60, left: 60 };
 const width = 550 - margin.left - margin.right;
 const height = 400 - margin.top - margin.bottom;
 
@@ -32,8 +32,8 @@ function createCustomLineChart(id){
     //create the svg
     const svg = d3
     .select(id)
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+    .attr("width", width + 2*(margin.left + margin.right) + 100)
+    .attr("height", height + margin.top + margin.bottom + 20)
     .append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
@@ -48,7 +48,7 @@ function createCustomLineChart(id){
         svg
             .append("g")
             .attr("id", "gXAxis")
-            .attr("stroke-width", 1.25)
+            .attr("stroke-width", 1.5)
             .attr("transform", `translate(20, ${height + 20})`)
             .call(d3.axisBottom(x).tickFormat(function(d, i) {
                 return d + " - " + (d + 5)
@@ -57,23 +57,22 @@ function createCustomLineChart(id){
         //build y-scale and y-axis
         const y = d3
             .scaleLinear() 
-            .domain([d3.max(data, d => parseInt(d.Sales.replace(/,/g, ''))),0])
+            .domain([d3.max(data, d => parseInt(d.Sales.replace(/,/g, ''))) / 1.5,0])
             .range([0, height]);
         svg
             .append("g")
             .attr("id", "gYAxis")
-            .attr("stroke-width", 1.25)
+            .attr("stroke-width", 1.5)
             .attr("transform", `translate(20,20)`)
             .call(d3.axisLeft(y).tickFormat(function(d, i) {return d / 1000000 }));
 
         //build the scale for the different colors
-        var color = d3.scaleOrdinal().domain([0,5]).range(['red','blue', 'yellow','green', 'black', 'orange'])
+        var color = d3.scaleOrdinal().domain([0,5]).range(['#B22222','blue', '#FFD700','green', '#00BFFF', 'orange'])
     
         //List of genre and number of tracks that will be display on the chart  
         var list_of_genre = ["Pop", "Rock", "R&B", "Hip Hop", "Country"]
         var list_of_Tracks = [0,5,10,15,20,25,30,35,40,45]
 
-        //TODO no hardcoding
         var selected_data = []
         var new_data = new Map()
 
@@ -92,17 +91,19 @@ function createCustomLineChart(id){
             svg
                 .append("path")
                 .datum(new_data)
-                .attr("fill", "none")
+                .attr("fill", "none").transition()
+                .duration(1000)
                 .attr("stroke", color(list_of_genre.indexOf(elem)))
-                .attr("stroke-width", 1.5)
+                .attr("stroke-width", 1.75)
                 .attr("transform", `translate(20,0)`)
                 .attr("d", d3.line()
                     .x(function(d) { return x(d[0]) })
                     .y(function(d) { return y(d[1])}));
 
             //plot the circles
+            circles = "circle" + new String(list_of_genre.indexOf(elem))
             svg
-                .selectAll("circle")
+                .selectAll(circles)
                 .append("g")
                 .data(new_data)
                 .enter()
@@ -116,6 +117,39 @@ function createCustomLineChart(id){
 
         });
 
+        //Add name for y-axis
+        svg.append("text")
+          .attr("x", -20)
+          .attr("y", -15)
+          .attr("text-anchor", "left")
+          .style("font-size", "16px")
+          .text("Worldwide Sales");
+        svg.append("text")
+          .attr("x", -15)
+          .attr("y", -0)
+          .attr("text-anchor", "left")
+          .style("font-size", "16px")
+          .text("(in millions)");
+
+        //Add name for x-axis
+        svg.append("text")
+          .attr("x", width/2)
+          .attr("y", height + margin.top + 15)
+          .attr("text-anchor", "left")
+          .style("font-size", "16px")
+          .text("Number of tracks");
+
+        //Add legend
+        list_of_genre.forEach(elem => {
+          svg.append("text")
+            .attr("x", width )
+            .attr("y", height/2 + 20*list_of_genre.indexOf(elem) - margin.top)
+            .attr("text-anchor", "left")
+            .style("font-size", "16px")
+            .style("color", color(list_of_genre.indexOf(elem)))
+            .text(elem);
+        })
+
     });
 }
 
@@ -125,7 +159,7 @@ function createDualAxisLineChart(id){
     const svg = d3
         .select(id)
         .attr("width", (width + margin.left + margin.right + margin.right/2))
-        .attr("height", (height + margin.top + margin.bottom))
+        .attr("height", (height + margin.top + margin.bottom ))
         .append("g")
         .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
@@ -140,7 +174,7 @@ function createDualAxisLineChart(id){
         svg
             .append("g")
             .attr("id", "gXAxis")
-            .attr("stroke-width", 1.25)
+            .attr("stroke-width", 1.5)
             .attr("transform", `translate(25, ${height + 20})`)
             .call(d3.axisBottom(x).tickFormat(function(d, i) {return d }));
         
@@ -151,11 +185,19 @@ function createDualAxisLineChart(id){
             .range([0, height]);
         svg
             .append("g")
-            .attr("id", "gYAxis")
+            .attr("id", "gYAxis1")
             .attr("stroke", "#c71585")
-            .attr("stroke-width", 1.25)
+            .attr("stroke-width", 1.5)
             .attr("transform", `translate(25 ,20)`)
             .call(d3.axisLeft(y));
+
+        //change color of the axis
+        svg
+            .select("#gYAxis1 path")
+            .attr("stroke", "#c71585");
+        svg
+            .selectAll("#gYAxis1 line")
+            .attr("stroke", "#c71585");
 
         //TODO change color axis
 
@@ -166,12 +208,20 @@ function createDualAxisLineChart(id){
             .range([0, height]);
         svg
             .append("g")
-            .attr("id", "gYAxis")
+            .attr("id", "gYAxis2")
             .attr("transform", `translate(${width + 25} ,20)`)
             .attr("stroke", "#008b8b")
-            .attr("stroke-width", 1.25)
+            .attr("stroke-width", 1.5)
             .attr("fill", "red")
             .call(d3.axisRight(y2).tickFormat(function(d, i) {return d / 1000000}));
+
+        //change color of the axis
+        svg
+            .select("#gYAxis2 path")
+            .attr("stroke", "#008b8b");
+        svg
+            .selectAll("#gYAxis2 line")
+            .attr("stroke", "#008b8b");
         
         //list of all years
         var list_of_year = new Set(data.map(d => d.Year))
@@ -196,6 +246,8 @@ function createDualAxisLineChart(id){
             .attr("fill", "none")
             .attr("id", "length_line")
             .attr("stroke", "#c71585")
+            .transition()
+            .duration(1000)
             .attr("stroke-width", 2)
             .attr("transform", `translate(25, 20)`)
             .attr("d", d3.line()
@@ -220,21 +272,23 @@ function createDualAxisLineChart(id){
             .attr("fill", "none")
             .attr("id", "sales_line")
             .attr("stroke", "#008b8b")
+            .transition()
+            .duration(1000)
             .attr("stroke-width", 2)
             .attr("transform", `translate(25, 20)`)
             .attr("d", d3.line()
                     .x(function(d) { return x(d[0])})
                     .y(function(d) { return y2(d[1])}));
-        
-        var decades_avg_length = new Map()
-        if (selected_ranking == 0) {
-          mean_avg_length = d3.mean(data.map(d => d.AvgSongLength))
-        }
-        else {
-          mean_avg_length = d3.mean(data.filter(d => d.Ranking == selected_ranking).map(d => d.AvgSongLength))
-        }
-        list_of_year.forEach(e => {
-          decades_avg_length.set(e, mean_avg_length)})
+
+      var decades_avg_length = new Map()
+      if (selected_ranking == 0) {
+        mean_avg_length = d3.mean(data.map(d => d.AvgSongLength))
+      }
+      else {
+        mean_avg_length = d3.mean(data.filter(d => d.Ranking == selected_ranking).map(d => d.AvgSongLength))
+      }
+      list_of_year.forEach(e => {
+      decades_avg_length.set(e, mean_avg_length)})
 
         console.log(decades_avg_length)
         svg
@@ -273,21 +327,31 @@ function createDualAxisLineChart(id){
             .attr("d", d3.line()
                     .x(function(d) { return x(d[0])})
                     .y(function(d) { return y2(d[1])}));
-        },
-        (update) => {
-          update
-            .attr("d", d3.line()
-              .x(function(d) { return x(d[0])})
-              .y(function(d) { return y2(d[1])}))
-            .attr("d", d3.line()
-              .x(function(d) { return x(d[0])})
-              .y(function(d) { return y(d[1])}))
-        },
-        (exit) => {
-          exit.remove();
+                //Add name for y-axis
+                svg.append("text")
+                .attr("x", -25)
+                .attr("y", -17)
+                .attr("text-anchor", "left")
+                .style("font-size", "16px")
+                .text("Average Song Length per Album");
+              svg.append("text")
+                .attr("x", -15)
+                .attr("y", -0)
+                .attr("text-anchor", "left")
+                .style("font-size", "16px")
+                .text("(in minutes)");
+      
+            //Add name for x-axis
+            svg.append("text")
+              .attr("x", width/2)
+              .attr("y", height + margin.top + margin.bottom/4)
+              .attr("text-anchor", "left")
+              .style("font-size", "16px")
+              .text("Year");
+          });
         }
-        );
-}
+
+        
 
 function createHeatmap(id){
 
