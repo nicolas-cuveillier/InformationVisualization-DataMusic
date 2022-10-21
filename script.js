@@ -643,8 +643,8 @@ function createSankeyChart(decade, id) {
 
   const svg = d3
     .select("#sankey")
-    .attr("width", width)
-    .attr("height", height)
+    .attr("width", "600px")
+    .attr("height", "800px")
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
