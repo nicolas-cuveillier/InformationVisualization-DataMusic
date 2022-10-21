@@ -5,12 +5,61 @@
   <title>VI Boilterplate</title>
   <script src="script.js"></script>
   <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="sankey.js"></script>
+
+  <style>
+    .node rect {
+      cursor: move;
+      fill-opacity: 0.9;
+      shape-rendering: crispEdges;
+    }
+  
+    .node text {
+      pointer-events: none;
+      text-shadow: 0 1px 0 #fff;
+    }
+  
+    .link {
+      fill: none;
+      stroke: #000;
+      stroke-opacity: 0.2;
+    }
+  
+    .link:hover {
+      stroke-opacity: 0.5;
+    }
+  
+    .button {
+      background-color: #aaa;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 4px;
+    }
+  
+    .button:hover {
+      background-color: #4caf50;
+      color: white;
+      cursor: pointer
+    }
+  </style>
 
 </head>
 
 <body onload="init()">
   <div style="width: 100%;float: left; height: 50px;">
     <h1 style="font-family:Monaco; margin: auto;width: 500px;">The Top 10 Album Analysis</h1>
+  </div>
+
+  <div>
+    <button class="button" id="first">90s</button>
+    <button class="button" id="second">00s</button>
+    <button class="button" id="third">10s</button>
+    <button class="button" id="all">All</button>
   </div>
 
   <div>
