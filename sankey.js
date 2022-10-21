@@ -173,7 +173,7 @@ d3.sankey = function () {
   }
 
   function computeNodeDepths(iterations) {
-    var nodesByBreadth = d3
+    /* var nodesByBreadth = d3
       .nest()
       .key(function (d) {
         return d.x;
@@ -182,7 +182,15 @@ d3.sankey = function () {
       .entries(nodes)
       .map(function (d) {
         return d.values;
-      });
+      }); */
+
+    var nodeArray = [];
+    var nodesByBreadth = d3.groups(nodes, (d) => d.x);
+    nodesByBreadth.map((node) => {
+      nodeArray.push(node[1]);
+    });
+
+    nodesByBreadth = nodeArray;
 
     //
     initializeNodeDepth();
