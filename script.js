@@ -1,4 +1,4 @@
-const margin = { top: 40, right: 60, bottom: 60, left: 60 };
+const margin = { top: 40, right: 60, bottom: 60, left: 50 };
 const width = 550 - margin.left - margin.right;
 const height = 400 - margin.top - margin.bottom;
 
@@ -27,13 +27,15 @@ function updateOnRankSelected(row){
   createDualAxisLineChart("#dualLineChart")
 }
 
+const list_of_genre = ["Pop", "Rock", "RB", "HipHop", "Country"]
+
 function createCustomLineChart(id){
 
     //create the svg
     const svg = d3
     .select(id)
-    .attr("width", width + 2*(margin.left + margin.right) + 100)
-    .attr("height", height + margin.top + margin.bottom + 20)
+    .attr("width", width + (margin.left + margin.right))
+    .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
@@ -70,7 +72,6 @@ function createCustomLineChart(id){
         var color = d3.scaleOrdinal().domain([0,5]).range(['#B22222','blue', '#FFD700','green', '#00BFFF', 'orange'])
     
         //List of genre and number of tracks that will be display on the chart  
-        var list_of_genre = ["Pop", "Rock", "RB", "HipHop", "Country"]
         var list_of_Tracks = [0,5,10,15,20,25,30,35,40,45]
 
         var selected_data = []
@@ -146,7 +147,10 @@ function createCustomLineChart(id){
             .attr("class", "text_" + elem)
             .attr("x", width - margin.left/2)
             .attr("y", 20*list_of_genre.indexOf(elem) + margin.top)
+            .on("mouseover", (event, d) => handleCustomLineChartMouseOver(elem))
+            .on("mouseleave", (event, d) => handleCustomLineChartMouseLeave())
             .style("fill", color(list_of_genre.indexOf(elem)))
+            .style("user-select", "none")
             .text(elem);
         })
 
@@ -159,22 +163,20 @@ function createCustomLineChart(id){
     });
 }
 
-const list_of_genre = ["Pop", "Rock", "RB", "HipHop", "Country"]
-
 function handleCustomLineChartMouseOver(genre){
   list_of_genre.filter(e => e !== genre).forEach(genre => {
-    d3.selectAll(".customItemValue_" + genre + "_path").attr("opacity", 0.35).attr("stroke", "gray");
-    d3.selectAll(".customItemValue_" + genre + "_circle").attr("opacity", 0.35).style("fill", "gray");
-    d3.selectAll(".text_" + genre ).style("fill", "gray");
+    d3.selectAll(".customItemValue_" + genre + "_path").transition().duration(250).attr("opacity", 0.35).attr("stroke", "gray");
+    d3.selectAll(".customItemValue_" + genre + "_circle").transition().duration(250).attr("opacity", 0.35).style("fill", "gray");
+    d3.selectAll(".text_" + genre ).transition().duration(250).style("fill", "gray");
   })
 }
 
 function handleCustomLineChartMouseLeave() {
   const color = d3.scaleOrdinal().domain([0,5]).range(['#B22222','blue', '#FFD700','green', '#00BFFF', 'orange'])
   list_of_genre.forEach(genre => {
-    d3.selectAll(".customItemValue_" + genre + "_path").attr("opacity", 1).attr("stroke", color(list_of_genre.indexOf(genre)));
-    d3.selectAll(".customItemValue_" + genre + "_circle").attr("opacity", 1).style("fill", color(list_of_genre.indexOf(genre)));
-    d3.selectAll(".text_" + genre ).style("fill", color(list_of_genre.indexOf(genre)));
+    d3.selectAll(".customItemValue_" + genre + "_path").transition().duration(250).attr("opacity", 1).attr("stroke", color(list_of_genre.indexOf(genre)));
+    d3.selectAll(".customItemValue_" + genre + "_circle").transition().duration(250).attr("opacity", 1).style("fill", color(list_of_genre.indexOf(genre)));
+    d3.selectAll(".text_" + genre ).transition().duration(250).style("fill", color(list_of_genre.indexOf(genre)));
   })
 }
 
@@ -183,8 +185,8 @@ function createDualAxisLineChart(id){
     //create the svg
     const svg = d3
         .select(id)
-        .attr("width", (width + margin.left + margin.right + margin.right/2))
-        .attr("height", (height + margin.top + margin.bottom ))
+        .attr("width", width + (margin.left + margin.right))
+        .attr("height", height + margin.top + margin.bottom)
         .append("g")
         .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
@@ -381,8 +383,8 @@ function createDualAxisLineChart(id){
 function createHeatmap(id){
 
     const svg = d3.select(id)
-            .attr("width", 2*(width + margin.left + margin.right) + 75)
-            .attr("height", 2*height + margin.top + margin.bottom)
+            .attr("width", 2*width + 100)
+            .attr("height", height + margin.top + margin.bottom)
             .append("g")
             .attr("transform", `translate(${margin.left}, ${margin.top})`);
   
@@ -394,14 +396,14 @@ function createHeatmap(id){
   
     // Build X scales and axis:
     const x = d3.scaleBand()
-      .range([ 0, 2*(width + margin.left + margin.right)  ])
+      .range([ 0, 2*width - margin.right])
       .domain(myGroups)
       .padding(0.05);
     svg.append("g")
       .style("font-size", 13)
       .attr("transform", `translate(0, ${height})`)
       .call(d3.axisBottom(x).tickSize(0))
-      .select(".domain").remove()
+      .select(".domain").remove();
   
     // Build Y scales and axis:
     const y = d3.scaleBand()
@@ -409,11 +411,13 @@ function createHeatmap(id){
       .domain(myVars)
       .padding(0.05);
     svg.append("g")
+      .attr("class", "gRotate")
       .style("font-size", 15)
       .call(d3.axisLeft(y).tickSize(0))
-      .select(".domain").remove()
+      .select(".domain").remove();
     
-    
+    //TODO rotate years
+
     // Build color scale
     const myColor = d3.scaleSequential()
       .interpolator(d3.interpolateGreens)
@@ -482,10 +486,8 @@ function createHeatmap(id){
       .on("mouseleave", mouseleave)
       .on("click", onclick)
       }
-      )
+    )
       
-
-    
   // Add title to graph
   svg.append("text")
           .attr("x", width)
@@ -511,11 +513,12 @@ function createHeatmap(id){
           .style("font-size", "16px")
           .text("Year");
     
+    //console.log(d3.selectAll("g.tick").attr("transform","rotate(90)"))
 }
 
 function createSankeyDiagram(id){
     const svg = d3
     .select(id)
-    .attr("width", width)
-    .attr("height", 2*(height + margin.top + margin.bottom));
+    .attr("width", 2*width - margin.left - margin.right)
+    .attr("height", height + margin.top + margin.bottom);
 }
