@@ -51,7 +51,7 @@ function createCustomLineChart(id){
             .attr("stroke-width", 1.5)
             .attr("transform", `translate(20, ${height + 20})`)
             .call(d3.axisBottom(x).tickFormat(function(d, i) {
-                return d + " - " + (d + 5)
+                return d + "-" + (d + 5)
             }));
 
         //build y-scale and y-axis
@@ -128,34 +128,33 @@ function createCustomLineChart(id){
         svg.append("text")
           .attr("x", -20)
           .attr("y", -15)
-          .attr("text-anchor", "left")
-          .style("font-size", "16px")
           .text("Worldwide Sales");
         svg.append("text")
           .attr("x", -15)
           .attr("y", -0)
-          .attr("text-anchor", "left")
-          .style("font-size", "16px")
           .text("(in millions)");
 
         //Add name for x-axis
         svg.append("text")
           .attr("x", width/2)
           .attr("y", height + margin.top + 15)
-          .attr("text-anchor", "left")
-          .style("font-size", "16px")
           .text("Number of tracks");
 
         //Add legend
         list_of_genre.forEach(elem => {
           svg.append("text")
-            .attr("x", width )
-            .attr("y", height/2 + 20*list_of_genre.indexOf(elem) - margin.top)
-            .attr("text-anchor", "left")
-            .style("font-size", "16px")
+            .attr("class", "text_" + elem)
+            .attr("x", width - margin.left/2)
+            .attr("y", 20*list_of_genre.indexOf(elem) + margin.top)
             .style("fill", color(list_of_genre.indexOf(elem)))
             .text(elem);
         })
+
+        //change font
+        d3.selectAll("text")
+          .attr("text-anchor", "left")
+          .style("font-size", "13px")
+          .style("font-family", "Monaco");
 
     });
 }
@@ -166,8 +165,8 @@ function handleCustomLineChartMouseOver(genre){
   list_of_genre.filter(e => e !== genre).forEach(genre => {
     d3.selectAll(".customItemValue_" + genre + "_path").attr("opacity", 0.35).attr("stroke", "gray");
     d3.selectAll(".customItemValue_" + genre + "_circle").attr("opacity", 0.35).style("fill", "gray");
+    d3.selectAll(".text_" + genre ).style("fill", "gray");
   })
-  
 }
 
 function handleCustomLineChartMouseLeave() {
@@ -175,6 +174,7 @@ function handleCustomLineChartMouseLeave() {
   list_of_genre.forEach(genre => {
     d3.selectAll(".customItemValue_" + genre + "_path").attr("opacity", 1).attr("stroke", color(list_of_genre.indexOf(genre)));
     d3.selectAll(".customItemValue_" + genre + "_circle").attr("opacity", 1).style("fill", color(list_of_genre.indexOf(genre)));
+    d3.selectAll(".text_" + genre ).style("fill", color(list_of_genre.indexOf(genre)));
   })
 }
 
