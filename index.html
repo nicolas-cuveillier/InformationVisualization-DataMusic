@@ -48,6 +48,12 @@
       color: white;
       cursor: pointer
     }
+
+    .sankey-titles {
+      position: absolute;
+      top: 60px;
+      font-family: Arial;
+    }
   </style>
 
 </head>
@@ -66,22 +72,22 @@
     </div>
   </div>
 
-  <div style="position: absolute; top: 50px; left: 45px">
+  <div style="position: absolute; top: 20px; left: 45px">
     <button class="button" id="first">90s</button>
     <button class="button" id="second">00s</button>
     <button class="button" id="third">10s</button>
     <button class="button" id="all">All</button>
   </div>
 
-  <div style="position: absolute; top: 80px; left: 50px; font-family: Arial;">
+  <div class="sankey-titles" style="left: 50px;">
     <p>Genre</p>
   </div>
 
-  <div style="position: absolute; top: 80px; left: 320px; font-family: Arial;">
+  <div class="sankey-titles" style="left: 320px;">
     <p>Album Length</p>
   </div>
 
-  <div style="position: absolute; top: 80px; left: 600px; font-family: Arial;">
+  <div class="sankey-titles" style="left: 600px;">
     <p>Worldwide Sales</p>
   </div>
   
