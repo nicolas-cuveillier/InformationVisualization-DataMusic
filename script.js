@@ -45,7 +45,6 @@ function updateRankSelected(row){
 
 function updateDecadeSelected(decade){
   selected_decade = decade;
-  d3.select("#gXAxis").remove()
 
   update()
 }
@@ -54,7 +53,7 @@ function update() {
   d3.select("#sales_line").remove()
   d3.select("#avg_length_line").remove()
   d3.select("#avg_sales_line").remove()
-  d3.select("#gXAxis").remove()
+  d3.select("#gXAxisD").remove()
 
   createHeatmap("#heatMap");
   createDualAxisLineChart("#dualLineChart");
@@ -302,7 +301,7 @@ function createDualAxisLineChart(id) {
        //build x-scale and x-axis
       const x = d3
         .scaleLinear()
-        .domain([d3.min(data, (d) => d.Year), d3.max(data, (d) => d.Year)])
+        .domain([d3.min(list_of_year), d3.max(list_of_year)])
         .range([0, width]);
       svg
         .append("g")
@@ -531,10 +530,10 @@ function createHeatmap(id){
 
   const svg = d3
           .select(id)
-          .attr("width", 2 * (width + margin.left + margin.right) + 75)
-          .attr("height", 2 * height + margin.top + margin.bottom)
+          .attr("width", width + margin.left + margin.right + 30)
+          .attr("height", height + margin.top + margin.bottom)
           .append("g")
-          .attr("transform", `translate(${margin.left}, ${margin.top})`);
+          .attr("transform", `translate(${margin.left/2}, ${margin.top * 0.5})`);
     
     //Read the data
     d3.csv("heatmap.csv").then(function(data) {
@@ -544,21 +543,23 @@ function createHeatmap(id){
     // Build X scales and axis:
     const x = d3
       .scaleBand()
-      .range([0, 2 * (width + margin.left + margin.right)])
+      .range([0, (width + margin.left + margin.right)])
       .domain(myGroups)
-      .padding(0.05);
+      .padding(0.01);
     svg
       .append("g")
       //.style("font-size", 13)
-      .attr("class", "gXAxisH")
+      .attr("id", "gXAxisH")
       .attr("transform", `translate(0, ${height})`)
       .call(d3.axisBottom(x).tickSize(0))
       .select(".domain")
       .remove();
       
+    d3.selectAll("#gXAxisH  .tick text")
+      .attr("transform", "translate(5,-170) rotate(90)")
 
     // Build Y scales and axis:
-    const y = d3.scaleBand().range([height, 0]).domain(myVars).padding(0.05);
+    const y = d3.scaleBand().range([height * 0.35, 0]).domain(myVars).padding(0.05);
     svg
       .append("g")
       .style("font-size", 15)
@@ -639,7 +640,7 @@ function createHeatmap(id){
       .style("fill", function (d) {
         return myColor(d.AlbumLength);
       })
-      .style("stroke-width", 4)
+      .style("stroke-width", 1)
       .style("stroke", function (d) {
         return setHighlightRow(d.Ranking);
       })
