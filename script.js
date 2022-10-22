@@ -14,30 +14,47 @@ function init() {
   createSankeyChart("", "#all");
   d3.select("#first").on("click", () => {
     createSankeyChart("_90s", "#first");
+    updateDecadeSelected(1990);
   });
   d3.select("#second").on("click", () => {
     createSankeyChart("_00s", "#second");
+    updateDecadeSelected(2000);
   });
   d3.select("#third").on("click", () => {
     createSankeyChart("_10s", "#third");
+    updateDecadeSelected(2010);
   });
   d3.select("#all").on("click", () => {
     createSankeyChart("", "#all");
+    updateDecadeSelected(0);
   });
 }
-let selected_ranking = 0;
-function updateOnRankSelected(row) {
+let selected_ranking = 0
+let selected_decade = 0
+
+function updateRankSelected(row){
   if (selected_ranking == row) {
     selected_ranking = 0;
-  } else selected_ranking = row;
-  // console.log(row);
-  // console.log(selected_ranking);
-  // updateHeatmap()
-  // updateAvgLines()
-  d3.select("#length_line").remove();
-  d3.select("#sales_line").remove();
-  d3.select("#avg_length_line").remove();
-  d3.select("#avg_sales_line").remove();
+  }
+  else selected_ranking = row;
+  console.log(row)
+  console.log(selected_ranking)
+
+  update()
+}
+
+function updateDecadeSelected(decade){
+  selected_decade = decade;
+  d3.select("#gXAxis").remove()
+
+  update()
+}
+function update() {
+  d3.select("#length_line").remove()
+  d3.select("#sales_line").remove()
+  d3.select("#avg_length_line").remove()
+  d3.select("#avg_sales_line").remove()
+  d3.select("#gXAxis").remove()
 
   createHeatmap("#heatMap");
   createDualAxisLineChart("#dualLineChart");
@@ -53,7 +70,7 @@ function createCustomLineChart(id) {
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
   //open data and build the chart
-  d3.json("final.json").then(function (data) {
+  d3.json("final.json").then(function(data){
     //build x-scale and x-axis
     const x = d3.scaleLinear().domain([0, 45]).range([0, width]);
     svg
@@ -206,7 +223,6 @@ const list_of_genre = ["Pop", "Rock", "RB", "HipHop", "Country"];
 function handleCustomLineChartMouseOver(genre) {
   if(genre === "R&B")genre = "RB"
   if(genre === "Hip Hop")genre = "HipHop"
-  if(!list_of_genre.includes(genre)) return;
   list_of_genre
     .filter((e) => e !== genre)
     .forEach((genre) => {
@@ -270,229 +286,211 @@ function createDualAxisLineChart(id) {
     .append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-  //retrieve data and build the chart
-  d3.json("final.json").then(function (data) {
-    //build x-scale and x-axis
-    const x = d3
-      .scaleLinear()
-      .domain([d3.min(data, (d) => d.Year), d3.max(data, (d) => d.Year)])
-      .range([0, width]);
-    svg
-      .append("g")
-      .attr("id", "gXAxisD")
-      .attr("stroke-width", 1.5)
-      .attr("transform", `translate(25, ${height + 20})`)
-      .call(
-        d3.axisBottom(x).tickFormat(function (d, i) {
-          return d;
+    //retrieve data and build the chart
+    d3.json("final.json").then(function (data) {
+
+
+        //list of all years
+        
+        if(selected_decade != 0){
+          var list_of_year = new Set(data.filter(d => d.Year >= selected_decade && d.Year < (selected_decade + 11)).map(d => d.Year))
+        }
+        else {
+          var list_of_year = new Set(data.map(d => d.Year))
+        }
+           
+       //build x-scale and x-axis
+      const x = d3
+        .scaleLinear()
+        .domain([d3.min(data, (d) => d.Year), d3.max(data, (d) => d.Year)])
+        .range([0, width]);
+      svg
+        .append("g")
+        .attr("id", "gXAxisD")
+        .attr("stroke-width", 1.5)
+        .attr("transform", `translate(25, ${height + 20})`)
+        .call(
+          d3.axisBottom(x).tickFormat(function (d, i) {
+            return d;
+          })
+        );
+
+      d3.selectAll("#gXAxisD  .tick text")
+        .attr("transform", "translate(-2,5) rotate(-25)")
+
+      //build the left y-scale and y-axis
+      const y = d3
+        .scaleLinear()
+        .domain([8, 0]) //TODO no hardcoding
+        .range([0, height]);
+      svg
+        .append("g")
+        .attr("id", "gYAxis1")
+        .attr("stroke", "#c71585")
+        .attr("stroke-width", 1.5)
+        .attr("transform", `translate(25 ,20)`)
+        .call(d3.axisLeft(y));
+
+      //change color of the axis
+      svg.select("#gYAxis1 path").attr("stroke", "#c71585");
+      svg.selectAll("#gYAxis1 line").attr("stroke", "#c71585");
+
+      //build the right y-scale and y-axis
+      const y2 = d3
+        .scaleLinear()
+        .domain([d3.max(data, (d) => parseInt(d.Sales.replace(/,/g, ""))), 0])
+        .range([0, height]);
+      svg
+        .append("g")
+        .attr("id", "gYAxis2")
+        .attr("transform", `translate(${width + 25} ,20)`)
+        .attr("stroke", "#008b8b")
+        .attr("stroke-width", 1.5)
+        .attr("fill", "red")
+        .call(
+          d3.axisRight(y2).tickFormat(function (d, i) {
+            return d / 1000000;
+          })
+        );
+
+      //change color of the axis
+      svg.select("#gYAxis2 path")
+        .attr("stroke", "#008b8b");
+      svg.selectAll("#gYAxis2 line")
+        .attr("stroke", "#008b8b"); 
+        
+        //create the new data to be plotted from the left axis
+        var new_data1 = new Map()
+        list_of_year.forEach(e => {
+          if(selected_ranking == 0){
+            mean = d3.mean(data.filter(d => d.Year == e).map(d => d.AvgSongLength))
+          }
+          else{
+            mean = d3.mean(data.filter(d => d.Year == e && d.Ranking == selected_ranking).map(d => d.AvgSongLength))
+          }
+          new_data1.set(e, mean)
         })
-      );
+        svg
+            .append("path")
+            .datum(new_data1)
+            .attr("fill", "none")
+            .attr("id", "length_line")
+            .attr("stroke", "#c71585")
+            .transition()
+            .duration(1000)
+            .attr("stroke-width", 2)
+            .attr("transform", `translate(25, 20)`)
+            .attr("d", d3.line()
+                    .x(function(d) { return x(d[0])})
+                    .y(function(d) { return y(d[1])}));
 
-    d3.selectAll("#gXAxisD  .tick text")
-      .attr("transform", "translate(-2,5) rotate(-25)")
+        //create the new data to be plotted from the right axis
+        var new_data2 = new Map();
+        
+        list_of_year.forEach((e) => {
+          if (selected_ranking == 0) {
+            mean = d3.mean(
+              data
+                .filter((d) => d.Year == e)
+                .map((d) => parseInt(d.Sales.replace(/,/g, "")))
+            );
+          } else {
+            mean = d3.mean(
+              data
+                .filter((d) => d.Year == e && d.Ranking == selected_ranking)
+                .map((d) => parseInt(d.Sales.replace(/,/g, "")))
+            );
+          }
+          new_data2.set(e, mean);
+        });
 
-    //build the left y-scale and y-axis
-    const y = d3
-      .scaleLinear()
-      .domain([8, 0]) //TODO no hardcoding
-      .range([0, height]);
-    svg
-      .append("g")
-      .attr("id", "gYAxis1")
-      .attr("stroke", "#c71585")
-      .attr("stroke-width", 1.5)
-      .attr("transform", `translate(25 ,20)`)
-      .call(d3.axisLeft(y));
+        svg
+        .append("path")
+        .datum(new_data2)
+        .attr("fill", "none")
+        .attr("id", "sales_line")
+        .attr("stroke", "#008b8b")
+        .transition()
+        .duration(1000)
+        .attr("stroke-width", 2)
+        .attr("transform", `translate(25, 20)`)
+        .attr(
+          "d",
+            d3
+              .line()
+              .x(function (d) {
+                return x(d[0]);
+              })
+              .y(function (d) {
+                return y2(d[1]);
+              })
+          );
 
-    //change color of the axis
-    svg.select("#gYAxis1 path").attr("stroke", "#c71585");
-    svg.selectAll("#gYAxis1 line").attr("stroke", "#c71585");
-
-    //build the right y-scale and y-axis
-    const y2 = d3
-      .scaleLinear()
-      .domain([d3.max(data, (d) => parseInt(d.Sales.replace(/,/g, ""))), 0])
-      .range([0, height]);
-    svg
-      .append("g")
-      .attr("id", "gYAxis2")
-      .attr("transform", `translate(${width + 25} ,20)`)
-      .attr("stroke", "#008b8b")
-      .attr("stroke-width", 1.5)
-      .attr("fill", "red")
-      .call(
-        d3.axisRight(y2).tickFormat(function (d, i) {
-          return d / 1000000;
-        })
-      );
-
-    //change color of the axis
-    svg.select("#gYAxis2 path")
-      .attr("stroke", "#008b8b");
-    svg.selectAll("#gYAxis2 line")
-      .attr("stroke", "#008b8b");
-
-    //list of all years
-    var list_of_year = new Set(data.map((d) => d.Year));
-
-    d3.select("d").join((exit) => {
-      exit.remove();
-    });
-    //create the new data to be plotted from the left axis
-    var new_data1 = new Map();
-    list_of_year.forEach((e) => {
+      var decades_avg_length = new Map()
       if (selected_ranking == 0) {
-        mean = d3.mean(
-          data.filter((d) => d.Year == e).map((d) => d.AvgSongLength)
-        );
-      } else {
-        mean = d3.mean(
-          data
-            .filter((d) => d.Year == e && d.Ranking == selected_ranking)
-            .map((d) => d.AvgSongLength)
-        );
+        mean_avg_length = d3.mean(data.filter(d => list_of_year.has(d.Year)).map(d => d.AvgSongLength))
       }
-      new_data1.set(e, mean);
-    });
-    svg
-      .append("path")
-      .datum(new_data1)
-      .attr("fill", "none")
-      .attr("id", "length_line")
-      .attr("stroke", "#c71585")
-      .transition()
-      .duration(1000)
-      .attr("stroke-width", 2)
-      .attr("transform", `translate(25, 20)`)
-      .attr(
-        "d",
-        d3
-          .line()
-          .x(function (d) {
-            return x(d[0]);
-          })
-          .y(function (d) {
-            return y(d[1]);
-          })
-      );
-
-    //create the new data to be plotted from the right axis
-    var new_data2 = new Map();
-    list_of_year.forEach((e) => {
-      selected_ranking != 0
-        ? data.filter((d) => d.Ranking == selected_ranking)
-        : null;
-      if (selected_ranking == 0) {
-        mean = d3.mean(
-          data
-            .filter((d) => d.Year == e)
-            .map((d) => parseInt(d.Sales.replace(/,/g, "")))
-        );
-      } else {
-        mean = d3.mean(
-          data
-            .filter((d) => d.Year == e && d.Ranking == selected_ranking)
-            .map((d) => parseInt(d.Sales.replace(/,/g, "")))
-        );
+      else {
+        mean_avg_length = d3.mean(data.filter(d => list_of_year.has(d.Year) && d.Ranking == selected_ranking).map(d => d.AvgSongLength))
       }
-      new_data2.set(e, mean);
-    });
-    svg
-      .append("path")
-      .datum(new_data2)
-      .attr("fill", "none")
-      .attr("id", "sales_line")
-      .attr("stroke", "#008b8b")
-      .transition()
-      .duration(1000)
-      .attr("stroke-width", 2)
-      .attr("transform", `translate(25, 20)`)
-      .attr(
-        "d",
-        d3
-          .line()
-          .x(function (d) {
-            return x(d[0]);
-          })
-          .y(function (d) {
-            return y2(d[1]);
-          })
-      );
+      list_of_year.forEach(e => {
+      decades_avg_length.set(e, mean_avg_length)})
 
-    var decades_avg_length = new Map();
-    if (selected_ranking == 0) {
-      mean_avg_length = d3.mean(data.map((d) => d.AvgSongLength));
-    } else {
-      mean_avg_length = d3.mean(
-        data
-          .filter((d) => d.Ranking == selected_ranking)
-          .map((d) => d.AvgSongLength)
-      );
-    }
-    list_of_year.forEach((e) => {
-      decades_avg_length.set(e, mean_avg_length);
-    });
+        console.log(decades_avg_length)
+        svg
+            .append("path")
+            .datum(decades_avg_length)
+            .attr("fill", "none")
+            .attr("id", "avg_length_line")
+            .attr("stroke", "#c71585")
+            .attr("stroke-width", 1)
+            .attr("stroke-dasharray", "5,5")
+            .attr("transform", `translate(25, 20)`)
+            .attr(
+                "d",
+                d3
+                  .line()
+                  .x(function (d) {
+                    return x(d[0]);
+                  })
+                  .y(function (d) {
+                    return y(d[1]);
+                  })
+              );
+        
+        var decades_avg_sales = new Map()
+        if (selected_ranking == 0) {
+          mean_avg_sales = d3.mean(data.filter(d => list_of_year.has(d.Year)).map(d => parseInt(d.Sales.replace(/,/g, ''))))
+        }
+        else {
+          mean_avg_sales = d3.mean(data.filter(d => list_of_year.has(d.Year) && d.Ranking == selected_ranking).map(d => parseInt(d.Sales.replace(/,/g, ''))))
+        }
+        list_of_year.forEach(e => {
+          decades_avg_sales.set(e, mean_avg_sales)})
 
-    console.log(decades_avg_length);
-    svg
-      .append("path")
-      .datum(decades_avg_length)
-      .attr("fill", "none")
-      .attr("id", "avg_length_line")
-      .attr("stroke", "#c71585")
-      .attr("stroke-width", 1)
-      .attr("stroke-dasharray", "5,5")
-      .attr("transform", `translate(25, 20)`)
-      .attr(
-        "d",
-        d3
-          .line()
-          .x(function (d) {
-            return x(d[0]);
-          })
-          .y(function (d) {
-            return y(d[1]);
-          })
-      );
-
-    var decades_avg_sales = new Map();
-    if (selected_ranking == 0) {
-      mean_avg_sales = d3.mean(
-        data.map((d) => parseInt(d.Sales.replace(/,/g, "")))
-      );
-    } else {
-      mean_avg_sales = d3.mean(
-        data
-          .filter((d) => d.Ranking == selected_ranking)
-          .map((d) => parseInt(d.Sales.replace(/,/g, "")))
-      );
-    }
-    list_of_year.forEach((e) => {
-      decades_avg_sales.set(e, mean_avg_sales);
-    });
-
-    console.log(decades_avg_sales);
-    svg
-      .append("path")
-      .datum(decades_avg_sales)
-      .attr("fill", "none")
-      .attr("id", "avg_sales_line")
-      .attr("stroke", "#008b8b")
-      .attr("stroke-width", 1)
-      .attr("stroke-dasharray", "5,5")
-      .attr("transform", `translate(25, 20)`)
-      .attr(
-        "d",
-        d3
-          .line()
-          .x(function (d) {
-            return x(d[0]);
-          })
-          .y(function (d) {
-            return y2(d[1]);
-          })
-      );
-    //Add name for first y-axis
+        console.log(decades_avg_sales)
+        svg
+            .append("path")
+            .datum(decades_avg_sales)
+            .attr("fill", "none")
+            .attr("id", "avg_sales_line")
+            .attr("stroke", "#008b8b")
+            .attr("stroke-width", 1)
+            .attr("stroke-dasharray", "5,5")
+            .attr("transform", `translate(25, 20)`)
+            .attr(
+              "d",
+              d3
+                .line()
+                .x(function (d) {
+                  return x(d[0]);
+                })
+                .y(function (d) {
+                  return y2(d[1]);
+                })
+            );
+       
+    //Add name for y-axis
     svg
       .append("text")
       .attr("x", -25)
@@ -529,18 +527,17 @@ function createDualAxisLineChart(id) {
       .style("font-family", "Monaco");
   });
 }
+function createHeatmap(id){
 
-function createHeatmap(id) {
   const svg = d3
-    .select(id)
-    .attr("width", 2 * (width + margin.left + margin.right) + 75)
-    .attr("height", 2 * height + margin.top + margin.bottom)
-    .append("g")
-    .attr("transform", `translate(${margin.left}, ${margin.top})`);
-
-  //Read the data
-  d3.csv("heatmap.csv").then(function (data) {
-    // Labels of row and columns -> unique identifier of the column called 'group' and 'variable'
+          .select(id)
+          .attr("width", 2 * (width + margin.left + margin.right) + 75)
+          .attr("height", 2 * height + margin.top + margin.bottom)
+          .append("g")
+          .attr("transform", `translate(${margin.left}, ${margin.top})`);
+    
+    //Read the data
+    d3.csv("heatmap.csv").then(function(data) {
     const myGroups = Array.from(new Set(data.map((d) => d.Year)));
     const myVars = Array.from(new Set(data.map((d) => d.Ranking)));
 
@@ -614,9 +611,10 @@ function createHeatmap(id) {
       return "white";
     }
 
-    const onclick = function (event, d) {
-      updateOnRankSelected(this.id);
-    };
+    const onclick = function(event,d) {
+      updateRankSelected(this.id)
+        
+      }
 
     svg
       .selectAll()
@@ -649,36 +647,35 @@ function createHeatmap(id) {
       .on("mouseover", (d) => handleMouseover(d))
       .on("mousemove", mousemove)
       .on("mouseleave", mouseleave)
-      .on("click", onclick);
-  });
+      .on("click", onclick)
 
-  // Add title to graph
-  svg
-    .append("text")
-    .attr("x", width)
-    .attr("y", -20)
-    .attr("text-anchor", "left")
-    .style("font-size", "22px")
-    .text("Heatmap");
-
+      // Add title to graph
+    svg.append("text")
+        .attr("x", width)
+        .attr("y", -20)
+        // .attr("text-anchor", "left")
+        .style("font-size", "13px")
+        .text("Heatmap");
+  
   // Add subtitle to graph
-  svg
-    .append("text")
-    .attr("x", -20)
-    .attr("y", -10)
-    .attr("text-anchor", "left")
-    .style("font-size", "16px")
-    //.style("fill", "grey")
-    //.style("max-width", 400)
-    .text("Album rank");
+    svg.append("text")
+        .attr("x", -20)
+        .attr("y", -10)
+        .style("font-family", "Monaco")
+        // .attr("text-anchor", "left")
+        .style("font-size", "13px")
+        //.style("fill", "grey")
+        //.style("max-width", 400)
+        .text("Album rank");
 
-  svg
-    .append("text")
-    .attr("x", width + margin.left)
-    .attr("y", height + margin.bottom / 2)
-    .attr("text-anchor", "left")
-    .style("font-size", "16px")
-    .text("Year");
+    svg.append("text")
+        .attr("x", width + margin.left)
+        .attr("y", height + margin.bottom/2)
+        // .attr("text-anchor", "left")
+        .style("font-size", "13px")
+        .text("Year");
+    }
+  );  
 }
 
 function createSankeyChart(decade, id) {
