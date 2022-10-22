@@ -697,24 +697,23 @@ function createSankeyChart(decade, id) {
   var formatNumber = d3.format(",.0f"),
     format = function (d) {
       return formatNumber(d) + " " + units;
-    },
-    color = d3.scaleOrdinal([
-      "#4e79a7",
-      "#f28e2c",
-      "#e15759",
-      "#76b7b2",
-      "#59a14f",
-      "#edc949",
-      "#af7aa1",
-      "#ff9da7",
-      "#9c755f",
-      "#bab0ab",
-    ]);
+    };
+
+  const color = {
+    Pop: "#4e79a7",
+    Rock: "#f28e2c",
+    RB: "#e15759",
+    HipHop: "#76b7b2",
+    Country: "#59a14f",
+    EDM: "#edc949",
+    Blues: "#af7aa1",
+    World: "#ff9da7",
+    Classical: "#9c755f",
+    Jazz: "#bab0ab",
+  };
 
   var sankey = d3.sankey().nodeWidth(36).nodePadding(40).size([width, height]);
   var path = sankey.link();
-
-  console.log("sankey_chart" + decade + ".csv");
 
   graph = { nodes: [], links: [] };
   d3.csv("sankey_chart" + decade + ".csv").then(function (data, rows) {
@@ -828,7 +827,18 @@ function createSankeyChart(decade, id) {
       .attr("width", sankey.nodeWidth())
       .style("fill", function (d) {
         //console.log(d.name.replace(/ .*/, ""));
-        return (d.color = color(d.name.replace(/ .*/, "")));
+        var name = d.name;
+        if (d.name === "R&B") {
+          name = "RB";
+        }
+        if (d.name === "Hip Hop") {
+          name = "HipHop";
+        }
+        if (Object.keys(color).includes(name)) {
+          return (d.color = color[name]);
+        }
+        // return (d.color = color(d.name.replace(/ .*/, "")));
+        return (d.color = "#add8e6");
       })
       .style("stroke", function (d) {
         return d3.rgb(d.color).darker(2);
