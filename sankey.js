@@ -60,8 +60,8 @@ d3.sankey = function () {
         xi = d3.interpolateNumber(x0, x1),
         x2 = xi(curvature),
         x3 = xi(1 - curvature),
-        y0 = d.source.y + d.sy + d.dy / 2,
-        y1 = d.target.y + d.ty + d.dy / 2;
+        y0 = (d.source.y + d.sy + d.dy / 2) * 0.85,
+        y1 = (d.target.y + d.ty + d.dy / 2) * 0.85;
       return (
         "M" +
         x0 +
@@ -173,17 +173,6 @@ d3.sankey = function () {
   }
 
   function computeNodeDepths(iterations) {
-    /* var nodesByBreadth = d3
-      .nest()
-      .key(function (d) {
-        return d.x;
-      })
-      .sortKeys(d3.ascending)
-      .entries(nodes)
-      .map(function (d) {
-        return d.values;
-      }); */
-
     var nodeArray = [];
     var nodesByBreadth = d3.groups(nodes, (d) => d.x);
     nodesByBreadth.map((node) => {
@@ -192,7 +181,6 @@ d3.sankey = function () {
 
     nodesByBreadth = nodeArray;
 
-    //
     initializeNodeDepth();
     resolveCollisions();
     for (var alpha = 1; iterations > 0; --iterations) {
@@ -205,7 +193,8 @@ d3.sankey = function () {
     function initializeNodeDepth() {
       var ky = d3.min(nodesByBreadth, function (nodes) {
         return (
-          (size[1] - (nodes.length - 1) * nodePadding) / d3.sum(nodes, value)
+          (size[1] - (nodes.length - 1) * nodePadding) /
+          (d3.sum(nodes, value) * 1.6)
         );
       });
 
