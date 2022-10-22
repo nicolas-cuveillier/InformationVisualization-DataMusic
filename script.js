@@ -716,13 +716,13 @@ function createSankeyChart(decade, id) {
       .attr("class", "link")
       .attr("d", path)
       .style("stroke-width", function (d) {
-        return Math.max(1, d.dy * 0.9);
+        return Math.max(1, d.dy * 0.85);
       })
       .style("stroke-opacity", function (d) {
         return "0.2";
       })
       .sort(function (a, b) {
-        return (b.dy - a.dy) * 0.9;
+        return (b.dy - a.dy) * 0.85;
       });
 
     // add the link titles
@@ -739,7 +739,7 @@ function createSankeyChart(decade, id) {
       .append("g")
       .attr("class", "node")
       .attr("transform", function (d) {
-        return "translate(" + d.x + "," + d.y * 0.9 + ")";
+        return "translate(" + d.x + "," + d.y * 0.85 + ")";
       })
       .call(
         d3
