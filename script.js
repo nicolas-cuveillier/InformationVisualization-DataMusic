@@ -190,7 +190,7 @@ function createCustomLineChart(id) {
         .style("user-select", "none")
         .on("mouseover", (event, d) => handleCustomLineChartMouseOver(elem))
         .on("mouseleave", (event, d) => handleCustomLineChartMouseLeave())
-        .text(elem == "RB" ? "R&B" : elem == "HipHop" ? "Hip Hop": elem);
+        .text(elem == "RB" ? "R&B" : elem == "HipHop" ? "Hip Hop" : elem);
     });
 
     //change font
@@ -204,8 +204,8 @@ function createCustomLineChart(id) {
 const list_of_genre = ["Pop", "Rock", "RB", "HipHop", "Country"];
 
 function handleCustomLineChartMouseOver(genre) {
-  if(genre === "R&B")genre = "RB"
-  if(genre === "Hip Hop")genre = "HipHop"
+  if (genre === "R&B") genre = "RB";
+  if (genre === "Hip Hop") genre = "HipHop";
   list_of_genre
     .filter((e) => e !== genre)
     .forEach((genre) => {
@@ -241,8 +241,8 @@ function handleCustomLineChartMouseLeave() {
   ]);
 
   list_of_genre.forEach((genre) => {
-    if(genre === "R&B") genre = "RB"
-    if(genre === "Hip Hop")genre = "HipHop"
+    if (genre === "R&B") genre = "RB";
+    if (genre === "Hip Hop") genre = "HipHop";
     d3.selectAll(".customItemValue_" + genre + "_path")
       .transition()
       .duration(250)
@@ -256,7 +256,7 @@ function handleCustomLineChartMouseLeave() {
     d3.selectAll(".text_" + genre)
       .transition()
       .duration(250)
-      .style("fill",color(list_of_genre.indexOf(genre)));
+      .style("fill", color(list_of_genre.indexOf(genre)));
   });
 }
 
@@ -287,8 +287,10 @@ function createDualAxisLineChart(id) {
         })
       );
 
-    d3.selectAll("#gXAxisD  .tick text")
-      .attr("transform", "translate(-2,5) rotate(-25)")
+    d3.selectAll("#gXAxisD  .tick text").attr(
+      "transform",
+      "translate(-2,5) rotate(-25)"
+    );
 
     //build the left y-scale and y-axis
     const y = d3
@@ -326,10 +328,8 @@ function createDualAxisLineChart(id) {
       );
 
     //change color of the axis
-    svg.select("#gYAxis2 path")
-      .attr("stroke", "#008b8b");
-    svg.selectAll("#gYAxis2 line")
-      .attr("stroke", "#008b8b");
+    svg.select("#gYAxis2 path").attr("stroke", "#008b8b");
+    svg.selectAll("#gYAxis2 line").attr("stroke", "#008b8b");
 
     //list of all years
     var list_of_year = new Set(data.map((d) => d.Year));
@@ -497,11 +497,7 @@ function createDualAxisLineChart(id) {
       .attr("x", -25)
       .attr("y", -17)
       .text("Average Song Length per Album");
-    svg
-      .append("text")
-      .attr("x", -15)
-      .attr("y", -0)
-      .text("(in minutes)");
+    svg.append("text").attr("x", -15).attr("y", -0).text("(in minutes)");
 
     //Add name for first y-axis
     svg
@@ -557,7 +553,6 @@ function createHeatmap(id) {
       .call(d3.axisBottom(x).tickSize(0))
       .select(".domain")
       .remove();
-      
 
     // Build Y scales and axis:
     const y = d3.scaleBand().range([height, 0]).domain(myVars).padding(0.05);
@@ -689,13 +684,13 @@ function createSankeyChart(decade, id) {
   decade = decade;
 
   var margin = { top: 10, right: 10, bottom: 10, left: 10 },
-    width = 600 - margin.left - margin.right,
+    width = 650 - margin.left - margin.right,
     height = 700 - margin.top - margin.bottom;
 
   const svg = d3
     .select("#sankey")
-    .attr("width", "600px")
-    .attr("height", "800px")
+    .attr("width", width + 100 + "px")
+    .attr("height", height + 50 + "px")
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -755,7 +750,7 @@ function createSankeyChart(decade, id) {
       graph.nodes[i] = { name: d };
     });
 
-    sankey.nodes(graph.nodes).links(graph.links).layout(32);
+    sankey.nodes(graph.nodes).links(graph.links).layout(8);
 
     // add the links
     var link = svg
@@ -767,13 +762,13 @@ function createSankeyChart(decade, id) {
       .attr("class", "link")
       .attr("d", path)
       .style("stroke-width", function (d) {
-        return Math.max(1, d.dy);
+        return Math.max(1, d.dy * 0.9);
       })
       .style("stroke-opacity", function (d) {
         return "0.2";
       })
       .sort(function (a, b) {
-        return b.dy - a.dy;
+        return (b.dy - a.dy) * 0.9;
       });
 
     // add the link titles
@@ -790,7 +785,7 @@ function createSankeyChart(decade, id) {
       .append("g")
       .attr("class", "node")
       .attr("transform", function (d) {
-        return "translate(" + d.x + "," + d.y + ")";
+        return "translate(" + d.x + "," + d.y * 0.9 + ")";
       })
       .call(
         d3
@@ -805,9 +800,9 @@ function createSankeyChart(decade, id) {
       );
 
     d3.selectAll(".node")
-      .on("mouseover", function (d, i) {
-        handleCustomLineChartMouseOver(i.name)
-        source = d.name;
+      .on("mouseover", function (event, data) {
+        handleCustomLineChartMouseOver(data.name);
+        source = data.name;
         link.style("stroke-opacity", function (d) {
           if (source === d.source.name) {
             rows.push(d.row);
@@ -816,7 +811,7 @@ function createSankeyChart(decade, id) {
         });
       })
       .on("mouseleave", function (d, i) {
-        handleCustomLineChartMouseLeave()
+        handleCustomLineChartMouseLeave();
         rows = [];
         source = null;
         link.style("stroke-opacity", function (d) {
@@ -831,7 +826,8 @@ function createSankeyChart(decade, id) {
         return d.dy > 10 ? d.dy : 10;
       })
       .attr("width", sankey.nodeWidth())
-      .style("fill", function (d) { //console.log(d.name.replace(/ .*/, ""));
+      .style("fill", function (d) {
+        //console.log(d.name.replace(/ .*/, ""));
         return (d.color = color(d.name.replace(/ .*/, "")));
       })
       .style("stroke", function (d) {
