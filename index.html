@@ -17,6 +17,8 @@
     .node text {
       pointer-events: none;
       text-shadow: 0 1px 0 #fff;
+      font-family: Arial;
+      font-size: 14px;
     }
   
     .link {
@@ -51,30 +53,43 @@
 </head>
 
 <body onload="init()">
-  <div style="width: 100%;float: left; height: 50px;">
-    <h1 style="font-family:Monaco; margin: auto;width: 500px;">The Top 10 Album Analysis</h1>
+  <div style="width: 100%; float: left; height: 50px;">
+    <h1 style="font-family: Monaco; margin: auto; width: 500px;">The Top 10 Album Analysis</h1>
   </div>
 
   <div style="margin-left: 30px;">
-  <div>
+
+    <div>
+      <div style="width: 50%; float: left; margin-top: 0px; height: 500px;">
+        <svg id="sankey" style="position: absolute; top: 0;"></svg>
+      </div>
+    </div>
+  </div>
+
+  <div style="position: absolute; top: 50px; left: 45px">
     <button class="button" id="first">90s</button>
     <button class="button" id="second">00s</button>
     <button class="button" id="third">10s</button>
     <button class="button" id="all">All</button>
   </div>
 
-  <div>
-    <div style="width: 45%; float: left; margin-top: 20px;">
-      <svg id="sankey"></svg>
-    </div>
+  <div style="position: absolute; top: 80px; left: 50px; font-family: Arial;">
+    <p>Genre</p>
   </div>
-</div>
+
+  <div style="position: absolute; top: 80px; left: 320px; font-family: Arial;">
+    <p>Album Length</p>
+  </div>
+
+  <div style="position: absolute; top: 80px; left: 600px; font-family: Arial;">
+    <p>Worldwide Sales</p>
+  </div>
   
   <div>
-    <div style="height: 50%; width: 50%; float: left;">
+    <div style="height: 50%; width: 30%; float: left;">
         <svg id="customLineChart"></svg>
     </div>
-    <div style="height: 50%; width: 50%; float: left">
+    <div style="height: 50%; width: 30%; float: left">
         <svg id="dualLineChart"></svg>
     </div>
   </div>

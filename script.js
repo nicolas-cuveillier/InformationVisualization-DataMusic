@@ -638,13 +638,13 @@ function createSankeyChart(decade, id) {
   decade = decade;
 
   var margin = { top: 10, right: 10, bottom: 10, left: 10 },
-    width = 600 - margin.left - margin.right,
+    width = 650 - margin.left - margin.right,
     height = 700 - margin.top - margin.bottom;
 
   const svg = d3
     .select("#sankey")
-    .attr("width", "600px")
-    .attr("height", "800px")
+    .attr("width", width + 100 + "px")
+    .attr("height", height + 50 + "px")
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -704,7 +704,7 @@ function createSankeyChart(decade, id) {
       graph.nodes[i] = { name: d };
     });
 
-    sankey.nodes(graph.nodes).links(graph.links).layout(32);
+    sankey.nodes(graph.nodes).links(graph.links).layout(8);
 
     // add the links
     var link = svg
@@ -716,13 +716,13 @@ function createSankeyChart(decade, id) {
       .attr("class", "link")
       .attr("d", path)
       .style("stroke-width", function (d) {
-        return Math.max(1, d.dy);
+        return Math.max(1, d.dy * 0.9);
       })
       .style("stroke-opacity", function (d) {
         return "0.2";
       })
       .sort(function (a, b) {
-        return b.dy - a.dy;
+        return (b.dy - a.dy) * 0.9;
       });
 
     // add the link titles
@@ -739,7 +739,7 @@ function createSankeyChart(decade, id) {
       .append("g")
       .attr("class", "node")
       .attr("transform", function (d) {
-        return "translate(" + d.x + "," + d.y + ")";
+        return "translate(" + d.x + "," + d.y * 0.9 + ")";
       })
       .call(
         d3
@@ -754,8 +754,8 @@ function createSankeyChart(decade, id) {
       );
 
     d3.selectAll(".node")
-      .on("mouseover", function (d, i) {
-        source = d.name;
+      .on("mouseover", function (event, data) {
+        source = data.name;
         link.style("stroke-opacity", function (d) {
           if (source === d.source.name) {
             rows.push(d.row);
