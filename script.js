@@ -206,6 +206,7 @@ const list_of_genre = ["Pop", "Rock", "RB", "HipHop", "Country"];
 function handleCustomLineChartMouseOver(genre) {
   if(genre === "R&B")genre = "RB"
   if(genre === "Hip Hop")genre = "HipHop"
+  if(!list_of_genre.includes(genre)) return;
   list_of_genre
     .filter((e) => e !== genre)
     .forEach((genre) => {
