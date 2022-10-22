@@ -278,7 +278,7 @@ function createDualAxisLineChart(id) {
       .range([0, width]);
     svg
       .append("g")
-      .attr("id", "gXAxis")
+      .attr("id", "gXAxisD")
       .attr("stroke-width", 1.5)
       .attr("transform", `translate(25, ${height + 20})`)
       .call(
@@ -286,6 +286,9 @@ function createDualAxisLineChart(id) {
           return d;
         })
       );
+
+    d3.selectAll("#gXAxisD  .tick text")
+      .attr("transform", "translate(-2,5) rotate(-25)")
 
     //build the left y-scale and y-axis
     const y = d3
@@ -516,7 +519,7 @@ function createDualAxisLineChart(id) {
     svg
       .append("text")
       .attr("x", width / 2)
-      .attr("y", height + margin.top + margin.bottom / 4)
+      .attr("y", height + margin.top + margin.bottom / 3)
       .text("Year");
 
     d3.selectAll("text")
@@ -548,11 +551,13 @@ function createHeatmap(id) {
       .padding(0.05);
     svg
       .append("g")
-      .style("font-size", 13)
+      //.style("font-size", 13)
+      .attr("class", "gXAxisH")
       .attr("transform", `translate(0, ${height})`)
       .call(d3.axisBottom(x).tickSize(0))
       .select(".domain")
       .remove();
+      
 
     // Build Y scales and axis:
     const y = d3.scaleBand().range([height, 0]).domain(myVars).padding(0.05);
