@@ -683,15 +683,6 @@ function createHeatmap(id) {
       .on("mouseleave", mouseleave)
       .on("click", onclick);
 
-    // Add title to graph
-    svg
-      .append("text")
-      .attr("x", width)
-      .attr("y", -20)
-      // .attr("text-anchor", "left")
-      .style("font-size", "13px")
-      .text("Heatmap");
-
     // Add subtitle to graph
     svg
       .append("text")
@@ -706,8 +697,8 @@ function createHeatmap(id) {
 
     svg
       .append("text")
-      .attr("x", width + margin.left)
-      .attr("y", height + margin.bottom / 2)
+      .attr("x", width / 2 + margin.left)
+      .attr("y", height / 2 + margin.bottom / 3)
       // .attr("text-anchor", "left")
       .style("font-size", "13px")
       .text("Year");
