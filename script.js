@@ -70,7 +70,7 @@ function createCustomLineChart(id) {
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
   //open data and build the chart
-  d3.csv("https://gist.githubusercontent.com/helenfs/c22b355263843bec54e90808ab594dd5/raw/482c6bdb4f4458518b4e67986015df9b32839eeb/final.csv").then(function(data){
+  d3.json("final.json").then(function(data){
     //build x-scale and x-axis
     const x = d3.scaleLinear().domain([0, 45]).range([0, width]);
     svg
@@ -252,7 +252,7 @@ function createDualAxisLineChart(id) {
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
     //retrieve data and build the chart
-    d3.csv("https://gist.githubusercontent.com/helenfs/c22b355263843bec54e90808ab594dd5/raw/482c6bdb4f4458518b4e67986015df9b32839eeb/final.csv").then(function(data){
+    d3.json("final.json").then(function(data){
 
         //list of all years
         
@@ -452,7 +452,7 @@ function createHeatmap(id){
           .attr("transform", `translate(${margin.left}, ${margin.top})`);
     
     //Read the data
-    d3.csv("https://gist.githubusercontent.com/helenfs/f9aa9a8f4b4b035fc95d4cf5113150f2/raw/728f581ce7fd9af1b5b0e5f6c3f4a6999cddbdba/test.csv").then(function(data) {
+    d3.csv("heatmap.csv").then(function(data) {
     const myGroups = Array.from(new Set(data.map((d) => d.Year)));
     const myVars = Array.from(new Set(data.map((d) => d.Ranking)));
 
@@ -588,7 +588,7 @@ function createHeatmap(id){
         .style("font-size", "18px")
         .text("Year");
     }
-  )  
+  );  
 }
 
 function createSankeyChart(decade, id) {
