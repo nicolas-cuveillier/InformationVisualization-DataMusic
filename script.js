@@ -48,11 +48,8 @@ function updateDecadeSelected(decade) {
   update();
 }
 function update() {
-  d3.select("#length_line").remove();
-  d3.select("#sales_line").remove();
-  d3.select("#avg_length_line").remove();
-  d3.select("#avg_sales_line").remove();
-  d3.select("#gXAxisD").remove();
+  d3.select("#dualLineChart g").transition().duration(50).remove();
+  d3.select("#heatMap g").transition().duration(50).remove();
 
   createHeatmap("#heatMap");
   createDualAxisLineChart("#dualLineChart");
@@ -73,7 +70,7 @@ function createCustomLineChart(id) {
     const x = d3.scaleLinear().domain([0, 45]).range([0, width]);
     svg
       .append("g")
-      .attr("id", "gXAxis")
+      .attr("id", "gXAxisC")
       .attr("stroke-width", 1.5)
       .attr("transform", `translate(20, ${height + 20})`)
       .call(
@@ -92,7 +89,7 @@ function createCustomLineChart(id) {
       .range([0, height]);
     svg
       .append("g")
-      .attr("id", "gYAxis")
+      .attr("id", "gYAxisC")
       .attr("stroke-width", 1.5)
       .attr("transform", `translate(20,20)`)
       .call(
@@ -219,8 +216,12 @@ function createCustomLineChart(id) {
 const list_of_genre = ["Pop", "Rock", "RB", "HipHop", "Country"];
 
 function handleCustomLineChartMouseOver(genre) {
-  if (genre === "R&B") genre = "RB";
-  if (genre === "Hip Hop") genre = "HipHop";
+  
+
+  if(genre === "R&B")genre = "RB"
+  if(genre === "Hip Hop")genre = "HipHop"
+  if (!list_of_genre.includes(genre))return;
+
   list_of_genre
     .filter((e) => e !== genre)
     .forEach((genre) => {
@@ -239,7 +240,18 @@ function handleCustomLineChartMouseOver(genre) {
         .duration(250)
         .style("fill", "gray");
     });
-}
+
+
+  if(genre === "RB")genre = "R&B"
+  if(genre === "HipHop")genre = "Hip Hop"
+
+  d3.selectAll("#sankey .link")
+    .style("stroke-opacity", function (d) {
+
+      if (genre === d.source.name) rows.push(d.row);
+      return rows.includes(d.row) ? "0.3" : "0.05";
+    });
+  }
 
 function handleCustomLineChartMouseLeave() {
   const color = d3.scaleOrdinal([
@@ -272,6 +284,12 @@ function handleCustomLineChartMouseLeave() {
       .transition()
       .duration(250)
       .style("fill", color(list_of_genre.indexOf(genre)));
+
+      rows = [];
+      source = null;
+      d3.selectAll("#sankey .link").style("stroke-opacity", function (d) {
+        return "0.2";
+      });
   });
 }
 
@@ -548,6 +566,15 @@ function createDualAxisLineChart(id) {
       .attr("x", width / 2)
       .attr("y", height + margin.top + margin.bottom / 3)
       .text("Year");
+    
+    //add legend
+    legend = (selected_ranking == 0) ? "All " : "numero " + selected_ranking
+    svg
+      .append("text")
+      .attr("id", "legend")
+      .attr("x", width / 2 + margin.left)
+      .attr("y", (height - margin.top)/ 4)
+      .text("for " + legend + " Albums");
 
     d3.selectAll("text")
       .attr("text-anchor", "left")
@@ -596,6 +623,7 @@ function createHeatmap(id) {
       .padding(0.05);
     svg
       .append("g")
+      .attr("id", "gYAxisH")
       .style("font-size", 15)
       .call(d3.axisLeft(y).tickSize(0))
       .select(".domain")
