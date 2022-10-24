@@ -588,7 +588,7 @@ function createHeatmap(id) {
     .attr("width", width + margin.left + margin.right + 30)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
-    .attr("transform", `translate(${margin.left / 2}, ${margin.top * 0.5})`);
+    .attr("transform", `translate(${margin.left / 2}, ${margin.top})`);
 
   //Read the data
   d3.csv("heatmap.csv").then(function (data) {
@@ -651,7 +651,7 @@ function createHeatmap(id) {
     function handleMouseover(item) {
       d3.selectAll(".itemvalue")
         .filter(function (d, i) {
-          return d.AvgSongLength == item.AvgSongLength;
+          return d.AlbumLength == item.AlbumLength;
         })
         .style("opacity", 1);
       // tooltip
@@ -717,11 +717,38 @@ function createHeatmap(id) {
       .attr("x", -20)
       .attr("y", -10)
       .style("font-family", "Monaco")
-      // .attr("text-anchor", "left")
       .style("font-size", "13px")
-      //.style("fill", "grey")
-      //.style("max-width", 400)
-      .text("Album rank");
+
+      .text("Rank");
+    
+    svg
+      .append("text")
+      .attr("x", 80)
+      .attr("y", -10)
+      .style("font-family", "Monaco")
+      .style("font-size", "13px")
+      .text("Length of album in min:");
+    
+    const scaleRange = Array.from(Array(10).keys())
+    var colorScale = scaleRange.forEach( e =>
+      svg
+      .append("rect")
+      .attr("x", 209 + x.bandwidth()*2*e)
+      .attr("y", -20)
+      .attr("width", x.bandwidth()*2)
+      .attr("height", y.bandwidth()/2)
+      .style("fill", function (d) {
+        return myColor(10*(e+1));
+      }))
+    
+    var colorScale = scaleRange.forEach( e =>
+      svg
+      .append("text")
+      .text(10*(e+1))
+      .attr("x", 215 + x.bandwidth()*2*e)
+      .attr("y", -25)
+      .style("font-size", "10px")
+    )   
 
     svg
       .append("text")
