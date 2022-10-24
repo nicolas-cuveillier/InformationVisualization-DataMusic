@@ -585,7 +585,7 @@ function createDualAxisLineChart(id) {
 function createHeatmap(id) {
   const svg = d3
     .select(id)
-    .attr("width", width + margin.left + margin.right + 30)
+    .attr("width", width + (margin.left + margin.right) * 2)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform", `translate(${margin.left / 2}, ${margin.top})`);
@@ -598,7 +598,7 @@ function createHeatmap(id) {
     // Build X scales and axis:
     const x = d3
       .scaleBand()
-      .range([0, width + margin.left + margin.right])
+      .range([0, width + (margin.left + margin.right) * 1.6])
       .domain(myGroups)
       .padding(0.01);
     svg
@@ -723,7 +723,7 @@ function createHeatmap(id) {
     
     svg
       .append("text")
-      .attr("x", 80)
+      .attr("x", (width + (margin.left + margin.right) * 1.6 - x.bandwidth()*20 - 150))
       .attr("y", -10)
       .style("font-family", "Monaco")
       .style("font-size", "13px")
@@ -733,7 +733,7 @@ function createHeatmap(id) {
     var colorScale = scaleRange.forEach( e =>
       svg
       .append("rect")
-      .attr("x", 209 + x.bandwidth()*2*e)
+      .attr("x", (width + (margin.left + margin.right) * 1.6 - x.bandwidth()*20) + x.bandwidth()*2*e)
       .attr("y", -20)
       .attr("width", x.bandwidth()*2)
       .attr("height", y.bandwidth()/2)
@@ -745,7 +745,7 @@ function createHeatmap(id) {
       svg
       .append("text")
       .text(10*(e+1))
-      .attr("x", 215 + x.bandwidth()*2*e)
+      .attr("x", (width + (margin.left + margin.right) * 1.6 - x.bandwidth()*20) + x.bandwidth()*2*e + 5)
       .attr("y", -25)
       .style("font-size", "10px")
     )   
