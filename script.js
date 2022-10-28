@@ -294,6 +294,9 @@ function handleCustomLineChartMouseLeave() {
 }
 
 function createDualAxisLineChart(id) {
+  colorY1 = "#424B54"
+  colorY2 = "#6F58C9" 
+
   //create the svg
   const svg = d3
     .select(id)
@@ -347,14 +350,14 @@ function createDualAxisLineChart(id) {
     svg
       .append("g")
       .attr("id", "gYAxis1")
-      .attr("stroke", "#c71585")
+      .style("color", colorY1)
       .attr("stroke-width", 1.5)
       .attr("transform", `translate(25 ,20)`)
       .call(d3.axisLeft(y));
 
     //change color of the axis
-    svg.select("#gYAxis1 path").attr("stroke", "#c71585");
-    svg.selectAll("#gYAxis1 line").attr("stroke", "#c71585");
+    svg.select("#gYAxis1 path").attr("stroke", colorY1);
+    svg.selectAll("#gYAxis1 line").attr("stroke", colorY1);
 
     //build the right y-scale and y-axis
     const y2 = d3
@@ -365,9 +368,8 @@ function createDualAxisLineChart(id) {
       .append("g")
       .attr("id", "gYAxis2")
       .attr("transform", `translate(${width + 25} ,20)`)
-      .attr("stroke", "#008b8b")
+      .style("color", colorY2)
       .attr("stroke-width", 1.5)
-      .attr("fill", "red")
       .call(
         d3.axisRight(y2).tickFormat(function (d, i) {
           return d / 1000000;
@@ -375,8 +377,8 @@ function createDualAxisLineChart(id) {
       );
 
     //change color of the axis
-    svg.select("#gYAxis2 path").attr("stroke", "#008b8b");
-    svg.selectAll("#gYAxis2 line").attr("stroke", "#008b8b");
+    svg.select("#gYAxis2 path").attr("stroke", colorY2);
+    svg.selectAll("#gYAxis2 line").attr("stroke", colorY2);
 
     //create the new data to be plotted from the left axis
     var new_data1 = new Map();
@@ -399,7 +401,7 @@ function createDualAxisLineChart(id) {
       .datum(new_data1)
       .attr("fill", "none")
       .attr("id", "length_line")
-      .attr("stroke", "#c71585")
+      .attr("stroke", colorY1)
       .transition()
       .duration(1000)
       .attr("stroke-width", 2)
@@ -441,7 +443,7 @@ function createDualAxisLineChart(id) {
       .datum(new_data2)
       .attr("fill", "none")
       .attr("id", "sales_line")
-      .attr("stroke", "#008b8b")
+      .attr("stroke", colorY2)
       .transition()
       .duration(1000)
       .attr("stroke-width", 2)
@@ -482,7 +484,7 @@ function createDualAxisLineChart(id) {
       .datum(decades_avg_length)
       .attr("fill", "none")
       .attr("id", "avg_length_line")
-      .attr("stroke", "#c71585")
+      .attr("stroke", colorY1)
       .attr("stroke-width", 1)
       .attr("stroke-dasharray", "5,5")
       .attr("transform", `translate(25, 20)`)
@@ -524,7 +526,7 @@ function createDualAxisLineChart(id) {
       .datum(decades_avg_sales)
       .attr("fill", "none")
       .attr("id", "avg_sales_line")
-      .attr("stroke", "#008b8b")
+      .attr("stroke", colorY2)
       .attr("stroke-width", 1)
       .attr("stroke-dasharray", "5,5")
       .attr("transform", `translate(25, 20)`)
@@ -545,19 +547,22 @@ function createDualAxisLineChart(id) {
       .append("text")
       .attr("x", -25)
       .attr("y", -17)
+      .style("fill", colorY1)
       .text("Average Song Length per Album");
-    svg.append("text").attr("x", -15).attr("y", -0).text("(in minutes)");
+    svg.append("text").attr("x", -15).attr("y", -0).style("fill", colorY1).text("(in minutes)");
 
     //Add name for first y-axis
     svg
       .append("text")
       .attr("x", width - margin.left)
       .attr("y", -10)
+      .style("fill", colorY2)
       .text("WorldWide Sales");
     svg
       .append("text")
       .attr("x", width - margin.left)
       .attr("y", 5)
+      .style("fill", colorY2)
       .text("(in millions)");
 
     //Add name for x-axis
