@@ -98,22 +98,21 @@ function createCustomLineChart(id) {
         })
       );
 
-    //build the scale for the different colors
-    var color = d3.scaleOrdinal([
-      "#4e79a7",
-      "#f28e2c",
-      "#e15759",
-      "#76b7b2",
-      "#59a14f",
-      "#edc949",
-      "#af7aa1",
-      "#ff9da7",
-      "#9c755f",
-      "#bab0ab",
-    ]);
+    const color = {
+      Pop: "#4e79a7",
+      Rock: "#f28e2c",
+      RB: "#e15759",
+      HipHop: "#76b7b2",
+      Country: "#59a14f",
+      EDM: "#edc949",
+      Blues: "#af7aa1",
+      World: "#ff9da7",
+      Classical: "#9c755f",
+      Jazz: "#bab0ab",
+    };
 
     //List of genre and number of tracks that will be display on the chart
-    var list_of_genre = ["Pop", "Rock", "RB", "HipHop", "Country"];
+    var list_of_genre = ["Pop", "Rock", "RB", "HipHop", "Country", "Jazz", "Classical", "World", "Blues", "EDM"];
     var list_of_Tracks = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45];
 
     var selected_data = [];
@@ -146,8 +145,8 @@ function createCustomLineChart(id) {
         .attr("fill", "none")
         .transition()
         .duration(1000)
-        .attr("stroke", color(elem))
-        .attr("stroke-width", 2.5)
+        .attr("stroke", color[elem])
+        .attr("stroke-width", 2)
         .attr("transform", `translate(20,0)`)
         .attr(
           "d",
@@ -177,7 +176,7 @@ function createCustomLineChart(id) {
         .attr("cx", (d) => x(d[0]))
         .attr("cy", (d) => y(d[1]))
         .attr("r", 4)
-        .style("fill", color(elem));
+        .style("fill", color[elem]);
     });
 
     //Add name for y-axis
@@ -196,9 +195,9 @@ function createCustomLineChart(id) {
       svg
         .append("text")
         .attr("class", "text_" + elem)
-        .attr("x", width - margin.left / 2)
-        .attr("y", 20 * list_of_genre.indexOf(elem) + margin.top)
-        .style("fill", color(elem))
+        .attr("x", width - margin.left )
+        .attr("y", 20 * list_of_genre.indexOf(elem))
+        .style("fill", color[elem])
         .style("user-select", "none")
         .on("mouseover", (event, d) => handleCustomLineChartMouseOver(elem))
         .on("mouseleave", (event, d) => handleCustomLineChartMouseLeave())
@@ -213,7 +212,7 @@ function createCustomLineChart(id) {
   });
 }
 
-const list_of_genre = ["Pop", "Rock", "RB", "HipHop", "Country"];
+const list_of_genre = ["Pop", "Rock", "RB", "HipHop", "Country", "Jazz", "Classical", "World", "Blues", "EDM"];
 
 function handleCustomLineChartMouseOver(genre) {
   
@@ -254,18 +253,18 @@ function handleCustomLineChartMouseOver(genre) {
   }
 
 function handleCustomLineChartMouseLeave() {
-  const color = d3.scaleOrdinal([
-    "#4e79a7",
-    "#f28e2c",
-    "#e15759",
-    "#76b7b2",
-    "#59a14f",
-    "#edc949",
-    "#af7aa1",
-    "#ff9da7",
-    "#9c755f",
-    "#bab0ab",
-  ]);
+  const color = {
+    Pop: "#4e79a7",
+    Rock: "#f28e2c",
+    RB: "#e15759",
+    HipHop: "#76b7b2",
+    Country: "#59a14f",
+    EDM: "#edc949",
+    Blues: "#af7aa1",
+    World: "#ff9da7",
+    Classical: "#9c755f",
+    Jazz: "#bab0ab",
+  };
 
   list_of_genre.forEach((genre) => {
     if (genre === "R&B") genre = "RB";
@@ -274,16 +273,16 @@ function handleCustomLineChartMouseLeave() {
       .transition()
       .duration(250)
       .attr("opacity", 1)
-      .attr("stroke", color(list_of_genre.indexOf(genre)));
+      .attr("stroke", color[genre]);
     d3.selectAll(".customItemValue_" + genre + "_circle")
       .transition()
       .duration(250)
       .attr("opacity", 1)
-      .style("fill", color(list_of_genre.indexOf(genre)));
+      .style("fill", color[genre]);
     d3.selectAll(".text_" + genre)
       .transition()
       .duration(250)
-      .style("fill", color(list_of_genre.indexOf(genre)));
+      .style("fill", color[genre]);
 
       rows = [];
       source = null;
