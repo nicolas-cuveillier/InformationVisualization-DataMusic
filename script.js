@@ -112,7 +112,18 @@ function createCustomLineChart(id) {
     };
 
     //List of genre and number of tracks that will be display on the chart
-    var list_of_genre = ["Pop", "Rock", "RB", "HipHop", "Country", "Jazz", "Classical", "World", "Blues", "EDM"];
+    var list_of_genre = [
+      "Pop",
+      "Rock",
+      "RB",
+      "HipHop",
+      "Country",
+      "Jazz",
+      "Classical",
+      "World",
+      "Blues",
+      "EDM",
+    ];
     var list_of_Tracks = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45];
 
     var selected_data = [];
@@ -195,7 +206,7 @@ function createCustomLineChart(id) {
       svg
         .append("text")
         .attr("class", "text_" + elem)
-        .attr("x", width - margin.left )
+        .attr("x", width - margin.left)
         .attr("y", 20 * list_of_genre.indexOf(elem))
         .style("fill", color[elem])
         .style("user-select", "none")
@@ -212,14 +223,23 @@ function createCustomLineChart(id) {
   });
 }
 
-const list_of_genre = ["Pop", "Rock", "RB", "HipHop", "Country", "Jazz", "Classical", "World", "Blues", "EDM"];
+const list_of_genre = [
+  "Pop",
+  "Rock",
+  "RB",
+  "HipHop",
+  "Country",
+  "Jazz",
+  "Classical",
+  "World",
+  "Blues",
+  "EDM",
+];
 
 function handleCustomLineChartMouseOver(genre) {
-  
-
-  if(genre === "R&B")genre = "RB"
-  if(genre === "Hip Hop")genre = "HipHop"
-  if (!list_of_genre.includes(genre))return;
+  if (genre === "R&B") genre = "RB";
+  if (genre === "Hip Hop") genre = "HipHop";
+  if (!list_of_genre.includes(genre)) return;
 
   list_of_genre
     .filter((e) => e !== genre)
@@ -240,17 +260,14 @@ function handleCustomLineChartMouseOver(genre) {
         .style("fill", "gray");
     });
 
+  if (genre === "RB") genre = "R&B";
+  if (genre === "HipHop") genre = "Hip Hop";
 
-  if(genre === "RB")genre = "R&B"
-  if(genre === "HipHop")genre = "Hip Hop"
-
-  d3.selectAll("#sankey .link")
-    .style("stroke-opacity", function (d) {
-
-      if (genre === d.source.name) rows.push(d.row);
-      return rows.includes(d.row) ? "0.3" : "0.05";
-    });
-  }
+  d3.selectAll("#sankey .link").style("stroke-opacity", function (d) {
+    if (genre === d.source.name) rows.push(d.row);
+    return rows.includes(d.row) ? "0.3" : "0.05";
+  });
+}
 
 function handleCustomLineChartMouseLeave() {
   const color = {
@@ -284,17 +301,17 @@ function handleCustomLineChartMouseLeave() {
       .duration(250)
       .style("fill", color[genre]);
 
-      rows = [];
-      source = null;
-      d3.selectAll("#sankey .link").style("stroke-opacity", function (d) {
-        return "0.2";
-      });
+    rows = [];
+    source = null;
+    d3.selectAll("#sankey .link").style("stroke-opacity", function (d) {
+      return "0.2";
+    });
   });
 }
 
 function createDualAxisLineChart(id) {
-  colorY1 = "#424B54"
-  colorY2 = "#6F58C9" 
+  colorY1 = "#424B54";
+  colorY2 = "#6F58C9";
 
   //create the svg
   const svg = d3
@@ -548,7 +565,12 @@ function createDualAxisLineChart(id) {
       .attr("y", -17)
       .style("fill", colorY1)
       .text("Average Song Length per Album");
-    svg.append("text").attr("x", -15).attr("y", -0).style("fill", colorY1).text("(in minutes)");
+    svg
+      .append("text")
+      .attr("x", -15)
+      .attr("y", -0)
+      .style("fill", colorY1)
+      .text("(in minutes)");
 
     //Add name for first y-axis
     svg
@@ -570,14 +592,14 @@ function createDualAxisLineChart(id) {
       .attr("x", width / 2)
       .attr("y", height + margin.top + margin.bottom / 3)
       .text("Year");
-    
+
     //add legend
-    legend = (selected_ranking == 0) ? "All " : "numero " + selected_ranking
+    legend = selected_ranking == 0 ? "All " : "numero " + selected_ranking;
     svg
       .append("text")
       .attr("id", "legend")
       .attr("x", width / 2 + margin.left)
-      .attr("y", (height - margin.top)/ 4)
+      .attr("y", (height - margin.top) / 4)
       .text("for " + legend + " Albums");
 
     d3.selectAll("text")
@@ -724,35 +746,52 @@ function createHeatmap(id) {
       .style("font-size", "13px")
 
       .text("Rank");
-    
+
     svg
       .append("text")
-      .attr("x", (width + (margin.left + margin.right) * 1.6 - x.bandwidth()*15 - 150))
+      .attr(
+        "x",
+        width + (margin.left + margin.right) * 1.25 - x.bandwidth() * 15 - 150
+      )
       .attr("y", -10)
       .style("font-family", "Monaco")
       .style("font-size", "13px")
       .text("Length of album in min:");
-    
-    const scaleRange = Array.from(Array(10).keys())
-    var colorScale = scaleRange.forEach( e =>
+
+    const scaleRange = Array.from(Array(10).keys());
+    var colorScale = scaleRange.forEach((e) =>
       svg
-      .append("rect")
-      .attr("x", (width + (margin.left + margin.right) * 1.6 - x.bandwidth()*15) + x.bandwidth()*1.5*e)
-      .attr("y", -20)
-      .attr("width", x.bandwidth()*2)
-      .attr("height", y.bandwidth()/2)
-      .style("fill", function (d) {
-        return myColor(10*(e+1));
-      }))
-    
-    var colorScale = scaleRange.forEach( e =>
+        .append("rect")
+        .attr(
+          "x",
+          width +
+            (margin.left + margin.right) * 1.6 -
+            x.bandwidth() * 15 +
+            x.bandwidth() * 1.5 * e
+        )
+        .attr("y", -20)
+        .attr("width", x.bandwidth() * 2)
+        .attr("height", y.bandwidth() / 2)
+        .style("fill", function (d) {
+          return myColor(10 * (e + 1));
+        })
+    );
+
+    var colorScale = scaleRange.forEach((e) =>
       svg
-      .append("text")
-      .text(10*(e+1))
-      .attr("x", (width + (margin.left + margin.right) * 1.6 - x.bandwidth()*15) + x.bandwidth()*1.5*e + 5)
-      .attr("y", -25)
-      .style("font-size", "10px")
-    )   
+        .append("text")
+        .text(10 * (e + 1))
+        .attr(
+          "x",
+          width +
+            (margin.left + margin.right) * 1.6 -
+            x.bandwidth() * 15 +
+            x.bandwidth() * 1.5 * e +
+            5
+        )
+        .attr("y", -25)
+        .style("font-size", "10px")
+    );
 
     svg
       .append("text")
