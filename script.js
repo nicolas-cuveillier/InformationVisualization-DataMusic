@@ -809,8 +809,6 @@ function createSankeyChart(decade, id) {
   d3.selectAll(".node").remove();
   d3.selectAll(id).style("background-color", "#4caf50");
 
-  decade = decade;
-
   var margin = { top: 10, right: 10, bottom: 10, left: 10 },
     width = 650 - margin.left - margin.right,
     height = 700 - margin.top - margin.bottom;
@@ -840,6 +838,29 @@ function createSankeyChart(decade, id) {
     Jazz: "#bab0ab",
   };
 
+  function reformatGenreName(genre) {
+    if (genre === "R&B") {
+      return "RB";
+    }
+    if (genre === "Hip Hop") {
+      return "HipHop";
+    }
+    return genre;
+  }
+
+  const rowDict = {
+    Pop: [],
+    Rock: [],
+    RB: [],
+    HipHop: [],
+    Country: [],
+    EDM: [],
+    Blues: [],
+    World: [],
+    Classical: [],
+    Jazz: [],
+  };
+
   var sankey = d3.sankey().nodeWidth(36).nodePadding(40).size([width, height]);
   var path = sankey.link();
 
@@ -855,6 +876,10 @@ function createSankeyChart(decade, id) {
         value: +d.value,
         row: d.row,
       });
+      label = reformatGenreName(d.source);
+      if (Object.keys(rowDict).includes(label)) {
+        rowDict[label].push(d.row);
+      }
     });
 
     // return only distinct nodes
@@ -893,6 +918,20 @@ function createSankeyChart(decade, id) {
       })
       .style("stroke-opacity", function (d) {
         return "0.2";
+      })
+      .style("stroke", function (d) {
+        rowNumber = d.row;
+        genre = "";
+        Object.keys(rowDict).forEach(function (key, index) {
+          if (rowDict[key].includes(rowNumber)) {
+            genre = key;
+          }
+        });
+        console.log(genre);
+        if (color[genre] !== undefined) {
+          return color[genre];
+        }
+        return "#000";
       })
       .sort(function (a, b) {
         return (b.dy - a.dy) * 0.85;
@@ -934,7 +973,7 @@ function createSankeyChart(decade, id) {
           if (source === d.source.name) {
             rows.push(d.row);
           }
-          return rows.includes(d.row) ? "0.3" : "0.05";
+          return rows.includes(d.row) ? "0.4" : "0.05";
         });
       })
       .on("mouseleave", function (d, i) {
@@ -942,7 +981,7 @@ function createSankeyChart(decade, id) {
         rows = [];
         source = null;
         link.style("stroke-opacity", function (d) {
-          return "0.2";
+          return "0.3";
         });
       });
 
@@ -955,13 +994,7 @@ function createSankeyChart(decade, id) {
       .attr("width", sankey.nodeWidth())
       .style("fill", function (d) {
         //console.log(d.name.replace(/ .*/, ""));
-        var name = d.name;
-        if (d.name === "R&B") {
-          name = "RB";
-        }
-        if (d.name === "Hip Hop") {
-          name = "HipHop";
-        }
+        var name = reformatGenreName(d.name);
         if (Object.keys(color).includes(name)) {
           return (d.color = color[name]);
         }
@@ -979,7 +1012,7 @@ function createSankeyChart(decade, id) {
     // add title for the nodes
     node
       .append("text")
-      .attr("x", -6)
+      .attr("x", 40)
       .attr("y", function (d) {
         return d.dy / 2;
       })
