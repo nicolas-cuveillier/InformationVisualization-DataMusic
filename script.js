@@ -917,7 +917,7 @@ function createSankeyChart(decade, id) {
         return Math.max(1, d.dy * 0.85);
       })
       .style("stroke-opacity", function (d) {
-        return "0.2";
+        return "0";
       })
       .style("stroke", function (d) {
         rowNumber = d.row;
@@ -927,7 +927,6 @@ function createSankeyChart(decade, id) {
             genre = key;
           }
         });
-        console.log(genre);
         if (color[genre] !== undefined) {
           return color[genre];
         }
@@ -973,7 +972,7 @@ function createSankeyChart(decade, id) {
           if (source === d.source.name) {
             rows.push(d.row);
           }
-          return rows.includes(d.row) ? "0.4" : "0.05";
+          return rows.includes(d.row) ? "0.45" : "0.05";
         });
       })
       .on("mouseleave", function (d, i) {
@@ -981,7 +980,7 @@ function createSankeyChart(decade, id) {
         rows = [];
         source = null;
         link.style("stroke-opacity", function (d) {
-          return "0.3";
+          return "0.35";
         });
       });
 
@@ -993,12 +992,10 @@ function createSankeyChart(decade, id) {
       })
       .attr("width", sankey.nodeWidth())
       .style("fill", function (d) {
-        //console.log(d.name.replace(/ .*/, ""));
         var name = reformatGenreName(d.name);
         if (Object.keys(color).includes(name)) {
           return (d.color = color[name]);
         }
-        // return (d.color = color(d.name.replace(/ .*/, "")));
         return (d.color = "#add8e6");
       })
       .style("stroke", function (d) {
@@ -1027,6 +1024,24 @@ function createSankeyChart(decade, id) {
       })
       .attr("x", 6 + sankey.nodeWidth())
       .attr("text-anchor", "start");
+
+    d3.selectAll(".link")
+      .transition()
+      .style("stroke-opacity", 0.35)
+      .delay(1000)
+      .duration(500);
+
+    d3.selectAll(".node rect")
+      .attr("x", -700)
+      .transition()
+      .duration(1000)
+      .attr("x", 0);
+
+    d3.selectAll(".node text")
+      .attr("x", -700)
+      .transition()
+      .duration(1000)
+      .attr("x", 45);
 
     // the function for moving the nodes
     function dragmove(d) {
