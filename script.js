@@ -269,6 +269,28 @@ function handleCustomLineChartMouseOver(genre) {
   });
 }
 
+function handleCustomLineChartSelectMultipleGenres(genres) {
+  handleCustomLineChartMouseLeave();
+  list_of_genre
+    .filter((e) => !genres.includes(reformatGenreNameBack(e)))
+    .forEach((genre) => {
+      d3.selectAll(".customItemValue_" + reformatGenreName(genre) + "_path")
+        .transition()
+        .duration(250)
+        .attr("opacity", 0.35)
+        .attr("stroke", "gray");
+      d3.selectAll(".customItemValue_" + reformatGenreName(genre) + "_circle")
+        .transition()
+        .duration(250)
+        .attr("opacity", 0.35)
+        .style("fill", "gray");
+      d3.selectAll(".text_" + reformatGenreName(genre))
+        .transition()
+        .duration(250)
+        .style("fill", "gray");
+    });
+}
+
 function handleCustomLineChartMouseLeave() {
   const color = {
     Pop: "#4e79a7",
@@ -838,16 +860,6 @@ function createSankeyChart(decade, id) {
     Jazz: "#bab0ab",
   };
 
-  function reformatGenreName(genre) {
-    if (genre === "R&B") {
-      return "RB";
-    }
-    if (genre === "Hip Hop") {
-      return "HipHop";
-    }
-    return genre;
-  }
-
   const rowDict = {
     Pop: [],
     Rock: [],
@@ -986,7 +998,8 @@ function createSankeyChart(decade, id) {
             if (clicked.length === 0) {
               highlightLinks(data, false);
             } else {
-              handleCustomLineChartMouseLeave();
+              // handleCustomLineChartMouseLeave();
+              handleCustomLineChartSelectMultipleGenres(clicked);
               source = data.name;
               link.style("stroke-opacity", function (d) {
                 if (rows && source === d.source.name) {
@@ -1005,7 +1018,9 @@ function createSankeyChart(decade, id) {
 
     function highlightLinks(data, highlighted) {
       if (highlighted) {
-        handleCustomLineChartMouseOver(data.name);
+        clicked.length !== 0
+          ? handleCustomLineChartSelectMultipleGenres(clicked)
+          : handleCustomLineChartMouseOver(data.name);
         source = data.name;
         link.style("stroke-opacity", function (d) {
           if (rows && source === d.source.name) {
@@ -1101,4 +1116,24 @@ function createSankeyChart(decade, id) {
       .style("font-size", "13px")
       .style("font-family", "Monaco");
   });
+}
+
+function reformatGenreName(genre) {
+  if (genre === "R&B") {
+    return "RB";
+  }
+  if (genre === "Hip Hop") {
+    return "HipHop";
+  }
+  return genre;
+}
+
+function reformatGenreNameBack(genre) {
+  if (genre === "RB") {
+    return "R&B";
+  }
+  if (genre === "HipHop") {
+    return "Hip Hop";
+  }
+  return genre;
 }
