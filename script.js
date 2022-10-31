@@ -60,7 +60,7 @@ function createCustomLineChart(id) {
   const svg = d3
     .select(id)
     .attr("width", width + 2 * (margin.left + margin.right) + 100)
-    .attr("height", height + margin.top + margin.bottom + 20)
+    .attr("height", height + margin.top)
     .append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
@@ -72,7 +72,7 @@ function createCustomLineChart(id) {
       .append("g")
       .attr("id", "gXAxisC")
       .attr("stroke-width", 1.5)
-      .attr("transform", `translate(20, ${height + 20})`)
+      .attr("transform", `translate(20, ${height - margin.bottom + margin.top/2})`)
       .call(
         d3.axisBottom(x).tickFormat(function (d, i) {
           return d + "-" + (d + 5);
@@ -86,7 +86,7 @@ function createCustomLineChart(id) {
         d3.max(data, (d) => parseInt(d.Sales.replace(/,/g, ""))) / 1.5,
         0,
       ])
-      .range([0, height]);
+      .range([0, height - margin.bottom]);
     svg
       .append("g")
       .attr("id", "gYAxisC")
@@ -368,7 +368,7 @@ function createDualAxisLineChart(id) {
       .append("g")
       .attr("id", "gXAxisD")
       .attr("stroke-width", 1.5)
-      .attr("transform", `translate(25, ${height + 20})`)
+      .attr("transform", `translate(25, ${height - margin.top/2})`)
       .call(
         d3.axisBottom(x).tickFormat(function (d, i) {
           return d;
@@ -383,8 +383,8 @@ function createDualAxisLineChart(id) {
     //build the left y-scale and y-axis
     const y = d3
       .scaleLinear()
-      .domain([8, 0]) //TODO no hardcoding
-      .range([0, height]);
+      .domain([8, 0]) 
+      .range([0, height - margin.top]);
     svg
       .append("g")
       .attr("id", "gYAxis1")
@@ -401,7 +401,7 @@ function createDualAxisLineChart(id) {
     const y2 = d3
       .scaleLinear()
       .domain([d3.max(data, (d) => parseInt(d.Sales.replace(/,/g, ""))), 0])
-      .range([0, height]);
+      .range([0, height - margin.top]);
     svg
       .append("g")
       .attr("id", "gYAxis2")
