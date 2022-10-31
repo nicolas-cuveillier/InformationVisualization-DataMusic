@@ -968,6 +968,9 @@ function createSankeyChart(decade, id) {
 
     d3.selectAll(".node")
       .on("mouseover", function (event, data) {
+        if (!rows) {
+          rows = [];
+        }
         clicked.length === 0 && highlightLinks(data, true);
       })
       .on("mouseleave", function (event, data) {
