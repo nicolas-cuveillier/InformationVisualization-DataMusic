@@ -158,7 +158,7 @@ function createCustomLineChart(id) {
         .duration(1000)
         .attr("stroke", color[elem])
         .attr("stroke-width", 2)
-        .attr("transform", `translate(20,0)`)
+        .attr("transform", `translate(20,20)`)
         .attr(
           "d",
           d3
@@ -181,7 +181,7 @@ function createCustomLineChart(id) {
         .append("circle")
         .attr("class", "customItemValue_" + elem + "_circle")
         .attr("stroke-width", 2)
-        .attr("transform", `translate(20,0)`)
+        .attr("transform", `translate(20,20)`)
         .on("mouseover", (event, d) => handleCustomLineChartMouseOver(elem))
         .on("mouseleave", (event, d) => handleCustomLineChartMouseLeave())
         .attr("cx", (d) => x(d[0]))
@@ -717,7 +717,7 @@ function createHeatmap(id) {
     };
     function setHighlightRow(row) {
       if (row == selected_ranking) {
-        return "yellow";
+        return "FFD300";
       }
       return "white";
     }
