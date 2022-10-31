@@ -861,6 +861,8 @@ function createSankeyChart(decade, id) {
     Jazz: [],
   };
 
+  var clicked = [];
+
   var sankey = d3.sankey().nodeWidth(36).nodePadding(40).size([width, height]);
   var path = sankey.link();
 
@@ -951,8 +953,8 @@ function createSankeyChart(decade, id) {
       .attr("class", "node")
       .attr("transform", function (d) {
         return "translate(" + d.x + "," + d.y * 0.85 + ")";
-      })
-      .call(
+      });
+    /* .call(
         d3
           .drag()
           .subject(function (d) {
@@ -962,27 +964,61 @@ function createSankeyChart(decade, id) {
             this.parentNode.appendChild(this);
           })
           .on("drag", dragmove)
-      );
+      ); */
 
     d3.selectAll(".node")
       .on("mouseover", function (event, data) {
+        clicked.length === 0 && highlightLinks(data, true);
+      })
+      .on("mouseleave", function (event, data) {
+        clicked.length === 0 && highlightLinks(data, false);
+      })
+      .style("pointer-events", "visible")
+      .on("click", function (event, data) {
+        label = data.name;
+        if (color[reformatGenreName(label)] !== undefined) {
+          if (clicked.includes(label)) {
+            index = clicked.indexOf(label);
+            clicked.splice(index, 1);
+            if (clicked.length === 0) {
+              highlightLinks(data, false);
+            } else {
+              handleCustomLineChartMouseLeave();
+              source = data.name;
+              link.style("stroke-opacity", function (d) {
+                if (rows && source === d.source.name) {
+                  i = rows.indexOf(d.row);
+                  rows.splice(i, 1);
+                }
+                return rows && rows.includes(d.row) ? "0.45" : "0.05";
+              });
+            }
+          } else {
+            clicked.push(label);
+            highlightLinks(data, true);
+          }
+        }
+      });
+
+    function highlightLinks(data, highlighted) {
+      if (highlighted) {
         handleCustomLineChartMouseOver(data.name);
         source = data.name;
         link.style("stroke-opacity", function (d) {
-          if (source === d.source.name) {
+          if (rows && source === d.source.name) {
             rows.push(d.row);
           }
-          return rows.includes(d.row) ? "0.45" : "0.05";
+          return rows && rows.includes(d.row) ? "0.45" : "0.05";
         });
-      })
-      .on("mouseleave", function (d, i) {
+      } else {
         handleCustomLineChartMouseLeave();
         rows = [];
         source = null;
         link.style("stroke-opacity", function (d) {
           return "0.35";
         });
-      });
+      }
+    }
 
     // add rectangles for the nodes
     node
