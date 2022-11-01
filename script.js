@@ -701,7 +701,7 @@ function createHeatmap(id) {
     };
     function setHighlightRow(row) {
       if (row == selected_ranking) {
-        return "FFD300";
+        return "#FFD300";
       }
       return "white";
     }
