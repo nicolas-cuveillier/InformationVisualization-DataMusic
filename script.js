@@ -6,6 +6,18 @@ var units = "albums";
 var decade = null;
 var source = null;
 var rows = [];
+const color = {
+  Pop: "#4e79a7",
+  Rock: "#f28e2c",
+  RB: "#e15759",
+  HipHop: "#76b7b2",
+  Country: "#59a14f",
+  EDM: "#edc949",
+  Blues: "#af7aa1",
+  World: "#ff9da7",
+  Classical: "#9c755f",
+  Jazz: "#bab0ab",
+};
 
 function init() {
   createCustomLineChart("#customLineChart");
@@ -97,19 +109,6 @@ function createCustomLineChart(id) {
           return d / 1000000;
         })
       );
-
-    const color = {
-      Pop: "#4e79a7",
-      Rock: "#f28e2c",
-      RB: "#e15759",
-      HipHop: "#76b7b2",
-      Country: "#59a14f",
-      EDM: "#edc949",
-      Blues: "#af7aa1",
-      World: "#ff9da7",
-      Classical: "#9c755f",
-      Jazz: "#bab0ab",
-    };
 
     //List of genre and number of tracks that will be display on the chart
     var list_of_genre = [
@@ -212,7 +211,7 @@ function createCustomLineChart(id) {
         .style("user-select", "none")
         .on("mouseover", (event, d) => handleCustomLineChartMouseOver(elem))
         .on("mouseleave", (event, d) => handleCustomLineChartMouseLeave())
-        .text(elem == "RB" ? "R&B" : elem == "HipHop" ? "Hip Hop" : elem);
+        .text(reformatGenreNameBack(elem));
     });
 
     //change font
@@ -237,31 +236,29 @@ const list_of_genre = [
 ];
 
 function handleCustomLineChartMouseOver(genre) {
-  if (genre === "R&B") genre = "RB";
-  if (genre === "Hip Hop") genre = "HipHop";
+  genre = reformatGenreName(genre)
   if (!list_of_genre.includes(genre)) return;
-
+  
   list_of_genre
-    .filter((e) => e !== genre)
-    .forEach((genre) => {
-      d3.selectAll(".customItemValue_" + genre + "_path")
-        .transition()
-        .duration(250)
-        .attr("opacity", 0.35)
-        .attr("stroke", "gray");
-      d3.selectAll(".customItemValue_" + genre + "_circle")
-        .transition()
-        .duration(250)
-        .attr("opacity", 0.35)
-        .style("fill", "gray");
-      d3.selectAll(".text_" + genre)
-        .transition()
-        .duration(250)
-        .style("fill", "gray");
-    });
-
-  if (genre === "RB") genre = "R&B";
-  if (genre === "HipHop") genre = "Hip Hop";
+  .filter((e) => e !== genre)
+  .forEach((genre) => {
+    d3.selectAll(".customItemValue_" + genre + "_path")
+    .transition()
+    .duration(250)
+    .attr("opacity", 0.35)
+    .attr("stroke", "gray");
+    d3.selectAll(".customItemValue_" + genre + "_circle")
+    .transition()
+    .duration(250)
+    .attr("opacity", 0.35)
+    .style("fill", "gray");
+    d3.selectAll(".text_" + genre)
+    .transition()
+    .duration(250)
+    .style("fill", "gray");
+  });
+  
+  genre = reformatGenreNameBack(genre)
 
   d3.selectAll("#sankey .link").style("stroke-opacity", function (d) {
     if (genre === d.source.name) rows.push(d.row);
@@ -292,22 +289,9 @@ function handleCustomLineChartSelectMultipleGenres(genres) {
 }
 
 function handleCustomLineChartMouseLeave() {
-  const color = {
-    Pop: "#4e79a7",
-    Rock: "#f28e2c",
-    RB: "#e15759",
-    HipHop: "#76b7b2",
-    Country: "#59a14f",
-    EDM: "#edc949",
-    Blues: "#af7aa1",
-    World: "#ff9da7",
-    Classical: "#9c755f",
-    Jazz: "#bab0ab",
-  };
 
   list_of_genre.forEach((genre) => {
-    if (genre === "R&B") genre = "RB";
-    if (genre === "Hip Hop") genre = "HipHop";
+    genre = reformatGenreName(genre)
     d3.selectAll(".customItemValue_" + genre + "_path")
       .transition()
       .duration(250)
@@ -831,14 +815,14 @@ function createSankeyChart(decade, id) {
   d3.selectAll(".node").remove();
   d3.selectAll(id).style("background-color", "#4caf50");
 
-  var margin = { top: 10, right: 10, bottom: 10, left: 10 },
+  var margin = { top: 20, right: 10, bottom: 30, left: 10 },
     width = 650 - margin.left - margin.right,
-    height = 700 - margin.top - margin.bottom;
+    height = 650 - margin.top - margin.bottom;
 
   const svg = d3
     .select("#sankey")
     .attr("width", width + 100 + "px")
-    .attr("height", height + 50 + "px")
+    .attr("height", height - margin.top - margin.bottom + "px")
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -846,19 +830,6 @@ function createSankeyChart(decade, id) {
     format = function (d) {
       return formatNumber(d) + " " + units;
     };
-
-  const color = {
-    Pop: "#4e79a7",
-    Rock: "#f28e2c",
-    RB: "#e15759",
-    HipHop: "#76b7b2",
-    Country: "#59a14f",
-    EDM: "#edc949",
-    Blues: "#af7aa1",
-    World: "#ff9da7",
-    Classical: "#9c755f",
-    Jazz: "#bab0ab",
-  };
 
   const rowDict = {
     Pop: [],
