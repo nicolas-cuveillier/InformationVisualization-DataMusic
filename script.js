@@ -596,7 +596,7 @@ function createDualAxisLineChart(id) {
     svg
       .append("text")
       .attr("x", width / 2)
-      .attr("y", height + margin.top + margin.bottom / 3)
+      .attr("y", height + margin.top/2 )
       .text("Year");
 
     //add legend
