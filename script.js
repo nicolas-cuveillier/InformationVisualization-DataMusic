@@ -319,8 +319,8 @@ function handleCustomLineChartMouseLeave() {
 }
 
 function createDualAxisLineChart(id) {
-  colorY1 = "#424B54";
-  colorY2 = "#6F58C9";
+  const colorY1 = "#424B54";
+  const colorY2 = "#6F58C9";
 
   //create the svg
   const svg = d3
@@ -510,7 +510,7 @@ function createDualAxisLineChart(id) {
       .attr("fill", "none")
       .attr("id", "avg_length_line")
       .attr("stroke", colorY1)
-      .attr("stroke-width", 1)
+      .attr("stroke-width", 2)
       .attr("stroke-dasharray", "5,5")
       .attr("transform", `translate(25, 20)`)
       .attr(
@@ -552,7 +552,7 @@ function createDualAxisLineChart(id) {
       .attr("fill", "none")
       .attr("id", "avg_sales_line")
       .attr("stroke", colorY2)
-      .attr("stroke-width", 1)
+      .attr("stroke-width", 2)
       .attr("stroke-dasharray", "5,5")
       .attr("transform", `translate(25, 20)`)
       .attr(
@@ -566,6 +566,40 @@ function createDualAxisLineChart(id) {
             return y2(d[1]);
           })
       );
+
+    svg
+      .append("text")
+      .attr("id", "avg_text")
+      .attr("x", 60)
+      .attr("y", 40)
+      .attr("stroke-width", 0.8);
+
+    d3.select("#avg_sales_line")
+      .style("cursor", "pointer")
+      .on("mouseover", function (d) {
+        d3.select("#avg_sales_line").style("stroke-width", 3);
+        d3.select("#avg_text")
+          .attr("stroke", colorY2)
+          .text("Average: " + Math.round(mean_avg_sales) + " sales");
+      })
+      .on("mouseleave", function (d) {
+        d3.select("#avg_sales_line").style("stroke-width", 2);
+        d3.select("#avg_text").text("");
+      });
+    d3.select("#avg_length_line")
+      .style("cursor", "pointer")
+      .on("mouseover", function (d) {
+        d3.select("#avg_length_line").style("stroke-width", 3);
+        d3.select("#avg_text")
+          .attr("stroke", colorY1)
+          .text(
+            "Average: " + Math.round(mean_avg_length * 100) / 100 + " minutes"
+          );
+      })
+      .on("mouseleave", function (d) {
+        d3.select("#avg_length_line").style("stroke-width", 2);
+        d3.select("#avg_text").text("");
+      });
 
     //Add name for y-axis
     svg
@@ -603,13 +637,13 @@ function createDualAxisLineChart(id) {
       .text("Year");
 
     //add legend
-    legend = selected_ranking == 0 ? "All " : "numero " + selected_ranking;
+    legend = selected_ranking == 0 ? "all " : "number " + selected_ranking;
     svg
       .append("text")
       .attr("id", "legend")
       .attr("x", width / 2 + margin.left)
       .attr("y", (height - margin.top) / 4)
-      .text("for " + legend + " Albums");
+      .text("for " + legend + " albums");
 
     d3.selectAll("text")
       .attr("text-anchor", "left")
