@@ -52,6 +52,7 @@ function updateRankSelected(row) {
   console.log(selected_ranking);
 
   update();
+  highlightAlbums(selected_ranking);
 }
 
 function updateDecadeSelected(decade) {
@@ -718,6 +719,7 @@ function createHeatmap(id) {
         return d.Year + ":" + d.Ranking;
       })
       .join("rect")
+      .style("cursor", "pointer")
       .attr("x", function (d) {
         return x(d.Year);
       })
@@ -861,6 +863,7 @@ function createSankeyChart(decade, id) {
         source: d.source,
         target: d.target,
         value: +d.value,
+        ranking: d.ranking,
         row: d.row,
       });
       label = reformatGenreName(d.source);
@@ -1052,6 +1055,7 @@ function createSankeyChart(decade, id) {
       .attr("x", 6 + sankey.nodeWidth())
       .attr("text-anchor", "start");
 
+    // add animations
     d3.selectAll(".link")
       .transition()
       .style("stroke-opacity", 0.35)
@@ -1088,6 +1092,20 @@ function createSankeyChart(decade, id) {
       .attr("text-anchor", "left")
       .style("font-size", "13px")
       .style("font-family", "Monaco");
+  });
+}
+
+function highlightAlbums(rank) {
+  albums = [];
+  d3.selectAll(".link").style("stroke-opacity", function (d) {
+    if (rank !== 0) {
+      if (albums && d.ranking === rank) {
+        if (!albums.includes(d.row)) albums.push(d.row);
+      }
+      return albums && albums.includes(d.row) ? "0.45" : "0.05";
+    } else {
+      return "0.3";
+    }
   });
 }
 
