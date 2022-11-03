@@ -84,7 +84,10 @@ function createCustomLineChart(id) {
       .append("g")
       .attr("id", "gXAxisC")
       .attr("stroke-width", 1.5)
-      .attr("transform", `translate(20, ${height - margin.bottom + margin.top/2})`)
+      .attr(
+        "transform",
+        `translate(20, ${height - margin.bottom + margin.top / 2})`
+      )
       .call(
         d3.axisBottom(x).tickFormat(function (d, i) {
           return d + "-" + (d + 5);
@@ -236,29 +239,29 @@ const list_of_genre = [
 ];
 
 function handleCustomLineChartMouseOver(genre) {
-  genre = reformatGenreName(genre)
+  genre = reformatGenreName(genre);
   if (!list_of_genre.includes(genre)) return;
-  
+
   list_of_genre
-  .filter((e) => e !== genre)
-  .forEach((genre) => {
-    d3.selectAll(".customItemValue_" + genre + "_path")
-    .transition()
-    .duration(250)
-    .attr("opacity", 0.35)
-    .attr("stroke", "gray");
-    d3.selectAll(".customItemValue_" + genre + "_circle")
-    .transition()
-    .duration(250)
-    .attr("opacity", 0.35)
-    .style("fill", "gray");
-    d3.selectAll(".text_" + genre)
-    .transition()
-    .duration(250)
-    .style("fill", "gray");
-  });
-  
-  genre = reformatGenreNameBack(genre)
+    .filter((e) => e !== genre)
+    .forEach((genre) => {
+      d3.selectAll(".customItemValue_" + genre + "_path")
+        .transition()
+        .duration(250)
+        .attr("opacity", 0.35)
+        .attr("stroke", "gray");
+      d3.selectAll(".customItemValue_" + genre + "_circle")
+        .transition()
+        .duration(250)
+        .attr("opacity", 0.35)
+        .style("fill", "gray");
+      d3.selectAll(".text_" + genre)
+        .transition()
+        .duration(250)
+        .style("fill", "gray");
+    });
+
+  genre = reformatGenreNameBack(genre);
 
   d3.selectAll("#sankey .link").style("stroke-opacity", function (d) {
     if (genre === d.source.name) rows.push(d.row);
@@ -289,9 +292,8 @@ function handleCustomLineChartSelectMultipleGenres(genres) {
 }
 
 function handleCustomLineChartMouseLeave() {
-
   list_of_genre.forEach((genre) => {
-    genre = reformatGenreName(genre)
+    genre = reformatGenreName(genre);
     d3.selectAll(".customItemValue_" + genre + "_path")
       .transition()
       .duration(250)
@@ -352,7 +354,7 @@ function createDualAxisLineChart(id) {
       .append("g")
       .attr("id", "gXAxisD")
       .attr("stroke-width", 1.5)
-      .attr("transform", `translate(25, ${height - margin.top/2})`)
+      .attr("transform", `translate(25, ${height - margin.top / 2})`)
       .call(
         d3.axisBottom(x).tickFormat(function (d, i) {
           return d;
@@ -367,7 +369,7 @@ function createDualAxisLineChart(id) {
     //build the left y-scale and y-axis
     const y = d3
       .scaleLinear()
-      .domain([8, 0]) 
+      .domain([8, 0])
       .range([0, height - margin.top]);
     svg
       .append("g")
@@ -596,7 +598,7 @@ function createDualAxisLineChart(id) {
     svg
       .append("text")
       .attr("x", width / 2)
-      .attr("y", height + margin.top/2 )
+      .attr("y", height + margin.top / 2)
       .text("Year");
 
     //add legend
@@ -995,7 +997,7 @@ function createSankeyChart(decade, id) {
         source = data.name;
         link.style("stroke-opacity", function (d) {
           if (rows && source === d.source.name) {
-            rows.push(d.row);
+            if (!rows.includes(d.row)) rows.push(d.row);
           }
           return rows && rows.includes(d.row) ? "0.45" : "0.05";
         });
