@@ -60,6 +60,8 @@ function updateRankSelected(row) {
 
 function updateDecadeSelected(decade) {
   selected_decade = decade;
+  clicked = [];
+  handleCustomLineChartMouseLeave();
   update();
 }
 
@@ -447,18 +449,41 @@ function createDualAxisLineChart(id) {
     var new_data1 = new Map();
     list_of_year.forEach((e) => {
       if (selected_ranking == 0) {
-        mean = d3.mean(
-          data.filter((d) => d.Year == e).map((d) => d.AvgSongLength)
-        );
+        if (clicked.length === 0) {
+          mean = d3.mean(
+            data.filter((d) => d.Year == e).map((d) => d.AvgSongLength)
+          );
+        } else {
+          mean = d3.mean(
+            data
+              .filter(
+                (d) =>
+                  d.Year == e &&
+                  clicked.includes(reformatGenreNameBack(d.Genre))
+              )
+              .map((d) => d.AvgSongLength)
+          );
+        }
       } else {
-        mean = d3.mean(
-          data
-            .filter((d) => d.Year == e && d.Ranking == selected_ranking)
-            .map((d) => d.AvgSongLength)
-        );
+        if (clicked.length === 0) {
+          mean = d3.mean(
+            data.filter((d) => d.Year == e).map((d) => d.AvgSongLength)
+          );
+        } else {
+          mean = d3.mean(
+            data
+              .filter(
+                (d) =>
+                  d.Year == e &&
+                  clicked.includes(reformatGenreNameBack(d.Genre))
+              )
+              .map((d) => d.AvgSongLength)
+          );
+        }
       }
-      new_data1.set(e, mean);
+      mean !== undefined ? new_data1.set(e, mean) : new_data1.set(e, 0);
     });
+
     svg
       .append("path")
       .datum(new_data1)
@@ -486,19 +511,44 @@ function createDualAxisLineChart(id) {
 
     list_of_year.forEach((e) => {
       if (selected_ranking == 0) {
-        mean = d3.mean(
-          data
-            .filter((d) => d.Year == e)
-            .map((d) => parseInt(d.Sales.replace(/,/g, "")))
-        );
+        if (clicked.length === 0) {
+          mean = d3.mean(
+            data
+              .filter((d) => d.Year == e)
+              .map((d) => parseInt(d.Sales.replace(/,/g, "")))
+          );
+        } else {
+          mean = d3.mean(
+            data
+              .filter(
+                (d) =>
+                  d.Year == e &&
+                  clicked.includes(reformatGenreNameBack(d.Genre))
+              )
+              .map((d) => parseInt(d.Sales.replace(/,/g, "")))
+          );
+        }
       } else {
-        mean = d3.mean(
-          data
-            .filter((d) => d.Year == e && d.Ranking == selected_ranking)
-            .map((d) => parseInt(d.Sales.replace(/,/g, "")))
-        );
+        if (clicked.length === 0) {
+          mean = d3.mean(
+            data
+              .filter((d) => d.Year == e && d.Ranking == selected_ranking)
+              .map((d) => parseInt(d.Sales.replace(/,/g, "")))
+          );
+        } else {
+          mean = d3.mean(
+            data
+              .filter(
+                (d) =>
+                  d.Year == e &&
+                  d.Ranking == selected_ranking &&
+                  clicked.includes(reformatGenreNameBack(d.Genre))
+              )
+              .map((d) => parseInt(d.Sales.replace(/,/g, "")))
+          );
+        }
       }
-      new_data2.set(e, mean);
+      mean !== undefined ? new_data2.set(e, mean) : new_data2.set(e, 0);
     });
 
     svg
@@ -525,17 +575,44 @@ function createDualAxisLineChart(id) {
 
     var decades_avg_length = new Map();
     if (selected_ranking == 0) {
-      mean_avg_length = d3.mean(
-        data.filter((d) => list_of_year.has(d.Year)).map((d) => d.AvgSongLength)
-      );
+      if (clicked.length === 0) {
+        mean_avg_length = d3.mean(
+          data
+            .filter((d) => list_of_year.has(d.Year))
+            .map((d) => d.AvgSongLength)
+        );
+      } else {
+        mean_avg_length = d3.mean(
+          data
+            .filter(
+              (d) =>
+                list_of_year.has(d.Year) &&
+                clicked.includes(reformatGenreNameBack(d.Genre))
+            )
+            .map((d) => d.AvgSongLength)
+        );
+      }
     } else {
-      mean_avg_length = d3.mean(
-        data
-          .filter(
-            (d) => list_of_year.has(d.Year) && d.Ranking == selected_ranking
-          )
-          .map((d) => d.AvgSongLength)
-      );
+      if (clicked.length === 0) {
+        mean_avg_length = d3.mean(
+          data
+            .filter(
+              (d) => list_of_year.has(d.Year) && d.Ranking == selected_ranking
+            )
+            .map((d) => d.AvgSongLength)
+        );
+      } else {
+        mean_avg_length = d3.mean(
+          data
+            .filter(
+              (d) =>
+                list_of_year.has(d.Year) &&
+                d.Ranking == selected_ranking &&
+                clicked.includes(reformatGenreNameBack(d.Genre))
+            )
+            .map((d) => d.AvgSongLength)
+        );
+      }
     }
     list_of_year.forEach((e) => {
       decades_avg_length.set(e, mean_avg_length);
@@ -564,19 +641,44 @@ function createDualAxisLineChart(id) {
 
     var decades_avg_sales = new Map();
     if (selected_ranking == 0) {
-      mean_avg_sales = d3.mean(
-        data
-          .filter((d) => list_of_year.has(d.Year))
-          .map((d) => parseInt(d.Sales.replace(/,/g, "")))
-      );
+      if (clicked.length === 0) {
+        mean_avg_sales = d3.mean(
+          data
+            .filter((d) => list_of_year.has(d.Year))
+            .map((d) => parseInt(d.Sales.replace(/,/g, "")))
+        );
+      } else {
+        mean_avg_sales = d3.mean(
+          data
+            .filter(
+              (d) =>
+                list_of_year.has(d.Year) &&
+                clicked.includes(reformatGenreNameBack(d.Genre))
+            )
+            .map((d) => parseInt(d.Sales.replace(/,/g, "")))
+        );
+      }
     } else {
-      mean_avg_sales = d3.mean(
-        data
-          .filter(
-            (d) => list_of_year.has(d.Year) && d.Ranking == selected_ranking
-          )
-          .map((d) => parseInt(d.Sales.replace(/,/g, "")))
-      );
+      if (clicked.length === 0) {
+        mean_avg_sales = d3.mean(
+          data
+            .filter(
+              (d) => list_of_year.has(d.Year) && d.Ranking == selected_ranking
+            )
+            .map((d) => parseInt(d.Sales.replace(/,/g, "")))
+        );
+      } else {
+        mean_avg_sales = d3.mean(
+          data
+            .filter(
+              (d) =>
+                list_of_year.has(d.Year) &&
+                d.Ranking == selected_ranking &&
+                clicked.includes(reformatGenreNameBack(d.Genre))
+            )
+            .map((d) => parseInt(d.Sales.replace(/,/g, "")))
+        );
+      }
     }
     list_of_year.forEach((e) => {
       decades_avg_sales.set(e, mean_avg_sales);
@@ -1053,6 +1155,8 @@ function createSankeyChart(decade, id) {
             clicked.push(label);
             highlightLinks(data, true);
           }
+          d3.select("#dualLineChart g").transition().duration(50).remove();
+          createDualAxisLineChart("#dualLineChart");
         }
       });
 
