@@ -225,16 +225,6 @@ function createCustomLineChart(id) {
 }
 
 function showInfoCustomLineChart(svg, d, elem) {
-  svg
-    .append("text")
-    .transition()
-    .duration(150)
-    .attr("class", "CircleInfo")
-    .attr("x", margin.left)
-    .attr("y", margin.top)
-    .style("fill", color[elem])
-    .style("user-select", "none")
-    .text("Tracks : " + d[0])
 
     svg
     .append("text")
@@ -245,7 +235,7 @@ function showInfoCustomLineChart(svg, d, elem) {
     .attr("y", 1.5*margin.top)
     .style("fill", color[elem])
     .style("user-select", "none")
-    .text("Sales : " + d[1].toFixed(2) + " millions")
+    .text("Sales : " + d[1].toFixed(0) + " millions")
 
     //change font
     d3.selectAll("text")
