@@ -6,6 +6,8 @@ var units = "albums";
 var decade = null;
 var source = null;
 var rows = [];
+var clicked = [];
+
 const color = {
   Pop: "#4e79a7",
   Rock: "#f28e2c",
@@ -53,6 +55,7 @@ function updateRankSelected(row) {
   } else selected_ranking = row;
   update();
   highlightAlbums(selected_ranking);
+  clicked = [];
 }
 
 function updateDecadeSelected(decade) {
@@ -196,8 +199,9 @@ function createCustomLineChart(id) {
         .attr("stroke-width", 2)
         .attr("transform", `translate(20,20)`)
         .on("mouseover", (event, d) => {
-          handleCustomLineChartMouseOver(elem)
-          showInfoCustomLineChart(svg, d, elem)})
+          handleCustomLineChartMouseOver(elem);
+          showInfoCustomLineChart(svg, d, elem);
+        })
         .on("mouseleave", (event, d) => handleCustomLineChartMouseLeave())
         .attr("cx", (d) => x(d[0]))
         .attr("cy", (d) => y(d[1]))
@@ -239,24 +243,22 @@ function createCustomLineChart(id) {
 }
 
 function showInfoCustomLineChart(svg, d, elem) {
-
-    svg
+  svg
     .append("text")
-    .transition()
-    .duration(150)
+    /* .transition()
+    .duration(50) */
     .attr("class", "CircleInfo")
     .attr("x", margin.left)
-    .attr("y", 1.5*margin.top)
+    .attr("y", 1.5 * margin.top)
     .style("fill", color[elem])
     .style("user-select", "none")
-    .text("Sales : " + d[1].toFixed(0) + " millions")
+    .text("Sales: " + (d[1] / 1000000).toFixed(3) + " millions");
 
-    //change font
-    d3.selectAll("text")
-      .attr("text-anchor", "left")
-      .style("font-size", "13px")
-      .style("font-family", "Monaco");
-
+  //change font
+  d3.selectAll("text")
+    .attr("text-anchor", "left")
+    .style("font-size", "13px")
+    .style("font-family", "Monaco");
 }
 
 const list_of_genre = [
@@ -296,10 +298,11 @@ function handleCustomLineChartMouseOver(genre) {
     });
 
   genre = reformatGenreNameBack(genre);
+  clicked = [];
 
   d3.selectAll("#sankey .link").style("stroke-opacity", function (d) {
     if (genre === d.source.name) rows.push(d.row);
-    return rows.includes(d.row) ? "0.3" : "0.05";
+    return rows.includes(d.row) ? "0.35" : "0.05";
   });
 }
 
@@ -326,8 +329,7 @@ function handleCustomLineChartSelectMultipleGenres(genres) {
 }
 
 function handleCustomLineChartMouseLeave() {
-
-  d3.selectAll(".CircleInfo").transition().duration(250).remove();
+  d3.selectAll(".CircleInfo").transition().duration(50).remove();
 
   list_of_genre.forEach((genre) => {
     genre = reformatGenreName(genre);
@@ -543,7 +545,7 @@ function createDualAxisLineChart(id) {
       .append("path")
       .datum(decades_avg_length)
       .attr("fill", "none")
-      .attr("id", "avg_length_line")
+      .attr("class", "avg_length_line")
       .attr("stroke", colorY1)
       .attr("stroke-width", 2)
       .attr("stroke-dasharray", "5,5")
@@ -584,7 +586,7 @@ function createDualAxisLineChart(id) {
       .append("path")
       .datum(decades_avg_sales)
       .attr("fill", "none")
-      .attr("id", "avg_sales_line")
+      .attr("class", "avg_sales_line")
       .attr("stroke", colorY2)
       .attr("stroke-width", 2)
       .attr("stroke-dasharray", "5,5")
@@ -605,33 +607,35 @@ function createDualAxisLineChart(id) {
       .append("text")
       .attr("id", "avg_text")
       .attr("x", 60)
-      .attr("y", 40)
+      .attr("y", 30)
       .attr("stroke-width", 0.8);
 
-    d3.select("#avg_sales_line")
+    d3.selectAll(".avg_sales_line")
       .style("cursor", "pointer")
       .on("mouseover", function (d) {
-        d3.select("#avg_sales_line").style("stroke-width", 3);
+        d3.selectAll(".avg_sales_line").style("stroke-width", 3);
         d3.select("#avg_text")
-          .attr("stroke", colorY2)
-          .text("Average: " + Math.round(mean_avg_sales) + " sales");
-      })
-      .on("mouseleave", function (d) {
-        d3.select("#avg_sales_line").style("stroke-width", 2);
-        d3.select("#avg_text").text("");
-      });
-    d3.select("#avg_length_line")
-      .style("cursor", "pointer")
-      .on("mouseover", function (d) {
-        d3.select("#avg_length_line").style("stroke-width", 3);
-        d3.select("#avg_text")
-          .attr("stroke", colorY1)
+          .style("fill", colorY2)
           .text(
-            "Average: " + Math.round(mean_avg_length * 100) / 100 + " minutes"
+            "Average: " +
+              (mean_avg_sales / 1000000).toFixed(3) +
+              " million sales"
           );
       })
       .on("mouseleave", function (d) {
-        d3.select("#avg_length_line").style("stroke-width", 2);
+        d3.selectAll(".avg_sales_line").style("stroke-width", 2);
+        d3.select("#avg_text").text("");
+      });
+    d3.selectAll(".avg_length_line")
+      .style("cursor", "pointer")
+      .on("mouseover", function (d) {
+        d3.selectAll(".avg_length_line").style("stroke-width", 3);
+        d3.select("#avg_text")
+          .style("fill", colorY1)
+          .text("Average: " + mean_avg_length.toFixed(2) + " minutes");
+      })
+      .on("mouseleave", function (d) {
+        d3.selectAll(".avg_length_line").style("stroke-width", 2);
         d3.select("#avg_text").text("");
       });
 
@@ -655,7 +659,7 @@ function createDualAxisLineChart(id) {
       .attr("x", width - margin.left)
       .attr("y", -10)
       .style("fill", colorY2)
-      .text("WorldWide Sales");
+      .text("Worldwide Sales");
     svg
       .append("text")
       .attr("x", width - margin.left)
@@ -675,8 +679,8 @@ function createDualAxisLineChart(id) {
     svg
       .append("text")
       .attr("id", "legend")
-      .attr("x", width / 2 + margin.left)
-      .attr("y", (height - margin.top) / 4)
+      .attr("x", width / 1.9 + margin.left)
+      .attr("y", (height - margin.top) / 6)
       .text("for " + legend + " albums");
 
     d3.selectAll("text")
@@ -909,8 +913,6 @@ function createSankeyChart(decade, id) {
     Classical: [],
     Jazz: [],
   };
-
-  var clicked = [];
 
   var sankey = d3.sankey().nodeWidth(36).nodePadding(40).size([width, height]);
   var path = sankey.link();
@@ -1166,7 +1168,7 @@ function highlightAlbums(rank) {
       }
       return albums && albums.includes(d.row) ? "0.45" : "0.05";
     } else {
-      return "0.3";
+      return "0.35";
     }
   });
 }
@@ -1189,4 +1191,26 @@ function reformatGenreNameBack(genre) {
     return "Hip Hop";
   }
   return genre;
+}
+
+function separateLargeNumbers(val) {
+  let num = val.toString().includes(".")
+    ? val.toString().split(".")[0]
+    : val.toString();
+  let len = num.toString().length;
+  let result = "";
+  let count = 1;
+
+  for (let i = len - 1; i >= 0; i--) {
+    result = num.toString()[i] + result;
+    if (count % 3 === 0 && count !== 0 && i !== 0) {
+      result = " " + result;
+    }
+    count++;
+  }
+
+  if (val.toString().includes(".")) {
+    result = result + "." + val.toString().split(".")[1];
+  }
+  return result;
 }
