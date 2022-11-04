@@ -52,6 +52,7 @@ function updateRankSelected(row) {
   console.log(selected_ranking);
 
   update();
+  highlightAlbums(selected_ranking);
 }
 
 function updateDecadeSelected(decade) {
@@ -84,7 +85,10 @@ function createCustomLineChart(id) {
       .append("g")
       .attr("id", "gXAxisC")
       .attr("stroke-width", 1.5)
-      .attr("transform", `translate(20, ${height - margin.bottom + margin.top/2})`)
+      .attr(
+        "transform",
+        `translate(20, ${height - margin.bottom + margin.top / 2})`
+      )
       .call(
         d3.axisBottom(x).tickFormat(function (d, i) {
           return d + "-" + (d + 5);
@@ -259,29 +263,29 @@ const list_of_genre = [
 ];
 
 function handleCustomLineChartMouseOver(genre) {
-  genre = reformatGenreName(genre)
+  genre = reformatGenreName(genre);
   if (!list_of_genre.includes(genre)) return;
-  
+
   list_of_genre
-  .filter((e) => e !== genre)
-  .forEach((genre) => {
-    d3.selectAll(".customItemValue_" + genre + "_path")
-    .transition()
-    .duration(250)
-    .attr("opacity", 0.35)
-    .attr("stroke", "gray");
-    d3.selectAll(".customItemValue_" + genre + "_circle")
-    .transition()
-    .duration(250)
-    .attr("opacity", 0.35)
-    .style("fill", "gray");
-    d3.selectAll(".text_" + genre)
-    .transition()
-    .duration(250)
-    .style("fill", "gray");
-  });
-  
-  genre = reformatGenreNameBack(genre)
+    .filter((e) => e !== genre)
+    .forEach((genre) => {
+      d3.selectAll(".customItemValue_" + genre + "_path")
+        .transition()
+        .duration(250)
+        .attr("opacity", 0.35)
+        .attr("stroke", "gray");
+      d3.selectAll(".customItemValue_" + genre + "_circle")
+        .transition()
+        .duration(250)
+        .attr("opacity", 0.35)
+        .style("fill", "gray");
+      d3.selectAll(".text_" + genre)
+        .transition()
+        .duration(250)
+        .style("fill", "gray");
+    });
+
+  genre = reformatGenreNameBack(genre);
 
   d3.selectAll("#sankey .link").style("stroke-opacity", function (d) {
     if (genre === d.source.name) rows.push(d.row);
@@ -312,10 +316,11 @@ function handleCustomLineChartSelectMultipleGenres(genres) {
 }
 
 function handleCustomLineChartMouseLeave() {
+
   d3.selectAll(".CircleInfo").transition().duration(250).remove();
 
   list_of_genre.forEach((genre) => {
-    genre = reformatGenreName(genre)
+    genre = reformatGenreName(genre);
     d3.selectAll(".customItemValue_" + genre + "_path")
       .transition()
       .duration(250)
@@ -340,8 +345,8 @@ function handleCustomLineChartMouseLeave() {
 }
 
 function createDualAxisLineChart(id) {
-  colorY1 = "#424B54";
-  colorY2 = "#6F58C9";
+  const colorY1 = "#424B54";
+  const colorY2 = "#6F58C9";
 
   //create the svg
   const svg = d3
@@ -376,7 +381,7 @@ function createDualAxisLineChart(id) {
       .append("g")
       .attr("id", "gXAxisD")
       .attr("stroke-width", 1.5)
-      .attr("transform", `translate(25, ${height - margin.top/2})`)
+      .attr("transform", `translate(25, ${height - margin.top / 2})`)
       .call(
         d3.axisBottom(x).tickFormat(function (d, i) {
           return d;
@@ -391,7 +396,7 @@ function createDualAxisLineChart(id) {
     //build the left y-scale and y-axis
     const y = d3
       .scaleLinear()
-      .domain([8, 0]) 
+      .domain([8, 0])
       .range([0, height - margin.top]);
     svg
       .append("g")
@@ -531,7 +536,7 @@ function createDualAxisLineChart(id) {
       .attr("fill", "none")
       .attr("id", "avg_length_line")
       .attr("stroke", colorY1)
-      .attr("stroke-width", 1)
+      .attr("stroke-width", 2)
       .attr("stroke-dasharray", "5,5")
       .attr("transform", `translate(25, 20)`)
       .attr(
@@ -573,7 +578,7 @@ function createDualAxisLineChart(id) {
       .attr("fill", "none")
       .attr("id", "avg_sales_line")
       .attr("stroke", colorY2)
-      .attr("stroke-width", 1)
+      .attr("stroke-width", 2)
       .attr("stroke-dasharray", "5,5")
       .attr("transform", `translate(25, 20)`)
       .attr(
@@ -587,6 +592,40 @@ function createDualAxisLineChart(id) {
             return y2(d[1]);
           })
       );
+
+    svg
+      .append("text")
+      .attr("id", "avg_text")
+      .attr("x", 60)
+      .attr("y", 40)
+      .attr("stroke-width", 0.8);
+
+    d3.select("#avg_sales_line")
+      .style("cursor", "pointer")
+      .on("mouseover", function (d) {
+        d3.select("#avg_sales_line").style("stroke-width", 3);
+        d3.select("#avg_text")
+          .attr("stroke", colorY2)
+          .text("Average: " + Math.round(mean_avg_sales) + " sales");
+      })
+      .on("mouseleave", function (d) {
+        d3.select("#avg_sales_line").style("stroke-width", 2);
+        d3.select("#avg_text").text("");
+      });
+    d3.select("#avg_length_line")
+      .style("cursor", "pointer")
+      .on("mouseover", function (d) {
+        d3.select("#avg_length_line").style("stroke-width", 3);
+        d3.select("#avg_text")
+          .attr("stroke", colorY1)
+          .text(
+            "Average: " + Math.round(mean_avg_length * 100) / 100 + " minutes"
+          );
+      })
+      .on("mouseleave", function (d) {
+        d3.select("#avg_length_line").style("stroke-width", 2);
+        d3.select("#avg_text").text("");
+      });
 
     //Add name for y-axis
     svg
@@ -620,17 +659,17 @@ function createDualAxisLineChart(id) {
     svg
       .append("text")
       .attr("x", width / 2)
-      .attr("y", height + margin.top/2 )
+      .attr("y", height + margin.top / 2)
       .text("Year");
 
     //add legend
-    legend = selected_ranking == 0 ? "All " : "numero " + selected_ranking;
+    legend = selected_ranking == 0 ? "all " : "number " + selected_ranking;
     svg
       .append("text")
       .attr("id", "legend")
       .attr("x", width / 2 + margin.left)
       .attr("y", (height - margin.top) / 4)
-      .text("for " + legend + " Albums");
+      .text("for " + legend + " albums");
 
     d3.selectAll("text")
       .attr("text-anchor", "left")
@@ -725,7 +764,7 @@ function createHeatmap(id) {
     };
     function setHighlightRow(row) {
       if (row == selected_ranking) {
-        return "FFD300";
+        return "#FFD300";
       }
       return "white";
     }
@@ -740,6 +779,7 @@ function createHeatmap(id) {
         return d.Year + ":" + d.Ranking;
       })
       .join("rect")
+      .style("cursor", "pointer")
       .attr("x", function (d) {
         return x(d.Year);
       })
@@ -883,6 +923,7 @@ function createSankeyChart(decade, id) {
         source: d.source,
         target: d.target,
         value: +d.value,
+        ranking: d.ranking,
         row: d.row,
       });
       label = reformatGenreName(d.source);
@@ -1019,7 +1060,7 @@ function createSankeyChart(decade, id) {
         source = data.name;
         link.style("stroke-opacity", function (d) {
           if (rows && source === d.source.name) {
-            rows.push(d.row);
+            if (!rows.includes(d.row)) rows.push(d.row);
           }
           return rows && rows.includes(d.row) ? "0.45" : "0.05";
         });
@@ -1074,6 +1115,7 @@ function createSankeyChart(decade, id) {
       .attr("x", 6 + sankey.nodeWidth())
       .attr("text-anchor", "start");
 
+    // add animations
     d3.selectAll(".link")
       .transition()
       .style("stroke-opacity", 0.35)
@@ -1110,6 +1152,20 @@ function createSankeyChart(decade, id) {
       .attr("text-anchor", "left")
       .style("font-size", "13px")
       .style("font-family", "Monaco");
+  });
+}
+
+function highlightAlbums(rank) {
+  albums = [];
+  d3.selectAll(".link").style("stroke-opacity", function (d) {
+    if (rank !== 0) {
+      if (albums && d.ranking === rank) {
+        if (!albums.includes(d.row)) albums.push(d.row);
+      }
+      return albums && albums.includes(d.row) ? "0.45" : "0.05";
+    } else {
+      return "0.3";
+    }
   });
 }
 
