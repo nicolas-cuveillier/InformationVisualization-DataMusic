@@ -483,7 +483,9 @@ function createDualAxisLineChart(id) {
       } else {
         if (clicked.length === 0) {
           mean = d3.mean(
-            data.filter((d) => d.Year == e).map((d) => d.AvgSongLength)
+            data
+              .filter((d) => d.Year == e && d.Ranking == selected_ranking)
+              .map((d) => d.AvgSongLength)
           );
         } else {
           mean = d3.mean(
@@ -491,6 +493,7 @@ function createDualAxisLineChart(id) {
               .filter(
                 (d) =>
                   d.Year == e &&
+                  d.Ranking == selected_ranking &&
                   clicked.includes(reformatGenreNameBack(d.Genre))
               )
               .map((d) => d.AvgSongLength)
@@ -800,6 +803,33 @@ function createDualAxisLineChart(id) {
       .attr("x", width / 1.9 + margin.left)
       .attr("y", (height - margin.top) / 6)
       .text("for " + legend + " albums");
+
+    //add text for selected genres
+    if (
+      selected_ranking !== 0 ||
+      (selected_ranking === 0 && clicked.length !== 0)
+    ) {
+      genreString = "";
+      clicked.map((g) => {
+        if (genreString.length === 0) {
+          genreString += g;
+        } else {
+          genreString += ", " + g;
+        }
+      });
+      genreText =
+        clicked.length === 0
+          ? "for all genres"
+          : "for " + genreString + " albums";
+    } else {
+      genreText = "";
+    }
+    svg
+      .append("text")
+      .attr("id", "genre-text")
+      .attr("x", width / 1.9 + margin.left)
+      .attr("y", (height - margin.top) / 4)
+      .text(genreText);
 
     d3.selectAll("text")
       .attr("text-anchor", "left")
