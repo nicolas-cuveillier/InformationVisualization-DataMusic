@@ -48,7 +48,7 @@ let selected_decade = 0;
 
 function updateRankSelected(row) {
   d3.selectAll(".heatmap-" + selected_ranking).style("stroke", function (d) {
-    return "white";
+    return null;
   });
   if (selected_ranking == row) {
     selected_ranking = 0;
@@ -56,21 +56,36 @@ function updateRankSelected(row) {
   update();
   highlightAlbums(selected_ranking);
   clicked = [];
+  updateAlbumHighlight();
+}
+
+function updateAlbumHighlight() {
+  for (let i = 1; i < 4; i++) {
+    for (let j = 1990; j < 2022; j++) {
+      d3.select("#heatmap-" + i + "-" + j).style("fill", function (d) {
+        if (clicked.includes(reformatGenreNameBack(d.Genre))) {
+          return "#FF5C5C";
+        } else {
+          return heatmapColor(d.AlbumLength);
+        }
+      });
+    }
+  }
 }
 
 function updateDecadeSelected(decade) {
   selected_decade = decade;
   clicked = [];
   handleCustomLineChartMouseLeave();
+  updateAlbumHighlight();
   update();
 }
 
 function update() {
   d3.select("#dualLineChart g").transition().duration(50).remove();
-  // d3.select("#heatMap g").transition().duration(50).remove();
 
-  // createHeatmap("#heatMap");
   createDualAxisLineChart("#dualLineChart");
+
   d3.selectAll(".heatmap-" + selected_ranking).style("stroke", function (d) {
     return setHighlightRow(d.Ranking);
   });
@@ -78,9 +93,9 @@ function update() {
 
 function setHighlightRow(row) {
   if (row == selected_ranking) {
-    return "#FFD300";
+    return "black";
   }
-  return "white";
+  return null;
 }
 
 function createCustomLineChart(id) {
@@ -298,6 +313,7 @@ function handleCustomLineChartMouseOver(genre) {
         .duration(250)
         .style("fill", "gray");
     });
+  updateAlbumHighlight();
 
   genre = reformatGenreNameBack(genre);
   clicked = [];
@@ -791,6 +807,15 @@ function createDualAxisLineChart(id) {
       .style("font-family", "Monaco");
   });
 }
+// Build color scale
+function heatmapColor(albumLength) {
+  const color = d3
+    .scaleSequential()
+    .interpolator(d3.interpolateGreens)
+    .domain([1, 100])(albumLength);
+  return color;
+}
+
 function createHeatmap(id) {
   const svg = d3
     .select(id)
@@ -800,6 +825,7 @@ function createHeatmap(id) {
     .attr("transform", `translate(${margin.left / 2}, ${margin.top})`);
 
   //Read the data
+
   d3.csv("heatmap.csv").then(function (data) {
     const myGroups = Array.from(new Set(data.map((d) => d.Year)));
     const myVars = Array.from(new Set(data.map((d) => d.Ranking)));
@@ -837,12 +863,6 @@ function createHeatmap(id) {
       .call(d3.axisLeft(y).tickSize(0))
       .select(".domain")
       .remove();
-
-    // Build color scale
-    const myColor = d3
-      .scaleSequential()
-      .interpolator(d3.interpolateGreens)
-      .domain([1, 100]);
 
     // create a tooltip
     const tooltip = d3
@@ -897,17 +917,23 @@ function createHeatmap(id) {
       .attr("class", function (d) {
         return "heatmap-" + d.Ranking;
       })
+      .attr("id", function (d) {
+        return "heatmap-" + d.Ranking + "-" + d.Year;
+      })
       // .attr("class", "heatmap itemvalue")
       .attr("rx", 4)
       .attr("ry", 4)
       .attr("width", x.bandwidth())
       .attr("height", y.bandwidth())
       .style("fill", function (d) {
-        return myColor(d.AlbumLength);
+        return heatmapColor(d.AlbumLength);
       })
-      .style("stroke-width", 1)
+      .style("stroke-width", 2)
       .style("stroke", function (d) {
         return setHighlightRow(d.Ranking);
+      })
+      .style("background", function (d) {
+        return "blue";
       })
       .style("opacity", 1)
       .on("mouseover", (d) => handleMouseover(d))
@@ -951,7 +977,7 @@ function createHeatmap(id) {
         .attr("width", x.bandwidth() * 2)
         .attr("height", y.bandwidth() / 2)
         .style("fill", function (d) {
-          return myColor(10 * (e + 1));
+          return heatmapColor(10 * (e + 1));
         })
     );
 
@@ -1020,6 +1046,7 @@ function createSankeyChart(decade, id) {
   var path = sankey.link();
 
   graph = { nodes: [], links: [] };
+
   d3.csv("sankey_chart" + decade + ".csv").then(function (data, rows) {
     graph = { nodes: [], links: [] };
     data.forEach(function (d) {
@@ -1158,6 +1185,7 @@ function createSankeyChart(decade, id) {
           d3.select("#dualLineChart g").transition().duration(50).remove();
           createDualAxisLineChart("#dualLineChart");
         }
+        updateAlbumHighlight();
       });
 
     function highlightLinks(data, highlighted) {
