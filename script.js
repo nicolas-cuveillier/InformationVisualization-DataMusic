@@ -45,27 +45,37 @@ let selected_ranking = 0;
 let selected_decade = 0;
 
 function updateRankSelected(row) {
+  d3.selectAll(".heatmap-" + selected_ranking).style("stroke", function (d) {
+    return "white";
+  });
   if (selected_ranking == row) {
     selected_ranking = 0;
   } else selected_ranking = row;
-  console.log(row);
-  console.log(selected_ranking);
-
   update();
   highlightAlbums(selected_ranking);
 }
 
 function updateDecadeSelected(decade) {
   selected_decade = decade;
-
   update();
 }
+
 function update() {
   d3.select("#dualLineChart g").transition().duration(50).remove();
-  d3.select("#heatMap g").transition().duration(50).remove();
+  // d3.select("#heatMap g").transition().duration(50).remove();
 
-  createHeatmap("#heatMap");
+  // createHeatmap("#heatMap");
   createDualAxisLineChart("#dualLineChart");
+  d3.selectAll(".heatmap-" + selected_ranking).style("stroke", function (d) {
+    return setHighlightRow(d.Ranking);
+  });
+}
+
+function setHighlightRow(row) {
+  if (row == selected_ranking) {
+    return "#FFD300";
+  }
+  return "white";
 }
 
 function createCustomLineChart(id) {
@@ -503,7 +513,6 @@ function createDualAxisLineChart(id) {
       decades_avg_length.set(e, mean_avg_length);
     });
 
-    console.log(decades_avg_length);
     svg
       .append("path")
       .datum(decades_avg_length)
@@ -545,7 +554,6 @@ function createDualAxisLineChart(id) {
       decades_avg_sales.set(e, mean_avg_sales);
     });
 
-    console.log(decades_avg_sales);
     svg
       .append("path")
       .datum(decades_avg_sales)
@@ -736,15 +744,9 @@ function createHeatmap(id) {
       // tooltip
       //   .style("opacity", 0)
     };
-    function setHighlightRow(row) {
-      if (row == selected_ranking) {
-        return "#FFD300";
-      }
-      return "white";
-    }
 
     const onclick = function (event, d) {
-      updateRankSelected(this.id);
+      updateRankSelected(d.Ranking);
     };
 
     svg
@@ -760,10 +762,10 @@ function createHeatmap(id) {
       .attr("y", function (d) {
         return y(d.Ranking);
       })
-      .attr("id", function (d) {
-        return d.Ranking;
+      .attr("class", function (d) {
+        return "heatmap-" + d.Ranking;
       })
-      .attr("class", "heatmap itemvalue")
+      // .attr("class", "heatmap itemvalue")
       .attr("rx", 4)
       .attr("ry", 4)
       .attr("width", x.bandwidth())
