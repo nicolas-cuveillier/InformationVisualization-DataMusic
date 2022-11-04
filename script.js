@@ -18,7 +18,7 @@ const color = {
   Blues: "#af7aa1",
   World: "#ff9da7",
   Classical: "#9c755f",
-  Jazz: "#bab0ab",
+  Jazz: "#838383",
 };
 
 function init() {
