@@ -185,7 +185,9 @@ function createCustomLineChart(id) {
         .attr("class", "customItemValue_" + elem + "_circle")
         .attr("stroke-width", 2)
         .attr("transform", `translate(20,20)`)
-        .on("mouseover", (event, d) => handleCustomLineChartMouseOver(elem))
+        .on("mouseover", (event, d) => {
+          handleCustomLineChartMouseOver(elem)
+          showInfoCustomLineChart(svg, d, elem)})
         .on("mouseleave", (event, d) => handleCustomLineChartMouseLeave())
         .attr("cx", (d) => x(d[0]))
         .attr("cy", (d) => y(d[1]))
@@ -224,6 +226,27 @@ function createCustomLineChart(id) {
       .style("font-size", "13px")
       .style("font-family", "Monaco");
   });
+}
+
+function showInfoCustomLineChart(svg, d, elem) {
+
+    svg
+    .append("text")
+    .transition()
+    .duration(150)
+    .attr("class", "CircleInfo")
+    .attr("x", margin.left)
+    .attr("y", 1.5*margin.top)
+    .style("fill", color[elem])
+    .style("user-select", "none")
+    .text("Sales : " + d[1].toFixed(0) + " millions")
+
+    //change font
+    d3.selectAll("text")
+      .attr("text-anchor", "left")
+      .style("font-size", "13px")
+      .style("font-family", "Monaco");
+
 }
 
 const list_of_genre = [
@@ -293,6 +316,9 @@ function handleCustomLineChartSelectMultipleGenres(genres) {
 }
 
 function handleCustomLineChartMouseLeave() {
+
+  d3.selectAll(".CircleInfo").transition().duration(250).remove();
+
   list_of_genre.forEach((genre) => {
     genre = reformatGenreName(genre);
     d3.selectAll(".customItemValue_" + genre + "_path")
