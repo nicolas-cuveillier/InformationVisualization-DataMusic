@@ -233,8 +233,8 @@ function createCustomLineChart(id) {
     //Add name for x-axis
     svg
       .append("text")
-      .attr("x", width / 2)
-      .attr("y", height + margin.top + 15)
+      .attr("x", width / 2 + 20)
+      .attr("y", height + margin.top - 42)
       .text("Number of tracks");
 
     //Add legend
@@ -802,7 +802,11 @@ function createDualAxisLineChart(id) {
       .attr("id", "legend")
       .attr("x", width / 1.9 + margin.left)
       .attr("y", (height - margin.top) / 6)
-      .text("for " + legend + " albums");
+      .text(
+        clicked.length !== 0 && selected_ranking === 0
+          ? "for all ranks"
+          : "for " + legend + " albums"
+      );
 
     //add text for selected genres
     if (
@@ -820,7 +824,11 @@ function createDualAxisLineChart(id) {
       genreText =
         clicked.length === 0
           ? "for all genres"
-          : "for " + genreString + " albums";
+          : clicked.length < 2
+          ? "for " + genreString + " albums"
+          : clicked.length == 2
+          ? "for " + clicked[0] + " and " + clicked[1]
+          : "for " + clicked[0] + ", " + clicked[1] + "...";
     } else {
       genreText = "";
     }
